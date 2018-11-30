@@ -1,6 +1,7 @@
 package fr.iat.tpcinema.dao;
 
 import fr.iat.tpcinema.model.Film;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +11,8 @@ import java.util.List;
  *
  * @author student : IAmTerror
  */
+
+@Component
 public class FilmsDao {
     List<Film> lesFilms;
 
