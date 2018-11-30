@@ -6,10 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 @Controller
 public class MainController {
@@ -19,7 +21,7 @@ public class MainController {
 
     @GetMapping("/")
     public String main(Model model) {
-        model.addAttribute("nom", "Karl");
+        model.addAttribute("nom", "Cyril");
         model.addAttribute("films", filmsDao.films());
         return "index";
     }
@@ -38,5 +40,33 @@ public class MainController {
         Integer idFilm = Integer.parseInt(id);
         model.addAttribute("film", filmsDao.getById(idFilm));
         return "detail";
+    }
+
+    // TODO : deporter le nom du folder dans application.properties
+    // Merci Patrick et Karl, overthinking de ma part...
+    @GetMapping("/affiches/{id}")
+    public void affiche (HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
+
+        String affichesPath="C:\\Users\\cyril\\OUTER HEAVEN\\CDA\\varni\\tp-springboot\\sources\\affiches\\";
+        String filename = affichesPath + id;
+
+        // UTILITAIRE POUR IMPORTER DES IMAGES A PARTIR D'UN FOLDER EXTERNE A L'APPLICATION
+        String mime = request.getServletContext ().getMimeType (filename);
+        if (mime == null) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            return;
+        }
+        response.setContentType(mime);
+        File file = new File(filename);
+        response.setContentLength((int)file.length());
+        FileInputStream in = new FileInputStream(file);
+        OutputStream out = response.getOutputStream();
+        byte[] buf = new byte[1024];
+        int count = 0;
+        while ((count = in.read(buf)) >= 0) {
+            out.write(buf, 0, count);
+        }
+        out.close();
+        in.close();
     }
 }
