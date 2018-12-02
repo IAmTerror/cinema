@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <h1 th:text="'Bonjour '+${nom}">Hello CDA</h1>
+<h1>yo man</h1>
 <!--<ul>-->
-    <!--<li th:each="film : ${films}" th:text="${film.titre}">Le grand film</li>-->
-    <!--&lt;!&ndash;/*&ndash;&gt;-->
-    <!--<li>Film 2</li>-->
-    <!--<li>Film 3</li>-->
-    <!--<li>Film 4</li>-->
-    <!--<li>Film 5</li>-->
-    <!--<li>Film 6</li>-->
-    <!--<li>Film 7</li>-->
-    <!--&lt;!&ndash;*/&ndash;&gt;-->
+<!--<li th:each="film : ${films}" th:text="${film.titre}">Le grand film</li>-->
+<!--&lt;!&ndash;/*&ndash;&gt;-->
+<!--<li>Film 2</li>-->
+<!--<li>Film 3</li>-->
+<!--<li>Film 4</li>-->
+<!--<li>Film 5</li>-->
+<!--<li>Film 6</li>-->
+<!--<li>Film 7</li>-->
+<!--&lt;!&ndash;*/&ndash;&gt;-->
 <!--</ul>-->
 
-<ul><li th:each="film : ${films}">
-    <a th:text="${film.titre} + ' ('+${film.note}+')'" th:href="@{/film/{id}(id=${film.id})}" >Le grand film</a>
-</li></ul>
+<ul>
+    <li th:each="film : ${films}">
+        <a th:text="${film.titre} + ' ('+${film.note}+')'" th:href="@{/film/{id}(id=${film.id})}">Le grand film</a>
+    </li>
+</ul>
 
 </body>
 </html>

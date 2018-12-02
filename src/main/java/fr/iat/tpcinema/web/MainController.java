@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -49,20 +50,20 @@ public class MainController {
     // TODO : deporter le nom du folder dans application.properties
     // Merci Patrick et Karl, overthinking de ma part...
     @GetMapping("/affiches/{id}")
-    public void affiche (HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
+    public void affiche(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 
 //        String affichesPath="C:\\Users\\cyril\\OUTER HEAVEN\\CDA\\varni\\tp-springboot\\sources\\affiches\\";
         String filename = path.getAffiche() + id;
 
         // ============ UTILITAIRE POUR IMPORTER DES IMAGES A PARTIR D'UN FOLDER EXTERNE A L'APPLICATION ============ //
-        String mime = request.getServletContext ().getMimeType (filename);
+        String mime = request.getServletContext().getMimeType(filename);
         if (mime == null) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             return;
         }
         response.setContentType(mime);
         File file = new File(filename);
-        response.setContentLength((int)file.length());
+        response.setContentLength((int) file.length());
         FileInputStream in = new FileInputStream(file);
         OutputStream out = response.getOutputStream();
         byte[] buf = new byte[1024];

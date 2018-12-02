@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(Path.class)
 public class TpCinemaSpringBootApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		SpringApplication.run(TpCinemaSpringBootApplication.class, args);
-	}
+        SpringApplication.run(TpCinemaSpringBootApplication.class, args);
+    }
 }
