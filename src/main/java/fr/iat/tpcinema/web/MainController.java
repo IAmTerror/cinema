@@ -1,6 +1,7 @@
 package fr.iat.tpcinema.web;
 
 import fr.iat.tpcinema.dao.FilmsDao;
+import fr.iat.tpcinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ public class MainController {
 
     @Autowired
     FilmsDao filmsDao = new FilmsDao();
+
+    @Autowired
+    private Path path;
 
     @GetMapping("/")
     public String main(Model model) {
@@ -47,10 +51,10 @@ public class MainController {
     @GetMapping("/affiches/{id}")
     public void affiche (HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 
-        String affichesPath="C:\\Users\\cyril\\OUTER HEAVEN\\CDA\\varni\\tp-springboot\\sources\\affiches\\";
-        String filename = affichesPath + id;
+//        String affichesPath="C:\\Users\\cyril\\OUTER HEAVEN\\CDA\\varni\\tp-springboot\\sources\\affiches\\";
+        String filename = path.getAffiche() + id;
 
-        // UTILITAIRE POUR IMPORTER DES IMAGES A PARTIR D'UN FOLDER EXTERNE A L'APPLICATION
+        // ============ UTILITAIRE POUR IMPORTER DES IMAGES A PARTIR D'UN FOLDER EXTERNE A L'APPLICATION ============ //
         String mime = request.getServletContext ().getMimeType (filename);
         if (mime == null) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
