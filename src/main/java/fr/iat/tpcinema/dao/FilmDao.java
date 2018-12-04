@@ -19,9 +19,9 @@ public class FilmDao {
 
     private List<Film> films;
 
-    public FilmDao() {
+    PersonneDao personneDao = new PersonneDao();
 
-        PersonneDao personneDao = new PersonneDao();
+    public FilmDao() {
 
         films = Arrays.asList(
                 new Film(1,

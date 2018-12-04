@@ -6,8 +6,10 @@
 </head>
 <body>
 <h1 th:text="${film.titre}">Titre du film</h1>
-<h2>Note : <span th:text="${film.note}">4.5</span></h2>
-<img th:src="'/affiches/'+${film.getAfficheNom()}">
+<h2>Note : <span th:text="${film.notation}">4.5</span></h2>
+<img th:src="'/affiches/'+${film.getAffiche()}">
+<h3 th:text="'Résumé : '+${film.getResume()}">Realisateur</h3>
+<!--<h2 th:text="'Realisateur : '+${personne.nom}">Realisateur</h2>-->
 </body>
 </html>
 
