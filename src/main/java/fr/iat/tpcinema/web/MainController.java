@@ -1,6 +1,6 @@
 package fr.iat.tpcinema.web;
 
-import fr.iat.tpcinema.dao.FilmsDao;
+import fr.iat.tpcinema.dao.FilmDao;
 import fr.iat.tpcinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import java.io.OutputStream;
 public class MainController {
 
     @Autowired
-    FilmsDao filmsDao = new FilmsDao();
+    FilmDao filmDao = new FilmDao();
 
     @Autowired
     private Path path;
@@ -27,7 +27,7 @@ public class MainController {
     @GetMapping("/")
     public String main(Model model) {
         model.addAttribute("nom", "Cyril");
-        model.addAttribute("films", filmsDao.films());
+        model.addAttribute("films", filmDao.films());
         return "index";
     }
 
@@ -42,8 +42,8 @@ public class MainController {
     // Version avec @PathVariable
     @GetMapping("/film/{id}")
     public String detail(Model model, @PathVariable("id") String id) {
-        Integer idFilm = Integer.parseInt(id);
-        model.addAttribute("film", filmsDao.getById(idFilm));
+        int idFilm = Integer.parseInt(id);
+        model.addAttribute("film", filmDao.getById(idFilm));
         return "detail";
     }
 

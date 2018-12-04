@@ -6,7 +6,6 @@
 </head>
 <body>
 <h1 th:text="'Bonjour '+${nom}">Hello CDA</h1>
-<h1>yo man</h1>
 <!--<ul>-->
 <!--<li th:each="film : ${films}" th:text="${film.titre}">Le grand film</li>-->
 <!--&lt;!&ndash;/*&ndash;&gt;-->
@@ -21,7 +20,7 @@
 
 <ul>
     <li th:each="film : ${films}">
-        <a th:text="${film.titre} + ' ('+${film.note}+')'" th:href="@{/film/{id}(id=${film.id})}">Le grand film</a>
+        <a th:text="${film.titre} + ' ('+${film.notation}+')'" th:href="@{/film/{id}(id=${film.id})}"></a>
     </li>
 </ul>
 

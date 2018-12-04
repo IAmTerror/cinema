@@ -1,19 +1,25 @@
 package fr.iat.tpcinema.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Film {
+    private int id;
+    private String titre;
+    private Double notation;
+    private String affiche;
+    private String resume;
+    private Personne realisateur;
+    private List<Role> roles = new ArrayList<>();
 
-    int id;
-    String titre;
-    String afficheNom;
-    double note;
-
-    public Film(int id, String titre, String afficheNom, double note) {
+    public Film(int id, String titre, Double notation, String affiche, String resume, Personne realisateur) {
         this.id = id;
         this.titre = titre;
-        this.afficheNom = afficheNom;
-        this.note = note;
+        this.notation = notation;
+        this.affiche = affiche;
+        this.resume = resume;
+        this.realisateur = realisateur;
     }
 
     public int getId() {
@@ -32,20 +38,44 @@ public class Film {
         this.titre = titre;
     }
 
-    public String getAfficheNom() {
-        return afficheNom;
+    public Double getNotation() {
+        return notation;
     }
 
-    public void setAfficheNom(String afficheNom) {
-        this.afficheNom = afficheNom;
+    public void setNotation(Double notation) {
+        this.notation = notation;
     }
 
-    public double getNote() {
-        return note;
+    public String getAffiche() {
+        return affiche;
     }
 
-    public void setNote(double note) {
-        this.note = note;
+    public void setAffiche(String affiche) {
+        this.affiche = affiche;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
+    }
+
+    public Personne getRealisateur() {
+        return realisateur;
+    }
+
+    public void setRealisateur(Personne realisateur) {
+        this.realisateur = realisateur;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
@@ -53,12 +83,18 @@ public class Film {
         if (this == o) return true;
         if (!(o instanceof Film)) return false;
         Film film = (Film) o;
-        return getId() == film.getId();
+        return getId() == film.getId() &&
+                Objects.equals(getTitre(), film.getTitre()) &&
+                Objects.equals(getNotation(), film.getNotation()) &&
+                Objects.equals(getAffiche(), film.getAffiche()) &&
+                Objects.equals(getResume(), film.getResume()) &&
+                Objects.equals(getRealisateur(), film.getRealisateur()) &&
+                Objects.equals(getRoles(), film.getRoles());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(getId(), getTitre(), getNotation(), getAffiche(), getResume(), getRealisateur(), getRoles());
     }
 
     @Override
@@ -66,8 +102,11 @@ public class Film {
         return "Film{" +
                 "id=" + id +
                 ", titre='" + titre + '\'' +
-                ", afficheNom='" + afficheNom + '\'' +
-                ", note=" + note +
+                ", notation=" + notation +
+                ", affiche='" + affiche + '\'' +
+                ", resume='" + resume + '\'' +
+                ", realisateur=" + realisateur +
+                ", roles=" + roles +
                 '}';
     }
 }
