@@ -52,8 +52,6 @@ public class MainController {
         return "detail";
     }
 
-    // TODO : deporter le nom du folder dans application.properties
-    // Merci Patrick et Karl, overthinking de ma part...
     @GetMapping("/affiches/{id}")
     public void affiche(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 
