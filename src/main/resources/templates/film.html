@@ -7,17 +7,20 @@
 <body>
 <h1 th:text="${film.titre}">Titre du film</h1>
 <h2>Note : <span th:text="${film.notation}"></span></h2>
-<img th:src="'/affiches/'+${film.getAffiche()}">
+<img width="15%" height="15%" th:src="'/affiches/'+${film.getAffiche()}">
 <h3 th:text="'Résumé : '+${film.resume}">Resumé</h3>
 <h3 th:text="'Realisateur : '+${film.realisateur.getPrenom()}+' '+${film.realisateur.getNom()}">Realisateur</h3>
+<h3 th:text="'Acteurs :'"></h3>
+<ul>
+    <li th:each="role : ${film.getRoles()}">
+        <a th:text="${role.getActeur().getPrenom()}+' '+${role.getActeur().getNom()}+' dans le rôle de : '+${role.getAlias()}"></a>
 
-<!--<a th:each="role : ${film.getRoles()}" th:href="">-->
-
-    <!--<ul>-->
-        <!--<li th:text="${role.getPersonne().getNom()}"></li>-->
-        <!--<span th:text="${role.getPersonne().getPrenom()}"></span>-->
-    <!--</ul>-->
-<!--</a>-->
+        <!--<ul>-->
+        <!--<li th:text="${role.getActeur().getNom()}"></li>-->
+        <!--<span th:text="${role.getActeur().getPrenom()}"></span>-->
+        <!--</ul>-->
+    </li>
+</ul>
 
 </body>
 </html>
