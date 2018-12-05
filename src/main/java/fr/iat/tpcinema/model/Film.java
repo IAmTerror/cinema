@@ -79,7 +79,9 @@ public class Film {
     }
 
     public void addRole(Role role){
-        this.roles.add(role);
+        if (!roles.contains(role)) {
+            this.roles.add(role);
+        }
     }
 
     @Override

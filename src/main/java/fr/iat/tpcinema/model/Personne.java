@@ -60,8 +60,18 @@ public class Personne {
         this.photoPath = photoPath;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
     public void addRole(Role role){
-        this.roles.add(role);
+        if (!roles.contains(role)) {
+            this.roles.add(role);
+        }
     }
 
     @Override
@@ -85,7 +95,7 @@ public class Personne {
     @Override
     public String toString() {
         return "Personne{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", naissance=" + naissance +

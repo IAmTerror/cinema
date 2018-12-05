@@ -1,5 +1,6 @@
 package fr.iat.tpcinema;
 
+import fr.iat.tpcinema.dao.RoleDao;
 import fr.iat.tpcinema.service.Path;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

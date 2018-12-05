@@ -2,6 +2,7 @@ package fr.iat.tpcinema.web;
 
 import fr.iat.tpcinema.dao.FilmDao;
 import fr.iat.tpcinema.dao.PersonneDao;
+import fr.iat.tpcinema.dao.RoleDao;
 import fr.iat.tpcinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class MainController {
 
     @Autowired
     PersonneDao personneDao = new PersonneDao();
+
+    @Autowired
+    RoleDao roleDao;
 
     @Autowired
     private Path path;

@@ -1,10 +1,8 @@
 package fr.iat.tpcinema.dao;
 
 import fr.iat.tpcinema.model.Film;
-import fr.iat.tpcinema.model.Personne;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,9 +15,8 @@ import java.util.List;
 @Component
 public class FilmDao {
 
-    private List<Film> films;
-
     PersonneDao personneDao = new PersonneDao();
+    private List<Film> films;
 
     public FilmDao() {
 

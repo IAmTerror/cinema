@@ -1,15 +1,40 @@
 package fr.iat.tpcinema.model;
 
 public class Role {
-    private Film film;
-    private Personne personne;
-    private String alias;
-    private Integer ordre;
 
-    public Role(Film film, Personne personne, String alias, Integer ordre) {
-        this.film = film;
-        this.personne = personne;
+    private String alias;
+    private Personne acteur;
+    private Integer ordre;
+    private Film film;
+
+    public Role(String alias, Personne acteur, Integer ordre, Film film) {
         this.alias = alias;
+        this.acteur = acteur;
+        this.ordre = ordre;
+        this.film = film;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public Personne getActeur() {
+        return acteur;
+    }
+
+    public void setActeur(Personne acteur) {
+        this.acteur = acteur;
+    }
+
+    public Integer getOrdre() {
+        return ordre;
+    }
+
+    public void setOrdre(Integer ordre) {
         this.ordre = ordre;
     }
 
@@ -21,36 +46,15 @@ public class Role {
         this.film = film;
     }
 
-    public Personne getPersonne() {
-        return personne;
-    }
-
-    public void setPersonne(Personne personne) {
-        this.personne = personne;
-    }
-
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
-
-    public Integer getOrdre() {
-        return ordre;
-    }
-
-    public void setOrdre(Integer ordre) {
-        this.ordre = ordre;
+    public void ajouterRole() {
+        film.addRole(this);
+        acteur.addRole(this);
     }
 
     @Override
     public String toString() {
         return "Role{" +
-                "film=" + film +
-                ", personne=" + personne +
-                ", alias='" + alias + '\'' +
+                "alias='" + alias + '\'' +
                 ", ordre=" + ordre +
                 '}';
     }
