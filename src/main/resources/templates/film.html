@@ -13,7 +13,7 @@
 <h3 th:text="'Acteurs :'"></h3>
 <ul>
     <li th:each="role : ${film.getRoles()}">
-        <a th:text="${role.getActeur().getPrenom()}+' '+${role.getActeur().getNom()}+' dans le rôle de : '+${role.getAlias()}"></a>
+        <a th:text="${role.getActeur().getPrenom()}+' '+${role.getActeur().getNom()}+' dans le rôle de : '+${role.getAlias()}" th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"></a>
 
         <!--<ul>-->
         <!--<li th:text="${role.getActeur().getNom()}"></li>-->

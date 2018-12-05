@@ -62,11 +62,37 @@ public class MainController {
         return "acteur";
     }
 
+    // TODO : factoriser la gestion des paths pour les images
     @GetMapping("/affiches/{id}")
     public void affiche(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 
 //        String affichesPath="C:\\Users\\cyril\\OUTER HEAVEN\\CDA\\varni\\tp-springboot\\sources\\affiches\\";
         String filename = path.getAffiche() + id;
+
+        // ============ UTILITAIRE POUR IMPORTER DES IMAGES A PARTIR D'UN FOLDER EXTERNE A L'APPLICATION ============ //
+        String mime = request.getServletContext().getMimeType(filename);
+        if (mime == null) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            return;
+        }
+        response.setContentType(mime);
+        File file = new File(filename);
+        response.setContentLength((int) file.length());
+        FileInputStream in = new FileInputStream(file);
+        OutputStream out = response.getOutputStream();
+        byte[] buf = new byte[1024];
+        int count = 0;
+        while ((count = in.read(buf)) >= 0) {
+            out.write(buf, 0, count);
+        }
+        out.close();
+        in.close();
+    }
+
+    @GetMapping("/personnes/{id}")
+    public void personne(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
+
+        String filename = path.getPersonne() + id;
 
         // ============ UTILITAIRE POUR IMPORTER DES IMAGES A PARTIR D'UN FOLDER EXTERNE A L'APPLICATION ============ //
         String mime = request.getServletContext().getMimeType(filename);
