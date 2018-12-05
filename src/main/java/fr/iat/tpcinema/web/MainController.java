@@ -2,7 +2,6 @@ package fr.iat.tpcinema.web;
 
 import fr.iat.tpcinema.dao.FilmDao;
 import fr.iat.tpcinema.dao.PersonneDao;
-import fr.iat.tpcinema.model.Personne;
 import fr.iat.tpcinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,10 +45,17 @@ public class MainController {
 
     // Version avec @PathVariable
     @GetMapping("/film/{id}")
-    public String detail(Model model, @PathVariable("id") String id) {
+    public String film(Model model, @PathVariable("id") String id) {
         int idFilm = Integer.parseInt(id);
         model.addAttribute("film", filmDao.getById(idFilm));
-        return "detail";
+        return "film";
+    }
+
+    @GetMapping("/acteur/{id}")
+    public String acteur(Model model, @PathVariable("id") String id) {
+        int idActeur = Integer.parseInt(id);
+        model.addAttribute("personne", personneDao.getById(idActeur));
+        return "acteur";
     }
 
     @GetMapping("/affiches/{id}")
