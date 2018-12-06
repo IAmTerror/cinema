@@ -9,15 +9,15 @@ public class Personne {
     private String nom;
     private String prenom;
     private Integer naissance;
-    private String photoPath;
+    private String affiche;
     private List<Role> roles = new ArrayList<>();
 
-    public Personne(int id, String nom, String prenom, Integer naissance, String photoPath) {
+    public Personne(int id, String nom, String prenom, Integer naissance, String affiche) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.naissance = naissance;
-        this.photoPath = photoPath;
+        this.affiche = affiche;
     }
 
     public int getId() {
@@ -52,12 +52,12 @@ public class Personne {
         this.naissance = naissance;
     }
 
-    public String getPhotoPath() {
-        return photoPath;
+    public String getAffiche() {
+        return affiche;
     }
 
-    public void setPhotoPath(String photoPath) {
-        this.photoPath = photoPath;
+    public void setAffiche(String affiche) {
+        this.affiche = affiche;
     }
 
     public List<Role> getRoles() {
@@ -83,13 +83,13 @@ public class Personne {
                 Objects.equals(getNom(), personne.getNom()) &&
                 Objects.equals(getPrenom(), personne.getPrenom()) &&
                 Objects.equals(getNaissance(), personne.getNaissance()) &&
-                Objects.equals(getPhotoPath(), personne.getPhotoPath()) &&
+                Objects.equals(getAffiche(), personne.getAffiche()) &&
                 Objects.equals(roles, personne.roles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNom(), getPrenom(), getNaissance(), getPhotoPath(), roles);
+        return Objects.hash(getId(), getNom(), getPrenom(), getNaissance(), getAffiche(), roles);
     }
 
     @Override
@@ -99,7 +99,7 @@ public class Personne {
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", naissance=" + naissance +
-                ", photoPath='" + photoPath + '\'' +
+                ", affiche='" + affiche + '\'' +
                 ", roles=" + roles +
                 '}';
     }
