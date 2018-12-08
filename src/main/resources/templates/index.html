@@ -5,18 +5,7 @@
     <title>Liste des films</title>
 </head>
 <body>
-<!--<h1 th:text="'Bonjour '+${nom}">Hello CDA</h1>-->
-<!--<ul>-->
-<!--<li th:each="film : ${films}" th:text="${film.titre}">Le grand film</li>-->
-<!--&lt;!&ndash;/*&ndash;&gt;-->
-<!--<li>Film 2</li>-->
-<!--<li>Film 3</li>-->
-<!--<li>Film 4</li>-->
-<!--<li>Film 5</li>-->
-<!--<li>Film 6</li>-->
-<!--<li>Film 7</li>-->
-<!--&lt;!&ndash;*/&ndash;&gt;-->
-<!--</ul>-->
+<div th:replace="fragments/header :: header"/>
 <h1 th:text="'Liste des films :'"></h1>
 <ul>
     <li th:each="film : ${films}">

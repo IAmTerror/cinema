@@ -5,6 +5,7 @@
     <title th:text="${film.titre}">Title</title>
 </head>
 <body>
+<div th:replace="fragments/header :: header"/>
 <h1 th:text="${film.titre}">Titre du film</h1>
 <h2>Note : <span th:text="${film.notation}"></span></h2>
 <img width="15%" height="15%" th:src="'/affiches/'+${film.getAffiche()}">
