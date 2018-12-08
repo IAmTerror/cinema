@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Liste des films</title>
 </head>
 <body>
-<h1 th:text="'Bonjour '+${nom}">Hello CDA</h1>
+<!--<h1 th:text="'Bonjour '+${nom}">Hello CDA</h1>-->
 <!--<ul>-->
 <!--<li th:each="film : ${films}" th:text="${film.titre}">Le grand film</li>-->
 <!--&lt;!&ndash;/*&ndash;&gt;-->
@@ -17,12 +17,12 @@
 <!--<li>Film 7</li>-->
 <!--&lt;!&ndash;*/&ndash;&gt;-->
 <!--</ul>-->
-
+<h1 th:text="'Liste des films :'"></h1>
 <ul>
     <li th:each="film : ${films}">
         <a th:text="${film.titre} + ' ('+${film.notation}+')'" th:href="@{/film/{id}(id=${film.id})}"></a>
     </li>
 </ul>
-
+<div th:replace="fragments/footer :: footer"/>
 </body>
 </html>

@@ -15,6 +15,7 @@
         <a th:text="${personne.getFilm().getTitre()}" th:href="@{/film/{Id} (Id=${personne.getFilm().getId()})}"></a>
     </li>
 </ul>
+<div th:replace="fragments/footer :: footer"/>
 </body>
 </html>
 

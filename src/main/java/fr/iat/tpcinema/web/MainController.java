@@ -34,7 +34,7 @@ public class MainController {
 
     @GetMapping("/")
     public String main(Model model) {
-        model.addAttribute("nom", "Cyril");
+//        model.addAttribute("nom", "Cyril");
         model.addAttribute("films", filmDao.films());
         return "index";
     }
