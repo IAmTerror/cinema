@@ -10,14 +10,16 @@ public class Personne {
     private String prenom;
     private Integer naissance;
     private String affiche;
+    private int type;  // 1 = acteur ; 2 = réalisateur
     private List<Role> roles = new ArrayList<>();
 
-    public Personne(int id, String nom, String prenom, Integer naissance, String affiche) {
+    public Personne(int id, String nom, String prenom, Integer naissance, String affiche, int type) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.naissance = naissance;
         this.affiche = affiche;
+        this.type = type;
     }
 
     public int getId() {
@@ -58,6 +60,14 @@ public class Personne {
 
     public void setAffiche(String affiche) {
         this.affiche = affiche;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public List<Role> getRoles() {
