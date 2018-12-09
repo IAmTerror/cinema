@@ -17,6 +17,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+//TODO séparer les acteurs des réalisateurs en typant les personnes, conditionner les controlleurs en fonction du type
+
 @Controller
 public class MainController {
 
@@ -37,6 +39,12 @@ public class MainController {
 //        model.addAttribute("nom", "Cyril");
         model.addAttribute("films", filmDao.films());
         return "index";
+    }
+
+    @GetMapping("/liste-acteurs")
+    public String listeActeurs(Model model) {
+        model.addAttribute("personnes", personneDao.personnes());
+        return "liste-acteurs";
     }
 
     // Version avec @RequestParam
