@@ -7,16 +7,19 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
-<h1 th:text="${personne.prenom}+' '+${personne.nom}"></h1>
-<h3 th:text="'Date de naissance : '+${personne.getNaissance()}">Resumé</h3>
-<h3 th:text="'Filmographie :'"></h3>
-<ul>
-    <li th:each="personne : ${personne.getRoles()}">
-        <a th:href="@{/film/{Id} (Id=${personne.getFilm().getId()})}"><img width="15%" height="15%"
-                                                                           th:src="'/affiches/'+${personne.getFilm().getAffiche()}"></a>
-        <a th:text="${personne.getFilm().getTitre()}" th:href="@{/film/{Id} (Id=${personne.getFilm().getId()})}"></a>
-    </li>
-</ul>
+<div class="corps">
+    <h1 th:text="${personne.prenom}+' '+${personne.nom}"></h1>
+    <h3 th:text="'Date de naissance : '+${personne.getNaissance()}">Resumé</h3>
+    <h3 th:text="'Filmographie :'"></h3>
+    <ul>
+        <li th:each="personne : ${personne.getRoles()}">
+            <a th:href="@{/film/{Id} (Id=${personne.getFilm().getId()})}"><img width="15%" height="15%"
+                                                                               th:src="'/affiches/'+${personne.getFilm().getAffiche()}"></a>
+            <a th:text="${personne.getFilm().getTitre()}"
+               th:href="@{/film/{Id} (Id=${personne.getFilm().getId()})}"></a>
+        </li>
+    </ul>
+</div>
 <div th:replace="fragments/footer :: footer"/>
 </body>
 </html>

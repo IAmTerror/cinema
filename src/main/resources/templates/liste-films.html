@@ -7,12 +7,13 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
-<h1 th:text="'Liste des films :'"></h1>
+<div class="corps">
+    <h1 th:text="'Liste des films :'"></h1>
 
-<div th:each="film : ${films}">
-    <a th:text="${film.titre} + ' ('+${film.notation}+')'" th:href="@{/film/{id}(id=${film.id})}"></a>
+    <div th:each="film : ${films}">
+        <a th:text="${film.titre} + ' ('+${film.notation}+')'" th:href="@{/film/{id}(id=${film.id})}"></a>
+    </div>
 </div>
-
 <div th:replace="fragments/footer :: footer"/>
 </body>
 </html>

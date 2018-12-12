@@ -1,11 +1,14 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     padding-top: 5%;
-    padding-left: 1%;
-    padding-right: 1%;
+    padding-bottom: 5%;
 }
 
 .bg-dark {
-    /*background-color: #343a40 !important;*/
     background-color: #0056b3 !important;
 }
 
@@ -24,4 +27,16 @@ h1, h2, h3, p {
 
 .fas:hover {
     color: #34A1FB
+}
+
+footer {
+    background-color: #0056b3 !important;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.corps {
+    padding-left: 1%;
+    padding-right: 1%;
 }

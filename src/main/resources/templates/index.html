@@ -7,7 +7,9 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
-<h1 th:text="'Bonjour '+${nom}">Hello CDA</h1>
+<div class="corps">
+    <h1 th:text="'Bonjour '+${nom}">Hello CDA</h1>
+</div>
 <div th:replace="fragments/footer :: footer"/>
 </body>
 </html>
