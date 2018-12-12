@@ -15,12 +15,17 @@
     <h6 th:text="'Realisateur : '+${film.realisateur.getPrenom()}+' '+${film.realisateur.getNom()}">Realisateur</h6>
     <h6 th:text="'Acteurs :'"></h6>
 
+
+    <!--TODO : transformer en tableau avec les colonnes made in bootstrap-->
     <div th:each="role : ${film.getRoles()}">
-        <a th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"><img width="15%" height="15%"
-                                                                           th:src="'/personnes/'+${role.getActeur().getAffiche()}"></a>
+
+        <a th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}">
+            <img width="15%" height="15%"
+                 th:src="'/personnes/'+${role.getActeur().getAffiche()}"></a>
         <a th:text="${role.getActeur().getPrenom()}+' '+${role.getActeur().getNom()}+' dans le rôle de : '+${role.getAlias()}"
            th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"></a>
     </div>
+
 
 </div>
 <div th:replace="fragments/footer :: footer"/>
