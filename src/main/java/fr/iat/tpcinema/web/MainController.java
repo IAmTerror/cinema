@@ -36,8 +36,14 @@ public class MainController {
 
     @GetMapping("/")
     public String main(Model model) {
-        model.addAttribute("films", filmDao.films());
+        model.addAttribute("nom", "Cyril");
         return "index";
+    }
+
+    @GetMapping("/liste-films")
+    public String listeFilms(Model model) {
+        model.addAttribute("films", filmDao.films());
+        return "liste-films";
     }
 
     @GetMapping("/liste-acteurs")
