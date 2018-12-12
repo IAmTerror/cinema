@@ -8,11 +8,9 @@
 <body>
 <div th:replace="fragments/header :: header"/>
 <h1 th:text="'Liste des acteurs :'"></h1>
-<ul>
-    <li th:each="personne : ${personnes}">
-        <a th:text="${personne.nom}+' '+${personne.prenom}" th:href="@{/acteur/{id}(id=${personne.id})}"></a>
-    </li>
-</ul>
+<div th:each="personne : ${personnes}">
+    <a th:text="${personne.nom}+' '+${personne.prenom}" th:href="@{/acteur/{id}(id=${personne.id})}"></a>
+</div>
 <div th:replace="fragments/footer :: footer"/>
 </body>
 </html>

@@ -15,8 +15,10 @@
 <h3 th:text="'Acteurs :'"></h3>
 <ul>
     <li th:each="role : ${film.getRoles()}">
-        <a th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"><img width="15%" height="15%" th:src="'/personnes/'+${role.getActeur().getAffiche()}"></a>
-        <a th:text="${role.getActeur().getPrenom()}+' '+${role.getActeur().getNom()}+' dans le rôle de : '+${role.getAlias()}" th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"></a>
+        <a th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"><img width="15%" height="15%"
+                                                                           th:src="'/personnes/'+${role.getActeur().getAffiche()}"></a>
+        <a th:text="${role.getActeur().getPrenom()}+' '+${role.getActeur().getNom()}+' dans le rôle de : '+${role.getAlias()}"
+           th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"></a>
     </li>
 </ul>
 <div th:replace="fragments/footer :: footer"/>
