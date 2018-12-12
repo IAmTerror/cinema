@@ -23,10 +23,10 @@ import java.io.OutputStream;
 public class MainController {
 
     @Autowired
-    FilmDao filmDao = new FilmDao();
+    FilmDao filmDao;
 
     @Autowired
-    PersonneDao personneDao = new PersonneDao();
+    PersonneDao personneDao;
 
     @Autowired
     RoleDao roleDao;
