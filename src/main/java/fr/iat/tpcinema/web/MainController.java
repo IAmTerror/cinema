@@ -36,7 +36,6 @@ public class MainController {
 
     @GetMapping("/")
     public String main(Model model) {
-//        model.addAttribute("nom", "Cyril");
         model.addAttribute("films", filmDao.films());
         return "index";
     }
@@ -71,6 +70,7 @@ public class MainController {
     }
 
     // TODO : factoriser la gestion des paths pour les images
+    // TODO : virer les request / response
     @GetMapping("/affiches/{id}")
     public void affiche(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 
