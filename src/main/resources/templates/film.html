@@ -10,18 +10,18 @@
 <div class="corps">
     <h1 th:text="${film.titre}">Titre du film</h1>
     <h2>Note : <span th:text="${film.notation}"></span></h2>
-    <img width="15%" height="15%" th:src="'/affiches/'+${film.getAffiche()}">
-    <h3 th:text="'Résumé : '+${film.resume}">Resumé</h3>
-    <h3 th:text="'Realisateur : '+${film.realisateur.getPrenom()}+' '+${film.realisateur.getNom()}">Realisateur</h3>
-    <h3 th:text="'Acteurs :'"></h3>
-    <ul>
-        <li th:each="role : ${film.getRoles()}">
-            <a th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"><img width="15%" height="15%"
-                                                                               th:src="'/personnes/'+${role.getActeur().getAffiche()}"></a>
-            <a th:text="${role.getActeur().getPrenom()}+' '+${role.getActeur().getNom()}+' dans le rôle de : '+${role.getAlias()}"
-               th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"></a>
-        </li>
-    </ul>
+    <img class="affiche" th:src="'/affiches/'+${film.getAffiche()}">
+    <h6 th:text="'Résumé : '+${film.resume}">Resumé</h6>
+    <h6 th:text="'Realisateur : '+${film.realisateur.getPrenom()}+' '+${film.realisateur.getNom()}">Realisateur</h6>
+    <h6 th:text="'Acteurs :'"></h6>
+
+    <div th:each="role : ${film.getRoles()}">
+        <a th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"><img width="15%" height="15%"
+                                                                           th:src="'/personnes/'+${role.getActeur().getAffiche()}"></a>
+        <a th:text="${role.getActeur().getPrenom()}+' '+${role.getActeur().getNom()}+' dans le rôle de : '+${role.getAlias()}"
+           th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"></a>
+    </div>
+
 </div>
 <div th:replace="fragments/footer :: footer"/>
 </body>
