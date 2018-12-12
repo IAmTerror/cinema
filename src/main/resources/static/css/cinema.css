@@ -3,3 +3,16 @@ body {
     padding-left: 1%;
     padding-right: 1%;
 }
+
+.bg-dark {
+    /*background-color: #343a40 !important;*/
+    background-color: #0056b3 !important;
+}
+
+body {
+    background-color: black;
+}
+
+h1, h2, h3, p {
+    color: white;
+}
