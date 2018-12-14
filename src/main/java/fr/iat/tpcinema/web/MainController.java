@@ -44,12 +44,6 @@ public class MainController {
 //        return "liste-films";
 //    }
 
-//    @GetMapping("/liste-acteurs")
-//    public String listeActeurs(Model model) {
-//        model.addAttribute("personnes", personneDao.personnes());
-//        return "liste-acteurs";
-//    }
-
     @GetMapping("/liste-acteurs")
     public String listeActeurs(Model model) {
         model.addAttribute("personnes", personneDao.getAll());
@@ -73,12 +67,12 @@ public class MainController {
 //        return "film";
 //    }
 
-//    @GetMapping("/acteur/{id}")
-//    public String acteur(Model model, @PathVariable("id") String id) {
-//        int idActeur = Integer.parseInt(id);
-//        model.addAttribute("personne", personneDao.getById(idActeur));
-//        return "acteur";
-//    }
+    @GetMapping("/acteur/{id}")
+    public String acteur(Model model, @PathVariable("id") String id) {
+        long idActeur = Long.parseLong(id);
+        model.addAttribute("personne", personneDao.getById(idActeur));
+        return "acteur";
+    }
 
     // TODO : factoriser la gestion des paths pour les images
     // TODO : virer les request / response

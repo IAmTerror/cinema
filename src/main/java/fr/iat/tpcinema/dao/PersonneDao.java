@@ -98,7 +98,7 @@ public class PersonneDao {
         return query.getResultList();
     }
 
-    public Personne getById(BigInteger id){
+    public Personne getById(Long id){
         Personne retVal = null;
         Query query = entityManager.createQuery("select p from persons p where p.id = :id");
         query.setParameter("id", id);
