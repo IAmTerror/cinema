@@ -1,12 +1,15 @@
 package fr.iat.tpcinema.web;
 
 import fr.iat.tpcinema.dao.PersonneDao;
+import fr.iat.tpcinema.model.Personne;
 import fr.iat.tpcinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -72,6 +75,12 @@ public class MainController {
         long idActeur = Long.parseLong(id);
         model.addAttribute("personne", personneDao.getById(idActeur));
         return "acteur";
+    }
+
+    @GetMapping("/creer-acteur")
+    public String creerActeur(Model model) {
+        model.addAttribute("personne", new Personne());
+        return "creer-acteur";
     }
 
     // TODO : factoriser la gestion des paths pour les images

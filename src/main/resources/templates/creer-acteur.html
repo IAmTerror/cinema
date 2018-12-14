@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--TODO : maintenant que le formulaire est crée, avec son @GetMapping, gérer le @PostMapping-->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un film</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="corps">
+    <h1>Créer un personnage:</h1>
+
+    <form action="#" th:action="@{/templates/creer-acteur.html}" method="post">
+        <fieldset>
+            <legend>Personnage</legend>
+            <div>
+                <label th:for="id">ID : </label>
+                <input type="text" th:id="id" th:name="id" th:value="${personne.id}"/>
+            </div>
+            <br/>
+            <div>
+                <label th:for="nom">Nom : </label>
+                <input type="text" th:id="nom" th:name="nom" th:value="${personne.nom}"/>
+            </div>
+            <br/>
+            <div>
+                <label th:for="prenom">Prénom : </label>
+                <input type="text" th:id="prenom" th:name="prenom" th:value="${personne.prenom}"/>
+            </div>
+            <br/>
+            <div>
+                <label th:for="naissance">Naissance : </label>
+                <input type="text" th:id="naissance" th:name="naissance" th:value="${personne.naissance}"/>
+            </div>
+            <br/>
+            <div class="button">
+                <button type="submit" th:name="create">Créer une personne</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>
