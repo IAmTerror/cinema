@@ -1,6 +1,5 @@
 package fr.iat.tpcinema;
 
-import fr.iat.tpcinema.dao.RoleDao;
 import fr.iat.tpcinema.service.Path;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +12,8 @@ import org.springframework.context.annotation.Configuration;
 public class TpCinemaSpringBootApplication {
 
     public static void main(String[] args) {
+
+        // TODO : renommer package tpcinema en cinema
 
         SpringApplication.run(TpCinemaSpringBootApplication.class, args);
     }

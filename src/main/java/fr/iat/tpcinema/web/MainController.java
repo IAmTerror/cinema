@@ -1,8 +1,6 @@
 package fr.iat.tpcinema.web;
 
-import fr.iat.tpcinema.dao.FilmDao;
 import fr.iat.tpcinema.dao.PersonneDao;
-import fr.iat.tpcinema.dao.RoleDao;
 import fr.iat.tpcinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,14 +20,14 @@ import java.io.OutputStream;
 @Controller
 public class MainController {
 
-    @Autowired
-    FilmDao filmDao;
+//    @Autowired
+//    FilmDao filmDao;
 
     @Autowired
     PersonneDao personneDao;
 
-    @Autowired
-    RoleDao roleDao;
+//    @Autowired
+//    RoleDao roleDao;
 
     @Autowired
     private Path path;
@@ -40,17 +38,24 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/liste-films")
-    public String listeFilms(Model model) {
-        model.addAttribute("films", filmDao.films());
-        return "liste-films";
-    }
+//    @GetMapping("/liste-films")
+//    public String listeFilms(Model model) {
+//        model.addAttribute("films", filmDao.films());
+//        return "liste-films";
+//    }
+
+//    @GetMapping("/liste-acteurs")
+//    public String listeActeurs(Model model) {
+//        model.addAttribute("personnes", personneDao.personnes());
+//        return "liste-acteurs";
+//    }
 
     @GetMapping("/liste-acteurs")
     public String listeActeurs(Model model) {
-        model.addAttribute("personnes", personneDao.personnes());
+        model.addAttribute("personnes", personneDao.getAll());
         return "liste-acteurs";
     }
+
 
     // Version avec @RequestParam
 //    @GetMapping("/film")
@@ -60,20 +65,20 @@ public class MainController {
 //        return "detail";
 //    }
 
-    // Version avec @PathVariable
-    @GetMapping("/film/{id}")
-    public String film(Model model, @PathVariable("id") String id) {
-        int idFilm = Integer.parseInt(id);
-        model.addAttribute("film", filmDao.getById(idFilm));
-        return "film";
-    }
+//    // Version avec @PathVariable
+//    @GetMapping("/film/{id}")
+//    public String film(Model model, @PathVariable("id") String id) {
+//        int idFilm = Integer.parseInt(id);
+//        model.addAttribute("film", filmDao.getById(idFilm));
+//        return "film";
+//    }
 
-    @GetMapping("/acteur/{id}")
-    public String acteur(Model model, @PathVariable("id") String id) {
-        int idActeur = Integer.parseInt(id);
-        model.addAttribute("personne", personneDao.getById(idActeur));
-        return "acteur";
-    }
+//    @GetMapping("/acteur/{id}")
+//    public String acteur(Model model, @PathVariable("id") String id) {
+//        int idActeur = Integer.parseInt(id);
+//        model.addAttribute("personne", personneDao.getById(idActeur));
+//        return "acteur";
+//    }
 
     // TODO : factoriser la gestion des paths pour les images
     // TODO : virer les request / response
