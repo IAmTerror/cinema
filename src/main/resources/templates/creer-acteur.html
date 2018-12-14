@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!--TODO : maintenant que le formulaire est crée, avec son @GetMapping, gérer le @PostMapping-->
+<!--TODO: ajouter du Bootstrap, voir si le framework propose des fieldset-->
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +13,6 @@
     <h1>Créer un personnage:</h1>
 
     <form action="#" th:action="@{/templates/creer-acteur.html}" method="post">
-        <fieldset>
             <legend>Personnage</legend>
             <div>
                 <label th:for="id">ID : </label>
@@ -37,7 +37,6 @@
             <div class="button">
                 <button type="submit" th:name="create">Créer une personne</button>
             </div>
-        </fieldset>
     </form>
 </div>
 <div th:replace="fragments/footer :: footer"/>
