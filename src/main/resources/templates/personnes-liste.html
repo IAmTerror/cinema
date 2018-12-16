@@ -2,15 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Liste des acteurs</title>
+    <title>Liste des personnes</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
-    <h1 th:text="'Liste des acteurs :'"></h1>
+    <h1 th:text="'Liste des personnes :'"></h1>
     <div th:each="personne : ${personnes}">
-        <a th:text="${personne.nom}+' '+${personne.prenom}" th:href="@{/acteur/{id}(id=${personne.id})}"></a>
+        <a th:text="${personne.nom}+' '+${personne.prenom}" th:href="@{/personne/{id}(id=${personne.id})}"></a>
     </div>
 </div>
 <div th:replace="fragments/footer :: footer"/>

@@ -4,16 +4,16 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Créer un film</title>
+    <title>Créer une personne</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
-    <h1>Créer un personnage:</h1>
+    <h1>Créer une personne :</h1>
 
-    <form action="#" th:action="@{/creer-acteur/update}" th:object="${personne}" method="post">
-            <legend>Personnage</legend>
+    <form action="#" th:action="@{/personne/create}" th:object="${personne}" method="post">
+            <legend>Personne</legend>
             <div>
                 <!--<label th:for="id">ID : </label>-->
                 <input type="hidden" th:id="id" th:name="id" th:value="${personne.id}"/>

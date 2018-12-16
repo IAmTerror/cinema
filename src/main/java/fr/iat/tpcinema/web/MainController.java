@@ -35,24 +35,19 @@ public class MainController {
     @Autowired
     private Path path;
 
+    // ========== INDEX =======================================================
     @GetMapping("/")
     public String main(Model model) {
         model.addAttribute("nom", "Cyril");
         return "index";
     }
 
+    // ========== FILMS =======================================================
 //    @GetMapping("/liste-films")
 //    public String listeFilms(Model model) {
 //        model.addAttribute("films", filmDao.films());
 //        return "liste-films";
 //    }
-
-    @GetMapping("/liste-acteurs")
-    public String listeActeurs(Model model) {
-        model.addAttribute("personnes", personneDao.getAll());
-        return "liste-acteurs";
-    }
-
 
     // Version avec @RequestParam
 //    @GetMapping("/film")
@@ -70,25 +65,34 @@ public class MainController {
 //        return "film";
 //    }
 
-    @GetMapping("/acteur/{id}")
-    public String acteur(Model model, @PathVariable("id") String id) {
-        long idActeur = Long.parseLong(id);
-        model.addAttribute("personne", personneDao.getById(idActeur));
-        return "acteur";
+    // ========== PERSONNES =======================================================
+
+    @GetMapping("/personnes-liste")
+    public String personnesListe(Model model) {
+        model.addAttribute("personnes", personneDao.getAll());
+        return "personnes-liste";
     }
 
-    @GetMapping("/creer-acteur")
-    public String creerActeur(Model model) {
+    @GetMapping("/personne/{id}")
+    public String personne(Model model, @PathVariable("id") String id) {
+        long idPersonne = Long.parseLong(id);
+        model.addAttribute("personne", personneDao.getById(idPersonne));
+        return "personne";
+    }
+
+    @GetMapping("/personne-form")
+    public String personneForm(Model model) {
         model.addAttribute("personne", new Personne());
-        return "creer-acteur";
+        return "personne-form";
     }
 
-    @PostMapping("/creer-acteur/update")
-    public String formPost(@ModelAttribute Personne personne){
+    @PostMapping("/personne/create")
+    public String personneCreate(@ModelAttribute Personne personne){
         personneDao.save(personne);
-        return "redirect:/liste-acteurs";
+        return "redirect:/personnes-liste";
     }
 
+    // ========== AFFICHES =======================================================
     // TODO : factoriser la gestion des paths pour les images
     // TODO : virer les request / response
     @GetMapping("/affiches/{id}")
