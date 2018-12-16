@@ -83,6 +83,12 @@ public class MainController {
         return "creer-acteur";
     }
 
+    @PostMapping("/creer-acteur/update")
+    public String formPost(@ModelAttribute Personne personne){
+        personneDao.save(personne);
+        return "redirect:/liste-acteurs";
+    }
+
     // TODO : factoriser la gestion des paths pour les images
     // TODO : virer les request / response
     @GetMapping("/affiches/{id}")

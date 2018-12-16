@@ -14,6 +14,9 @@ public class TpCinemaSpringBootApplication {
     public static void main(String[] args) {
 
         // TODO : renommer package tpcinema en cinema
+        // TODO : créer panneau latéral pour créer acteurs, films (temporaires)
+        // TODO : gérer de façon plus simple le stream des images
+        // TODO : remapper les routes de l'application (embryonnaire)
 
         SpringApplication.run(TpCinemaSpringBootApplication.class, args);
     }
