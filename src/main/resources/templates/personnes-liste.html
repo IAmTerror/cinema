@@ -8,11 +8,27 @@
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
-    <h1 th:text="'Liste des personnes :'"></h1>
-    <div th:each="personne : ${personnes}">
-        <a th:text="${personne.nom}+' '+${personne.prenom}" th:href="@{/personne/{id}(id=${personne.id})}"></a>
-    </div>
+    <span class="pageTitre" th:text="'Liste des personnes'"></span>
+    <a class="btn btn-primary btn-lg button-add" th:href="@{'/personne-form'}" role="button">Ajouter une personne</a>
 </div>
+
+
+<table class="table table-hover table-dark table-bordered">
+    <tr>
+        <th>Nom</th>
+        <th>Action</th>
+    </tr>
+<tr th:each="personne : ${personnes}">
+    <td class="col-md-10">
+    <a th:text="${personne.nom}+' '+${personne.prenom}" th:href="@{/personne/{id}(id=${personne.id})}"></a>
+    </td>
+    <td class="col-md-2 text-center">
+        <a class="btn btn-warning btn-sm"
+           th:href="@{'/personne-modifier/' + ${personne.id}}">Modifier</a>
+        <a class="btn btn-danger btn-sm" th:href="@{'/personne/delete/' + ${personne.id}}">Supprimer</a>
+    </td>
+</tr>
+</table>
 <div th:replace="fragments/footer :: footer"/>
 </body>
 </html>
