@@ -92,6 +92,13 @@ public class MainController {
         return "redirect:/personnes-liste";
     }
 
+    // TODO prioritaire : personneDeleteController
+//    @GetMapping("/personne/delete/{id}")
+//    public String personneDelete(@PathVariable("id") Long id){
+//        personneDao.delete(id);
+//        return "redirect:/personnes-liste";
+//    }
+
     // ========== AFFICHES =======================================================
     // TODO : factoriser la gestion des paths pour les images
     // TODO : virer les request / response, et/ou trouver solution plus simple pour ces modules

@@ -93,6 +93,12 @@ public class PersonneDao {
         entityManager.persist(p);
     }
 
+    // TODO prioritaire : personneDelete DAO
+//    @Transactional
+//    public void delete(Personne p){
+//        entityManager.remove(p);
+//    }
+
     public List<Personne> getAll(){
         Query query = entityManager.createQuery("Select p from persons p");
         return query.getResultList();
