@@ -132,6 +132,16 @@ public class FilmDao {
         entityManager.persist(f);
     }
 
+    @Transactional
+    public void delete(long id){
+        Film film = entityManager.find (Film.class, id);
+        if (film == null) {
+            System.out.println("Ce film n'existe pas dans la BDD");
+        } else {
+            entityManager.remove(film);
+        }
+    }
+
 
     public List<Film> getAll(){
         Query query = entityManager.createQuery("Select f from films f");

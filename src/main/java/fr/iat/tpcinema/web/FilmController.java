@@ -38,4 +38,10 @@ public class FilmController {
         filmDao.save(film);
         return "redirect:/film/list";
     }
+
+    @GetMapping("/delete/{id}")
+    public String filmDelete(@PathVariable("id") Long id){
+        filmDao.delete(id);
+        return "redirect:/film/list";
+    }
 }

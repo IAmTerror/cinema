@@ -93,11 +93,15 @@ public class PersonneDao {
         entityManager.persist(p);
     }
 
-    // TODO prioritaire : personneDelete DAO
-//    @Transactional
-//    public void delete(Personne p){
-//        entityManager.remove(p);
-//    }
+    @Transactional
+    public void delete(long id){
+        Personne personne = entityManager.find (Personne.class, id);
+        if (personne == null) {
+            System.out.println("Cette personne n'existe pas dans la BDD");
+        } else {
+            entityManager.remove(personne);
+        }
+    }
 
     public List<Personne> getAll(){
         Query query = entityManager.createQuery("Select p from persons p");

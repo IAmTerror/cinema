@@ -30,31 +30,6 @@ public class PersonneController {
     private Path path;
 
 
-    // ========== FILMS =======================================================
-//    @GetMapping("/liste-films")
-//    public String listeFilms(Model model) {
-//        model.addAttribute("films", filmDao.films());
-//        return "liste-films";
-//    }
-
-    // Version avec @RequestParam
-//    @GetMapping("/film")
-//    public String detail(Model model, @RequestParam("id") String id) {
-//        Integer idFilm = Integer.parseInt(id);
-//        model.addAttribute("film", filmsDao.getById(idFilm));
-//        return "detail";
-//    }
-
-//    // Version avec @PathVariable
-//    @GetMapping("/film/{id}")
-//    public String film(Model model, @PathVariable("id") String id) {
-//        int idFilm = Integer.parseInt(id);
-//        model.addAttribute("film", filmDao.getById(idFilm));
-//        return "film";
-//    }
-
-    // ========== PERSONNES =======================================================
-
     @GetMapping("/list")
     public String personnesListe(Model model) {
         model.addAttribute("personnes", personneDao.getAll());
@@ -80,12 +55,12 @@ public class PersonneController {
         return "redirect:/person/list";
     }
 
-    // TODO prioritaire : personneDeleteController
-//    @GetMapping("/personne/delete/{id}")
-//    public String personneDelete(@PathVariable("id") Long id){
-//        personneDao.delete(id);
-//        return "redirect:/personnes-liste";
-//    }
+
+    @GetMapping("/delete/{id}")
+    public String personneDelete(@PathVariable("id") Long id){
+        personneDao.delete(id);
+        return "redirect:/person/list";
+    }
 
     // ========== AFFICHES =======================================================
     // TODO : factoriser la gestion des paths pour les images
