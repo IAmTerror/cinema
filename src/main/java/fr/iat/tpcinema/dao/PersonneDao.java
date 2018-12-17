@@ -90,7 +90,7 @@ public class PersonneDao {
 
     @Transactional
     public void save(Personne p){
-        entityManager.persist(p);
+        entityManager.merge(p);
     }
 
     @Transactional

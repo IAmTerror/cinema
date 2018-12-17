@@ -129,7 +129,7 @@ public class FilmDao {
 
     @Transactional
     public void save(Film f){
-        entityManager.persist(f);
+        entityManager.merge(f);
     }
 
     @Transactional
@@ -140,6 +140,12 @@ public class FilmDao {
         } else {
             entityManager.remove(film);
         }
+    }
+
+    public void update(Long id, String titre)
+    {
+        Film fToUpdate = this.getById(id);
+        fToUpdate.setTitre(titre);
     }
 
 

@@ -3,28 +3,28 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Créer un film</title>
+    <title>Modifier un film</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
-    <h1>Créer un film :</h1>
+    <h1>Modifier un film :</h1>
 
-    <form action="#" th:action="@{/film/add}" th:object="${film}" method="post">
-        <legend>Personne</legend>
+    <form action="#" th:action="@{/film/update}" th:object="${film}" method="post">
+        <legend>Film</legend>
         <div>
             <!--<label th:for="id">ID : </label>-->
             <input type="hidden" th:id="id" th:name="id" th:value="${film.id}"/>
         </div>
         <br/>
         <div>
-            <label th:for="titre">Titre : </label>
+            <label th:for="nom">Titre : </label>
             <input type="text" th:id="titre" th:name="titre" th:value="${film.titre}"/>
         </div>
         <br/>
         <div class="button">
-            <button type="submit" th:name="create">Créer un film</button>
+            <button type="submit" th:name="create">Modifier un film</button>
         </div>
     </form>
 </div>

@@ -39,6 +39,19 @@ public class FilmController {
         return "redirect:/film/list";
     }
 
+    @GetMapping("/modif/{id}")
+    public String filmModif(Model model, @PathVariable("id") String id) {
+        long idFilm = Long.parseLong(id);
+        model.addAttribute("film", filmDao.getById(idFilm));
+        return "film/modif";
+    }
+
+    @PostMapping("/update")
+    public String filmUpdate(@ModelAttribute Film film){
+        filmDao.save(film);
+        return "redirect:/film/list";
+    }
+
     @GetMapping("/delete/{id}")
     public String filmDelete(@PathVariable("id") Long id){
         filmDao.delete(id);
