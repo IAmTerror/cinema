@@ -33,12 +33,6 @@ public class PersonneController {
     @Autowired
     private Path path;
 
-    // ========== INDEX =======================================================
-    @GetMapping("/")
-    public String main(Model model) {
-        model.addAttribute("nom", "Cyril");
-        return "index";
-    }
 
     // ========== FILMS =======================================================
 //    @GetMapping("/liste-films")
