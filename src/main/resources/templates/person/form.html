@@ -13,30 +13,30 @@
     <h1>Créer une personne :</h1>
 
     <form action="#" th:action="@{/person/add}" th:object="${personne}" method="post">
-            <legend>Personne</legend>
-            <div>
-                <!--<label th:for="id">ID : </label>-->
-                <input type="hidden" th:id="id" th:name="id" th:value="${personne.id}"/>
+        <legend>Personne</legend>
+        <input type="hidden" th:id="id" th:name="id" th:value="${personne.id}"/>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" th:for="nom">Nom : </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" th:id="nom" th:name="nom" th:value="${personne.nom}"/>
             </div>
-            <br/>
-            <div>
-                <label th:for="nom">Nom : </label>
-                <input type="text" th:id="nom" th:name="nom" th:value="${personne.nom}"/>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" th:for="prenom">Prénom : </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" th:id="prenom" th:name="prenom" th:value="${personne.prenom}"/>
             </div>
-            <br/>
-            <div>
-                <label th:for="prenom">Prénom : </label>
-                <input type="text" th:id="prenom" th:name="prenom" th:value="${personne.prenom}"/>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" th:for="naissance">Naissance : </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" th:id="naissance" th:name="naissance"
+                       th:value="${personne.naissance}"/>
             </div>
-            <br/>
-            <div>
-                <label th:for="naissance">Naissance : </label>
-                <input type="text" th:id="naissance" th:name="naissance" th:value="${personne.naissance}"/>
-            </div>
-            <br/>
-            <div class="button">
-                <button type="submit" th:name="create">Créer une personne</button>
-            </div>
+        </div>
+        <div class="button">
+            <button type="submit" class="btn btn-primary" th:name="create">Créer une personne</button>
+        </div>
     </form>
 </div>
 <div th:replace="fragments/footer :: footer"/>
