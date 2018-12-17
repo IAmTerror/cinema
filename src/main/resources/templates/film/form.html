@@ -12,7 +12,8 @@
     <h1>Créer un film :</h1>
 
     <form action="#" th:action="@{/film/add}" th:object="${film}" method="post">
-        <legend>Personne</legend>
+        <fieldset>
+        <legend>Film</legend>
         <input type="hidden" th:id="id" th:name="id" th:value="${film.id}"/>
         <div>
             <div class="form-group row">
@@ -22,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <br/>
+        </fieldset>
         <div class="button">
             <button type="submit" class="btn btn-primary" th:name="create">Créer un film</button>
         </div>

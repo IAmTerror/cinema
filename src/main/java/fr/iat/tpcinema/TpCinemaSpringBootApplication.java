@@ -20,6 +20,7 @@ public class TpCinemaSpringBootApplication {
         // Le type dans le @RequestParam sera MultipartFile
         // le Mapping sera du @PostMapping
         // Autres mots cléq : getContentType(), Image Manager, getInputStream()
+        // TODO : trouver une solution pour afficher les fieldset
 
         SpringApplication.run(TpCinemaSpringBootApplication.class, args);
     }
