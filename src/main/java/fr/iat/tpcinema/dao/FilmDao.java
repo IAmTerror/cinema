@@ -1,4 +1,4 @@
-//package fr.iat.tpcinema.dao;
+package fr.iat.tpcinema.dao;//package fr.iat.tpcinema.dao;
 //
 //import fr.iat.tpcinema.model.Film;
 //import org.springframework.stereotype.Component;
@@ -111,4 +111,42 @@
 //    }
 //}
 
+import fr.iat.tpcinema.model.Film;
+import fr.iat.tpcinema.model.Personne;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.List;
+
+@Component
+public class FilmDao {
+
+    @Autowired
+    private EntityManager entityManager;
+
+    @Transactional
+    public void save(Film f){
+        entityManager.persist(f);
+    }
+
+
+    public List<Film> getAll(){
+        Query query = entityManager.createQuery("Select f from films f");
+        return query.getResultList();
+    }
+
+    public Film getById(Long id){
+        Film retVal = null;
+        Query query = entityManager.createQuery("select f from films f where f.id = :id");
+        query.setParameter("id", id);
+        List<Film> films = query.getResultList();
+        if(!films.isEmpty()){
+            retVal = films.get(0);
+        }
+        return retVal;
+    }
+}
 

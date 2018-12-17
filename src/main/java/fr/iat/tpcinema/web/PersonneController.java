@@ -15,14 +15,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-//TODO séparer les acteurs des réalisateurs en typant les personnes, conditionner les controlleurs en fonction du type
 
 @Controller
 @RequestMapping(value = "/person")
 public class PersonneController {
-
-//    @Autowired
-//    FilmDao filmDao;
 
     @Autowired
     PersonneDao personneDao;
@@ -79,7 +75,7 @@ public class PersonneController {
     }
 
     @PostMapping("/add")
-    public String personneCreate(@ModelAttribute Personne personne){
+    public String personneAdd(@ModelAttribute Personne personne){
         personneDao.save(personne);
         return "redirect:/person/list";
     }

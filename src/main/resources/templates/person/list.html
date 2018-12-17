@@ -1,40 +1,40 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des personnes</title>
-    <div th:replace="fragments/header :: header-css"/>
-</head>
-<body>
-<div th:replace="fragments/header :: header"/>
-<div class="corps">
-    <span class="pageTitre" th:text="'Liste des personnes'"></span>
-    <a class="btn btn-primary btn-lg button-add" th:href="@{'/person/form'}" role="button">Ajouter une personne</a>
-</div>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Liste des personnes</title>-->
+    <!--<div th:replace="fragments/header :: header-css"/>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:replace="fragments/header :: header"/>-->
+<!--<div class="corps">-->
+    <!--<span class="pageTitre" th:text="'Liste des personnes'"></span>-->
+    <!--<a class="btn btn-primary btn-lg button-add" th:href="@{'/person/form'}" role="button">Ajouter une personne</a>-->
+<!--</div>-->
 
 
-<table class="table table-hover table-dark table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Action</th>
-    </tr>
-<tr th:each="personne : ${personnes}">
-    <td class="col-md-1">
-        <a th:text="${personne.id}" th:href="@{/person/detail/{id}(id=${personne.id})}"></a>
-    </td>
-    <td class="col-md-9">
-    <a th:text="${personne.nom}+' '+${personne.prenom}" th:href="@{/person/detail/{id}(id=${personne.id})}"></a>
-    </td>
-    <td class="col-md-2 text-center">
-        <a class="btn btn-warning btn-sm"
-           th:href="@{'/person/modif/' + ${personne.id}}">Modifier</a>
-        <a class="btn btn-danger btn-sm" th:href="@{'/person/delete/' + ${personne.id}}">Supprimer</a>
-    </td>
-</tr>
-</table>
-<div th:replace="fragments/footer :: footer"/>
-</body>
-</html>
+<!--<table class="table table-hover table-dark table-bordered">-->
+    <!--<tr>-->
+        <!--<th>ID</th>-->
+        <!--<th>Nom</th>-->
+        <!--<th>Action</th>-->
+    <!--</tr>-->
+<!--<tr th:each="personne : ${personnes}">-->
+    <!--<td class="col-md-1">-->
+        <!--<a th:text="${personne.id}" th:href="@{/person/detail/{id}(id=${personne.id})}"></a>-->
+    <!--</td>-->
+    <!--<td class="col-md-9">-->
+    <!--<a th:text="${personne.nom}+' '+${personne.prenom}" th:href="@{/person/detail/{id}(id=${personne.id})}"></a>-->
+    <!--</td>-->
+    <!--<td class="col-md-2 text-center">-->
+        <!--<a class="btn btn-warning btn-sm"-->
+           <!--th:href="@{'/person/modif/' + ${personne.id}}">Modifier</a>-->
+        <!--<a class="btn btn-danger btn-sm" th:href="@{'/person/delete/' + ${personne.id}}">Supprimer</a>-->
+    <!--</td>-->
+<!--</tr>-->
+<!--</table>-->
+<!--<div th:replace="fragments/footer :: footer"/>-->
+<!--</body>-->
+<!--</html>-->
 
 

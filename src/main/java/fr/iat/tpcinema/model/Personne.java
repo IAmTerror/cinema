@@ -118,18 +118,29 @@
 package fr.iat.tpcinema.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "persons")
 public class Personne {
-    private long id;
-    private String nom;
-    private String prenom;
-    private Integer naissance;
-    private String affiche;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    private long id;
+    @Basic
+    @Column(name = "surname", nullable = false, length = 60)
+    private String nom;
+    @Basic
+    @Column(name = "givenname", nullable = true, length = 40)
+    private String prenom;
+    @Basic
+    @Column(name = "birth_year", nullable = true)
+    private Integer naissance;
+    @Basic
+    @Column(name = "image_path", nullable = true, length = 80)
+    private String affiche;
+    @OneToMany(mappedBy = "realisateur")
+    private List<Film> films;
+
     public long getId() {
         return id;
     }
@@ -138,8 +149,6 @@ public class Personne {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "surname", nullable = false, length = 60)
     public String getNom() {
         return nom;
     }
@@ -148,8 +157,6 @@ public class Personne {
         this.nom = surname;
     }
 
-    @Basic
-    @Column(name = "givenname", nullable = true, length = 40)
     public String getPrenom() {
         return prenom;
     }
@@ -158,8 +165,6 @@ public class Personne {
         this.prenom = givenname;
     }
 
-    @Basic
-    @Column(name = "birth_year", nullable = true)
     public Integer getNaissance() {
         return naissance;
     }
@@ -168,14 +173,20 @@ public class Personne {
         this.naissance = birthYear;
     }
 
-    @Basic
-    @Column(name = "image_path", nullable = true, length = 80)
     public String getAffiche() {
         return affiche;
     }
 
     public void setAffiche(String imagePath) {
         this.affiche = imagePath;
+    }
+
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
     }
 
     @Override

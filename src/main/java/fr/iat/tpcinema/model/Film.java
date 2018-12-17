@@ -119,31 +119,37 @@
 
 package fr.iat.tpcinema.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Entity(name = "films")
 public class Film {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private long id;
+    @Basic
+    @Column(name = "title", nullable = false, length = 210)
     private String titre;
+    @Basic
+    @Column(name = "rating", nullable = true)
     private Double notation;
+    @Basic
+    @Column(name = "image_path", nullable = true, length = 80)
     private String affiche;
+    @Basic
+    @Column(name = "summary", nullable = true)
     private String resume;
+    @ManyToOne
     private Personne realisateur;
 
-    public Film(int id, String titre, Double notation, String affiche, String resume) {
-        this.id = id;
-        this.titre = titre;
-        this.notation = notation;
-        this.affiche = affiche;
-        this.resume = resume;
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -177,6 +183,14 @@ public class Film {
 
     public void setResume(String resume) {
         this.resume = resume;
+    }
+
+    public Personne getRealisateur() {
+        return realisateur;
+    }
+
+    public void setRealisateur(Personne realisateur) {
+        this.realisateur = realisateur;
     }
 
     @Override
