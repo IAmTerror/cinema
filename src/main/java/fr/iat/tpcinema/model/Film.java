@@ -143,6 +143,7 @@ public class Film {
     @Column(name = "summary", nullable = true)
     private String resume;
     @ManyToOne
+    @JoinColumn(name = "film_director")
     private Personne realisateur;
 
     public long getId() {

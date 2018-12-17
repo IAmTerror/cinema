@@ -45,7 +45,7 @@
             <a th:text="${film.id}" th:href="@{/film/detail/{id}(id=${film.id})}"></a>
         </td>
         <td class="col-md-9">
-            <a th:text="${film.nom}+' '+${film.prenom}" th:href="@{/film/detail/{id}(id=${film.id})}"></a>
+            <a th:text="${film.titre}" th:href="@{/film/detail/{id}(id=${film.id})}"></a>
         </td>
         <td class="col-md-2 text-center">
             <a class="btn btn-warning btn-sm"
