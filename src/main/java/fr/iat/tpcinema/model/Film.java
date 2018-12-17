@@ -116,3 +116,96 @@
 //                '}';
 //    }
 //}
+
+package fr.iat.tpcinema.model;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+public class Film {
+    private int id;
+    private String titre;
+    private Double notation;
+    private String affiche;
+    private String resume;
+    private Personne realisateur;
+
+    public Film(int id, String titre, Double notation, String affiche, String resume) {
+        this.id = id;
+        this.titre = titre;
+        this.notation = notation;
+        this.affiche = affiche;
+        this.resume = resume;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public Double getNotation() {
+        return notation;
+    }
+
+    public void setNotation(Double notation) {
+        this.notation = notation;
+    }
+
+    public String getAffiche() {
+        return affiche;
+    }
+
+    public void setAffiche(String affiche) {
+        this.affiche = affiche;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Film)) return false;
+        Film film = (Film) o;
+        return getId() == film.getId() &&
+                Objects.equals(getTitre(), film.getTitre()) &&
+                Objects.equals(getNotation(), film.getNotation()) &&
+                Objects.equals(getAffiche(), film.getAffiche()) &&
+                Objects.equals(getResume(), film.getResume()) &&
+                Objects.equals(realisateur, film.realisateur);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getTitre(), getNotation(), getAffiche(), getResume(), realisateur);
+    }
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", notation=" + notation +
+                ", affiche='" + affiche + '\'' +
+                ", resume='" + resume + '\'' +
+                ", realisateur=" + realisateur +
+                '}';
+    }
+}

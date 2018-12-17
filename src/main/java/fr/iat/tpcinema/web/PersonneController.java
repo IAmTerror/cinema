@@ -6,10 +6,7 @@ import fr.iat.tpcinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +18,8 @@ import java.io.OutputStream;
 //TODO séparer les acteurs des réalisateurs en typant les personnes, conditionner les controlleurs en fonction du type
 
 @Controller
-public class MainController {
+@RequestMapping(value = "/person")
+public class PersonneController {
 
 //    @Autowired
 //    FilmDao filmDao;
@@ -67,29 +65,29 @@ public class MainController {
 
     // ========== PERSONNES =======================================================
 
-    @GetMapping("/personnes-liste")
+    @GetMapping("/list")
     public String personnesListe(Model model) {
         model.addAttribute("personnes", personneDao.getAll());
-        return "personnes-liste";
+        return "person/list";
     }
 
-    @GetMapping("/personne/{id}")
+    @GetMapping("/detail/{id}")
     public String personne(Model model, @PathVariable("id") String id) {
         long idPersonne = Long.parseLong(id);
         model.addAttribute("personne", personneDao.getById(idPersonne));
-        return "personne";
+        return "person/detail";
     }
 
-    @GetMapping("/personne-form")
+    @GetMapping("/form")
     public String personneForm(Model model) {
         model.addAttribute("personne", new Personne());
-        return "personne-form";
+        return "person/form";
     }
 
-    @PostMapping("/personne/create")
+    @PostMapping("/add")
     public String personneCreate(@ModelAttribute Personne personne){
         personneDao.save(personne);
-        return "redirect:/personnes-liste";
+        return "redirect:/person/list";
     }
 
     // TODO prioritaire : personneDeleteController
