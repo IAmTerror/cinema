@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier une personne</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="corps">
+    <h1>Modifier une personne :</h1>
+
+    <form action="#" th:action="@{/person/update}" th:object="${personne}" method="post">
+        <legend>Personne</legend>
+        <input type="hidden" th:id="id" th:name="id" th:value="${personne.id}"/>
+        <br/>
+        <div>
+            <label th:for="nom">Nom : </label>
+            <input type="text" th:id="nom" th:name="nom" th:value="${personne.nom}"/>
+        </div>
+        <div>
+            <label th:for="prenom">Prénom : </label>
+            <input type="text" th:id="prenom" th:name="prenom" th:value="${personne.prenom}"/>
+        </div>
+        <div>
+            <label th:for="nom">Date de naissance : </label>
+            <input type="text" th:id="naissance" th:name="naissance" th:value="${personne.naissance}"/>
+        </div>
+        <br/>
+        <div class="button">
+            <button type="submit" th:name="create" class="btn btn-primary">Modifier une personne</button>
+        </div>
+    </form>
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

@@ -112,9 +112,9 @@ public class PersonneDao {
         Personne retVal = null;
         Query query = entityManager.createQuery("select p from persons p where p.id = :id");
         query.setParameter("id", id);
-        List<Personne> persons = query.getResultList();
-        if(!persons.isEmpty()){
-            retVal = persons.get(0);
+        List<Personne> personnes = query.getResultList();
+        if(!personnes.isEmpty()){
+            retVal = personnes.get(0);
         }
         return retVal;
     }

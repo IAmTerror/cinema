@@ -1,6 +1,7 @@
 package fr.iat.tpcinema.web;
 
 import fr.iat.tpcinema.dao.PersonneDao;
+import fr.iat.tpcinema.model.Film;
 import fr.iat.tpcinema.model.Personne;
 import fr.iat.tpcinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,18 @@ public class PersonneController {
         return "redirect:/person/list";
     }
 
+    @GetMapping("/modif/{id}")
+    public String personneModif(Model model, @PathVariable("id") String id) {
+        long idPersonne = Long.parseLong(id);
+        model.addAttribute("personne", personneDao.getById(idPersonne));
+        return "person/modif";
+    }
+
+    @PostMapping("/update")
+    public String personneUpdate(@ModelAttribute Personne personne){
+        personneDao.save(personne);
+        return "redirect:/person/list";
+    }
 
     @GetMapping("/delete/{id}")
     public String personneDelete(@PathVariable("id") Long id){

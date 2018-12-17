@@ -13,18 +13,19 @@
 
     <form action="#" th:action="@{/film/update}" th:object="${film}" method="post">
         <legend>Film</legend>
-        <div>
-            <!--<label th:for="id">ID : </label>-->
-            <input type="hidden" th:id="id" th:name="id" th:value="${film.id}"/>
-        </div>
+        <input type="hidden" th:id="id" th:name="id" th:value="${film.id}"/>
         <br/>
         <div>
-            <label th:for="nom">Titre : </label>
-            <input type="text" th:id="titre" th:name="titre" th:value="${film.titre}"/>
+            <div class="form-group row">
+                <label th:for="nom" class="col-sm-1 col-form-label">Titre : </label>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control" th:id="titre" th:name="titre" th:value="${film.titre}"/>
+                </div>
+            </div>
         </div>
         <br/>
         <div class="button">
-            <button type="submit" th:name="create">Modifier un film</button>
+            <button type="submit" th:name="create" class="btn btn-primary">Modifier un film</button>
         </div>
     </form>
 </div>
