@@ -156,6 +156,5 @@
 //        System.out.println(personneDao.getById(16).getRoles());
 //        System.out.println(personneDao.getById(17).getRoles());
 //        System.out.println(personneDao.getById(18).getRoles());
-//        // TODO : bug (?), le rôle pour Antony Hopkins (id = 10) n'est pas ajouté
 //    }
 //}

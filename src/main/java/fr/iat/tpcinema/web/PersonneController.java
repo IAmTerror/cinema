@@ -94,8 +94,6 @@
 //    }
 //
 ////    // ========== AFFICHES =======================================================
-////    // TODO : factoriser la gestion des paths pour les images
-////    // TODO : virer les request / response, et/ou trouver solution plus simple pour ces modules
 ////    @GetMapping("/affiches/{id}")
 ////    public void affiche(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 ////
