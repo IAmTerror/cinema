@@ -16,11 +16,9 @@ public class TpCinemaSpringBootApplication {
         // TODO : renommer package tpcinema en cinema
         // TODO : créer panneau latéral pour créer acteurs, films (temporaires) (boostrap left menu)
         // TODO : gérer de façon plus simple le stream des images
-        // TODO : Pour les photos : imput type = file en HTML dans les vues, puis créer un controller
-        // Le type dans le @RequestParam sera MultipartFile
-        // le Mapping sera du @PostMapping
-        // Autres mots cléq : getContentType(), Image Manager, getInputStream()
         // TODO : trouver une solution pour afficher les fieldset
+        // TODO : permettre à nouveau de supprimer des films / personnes
+        // TODO : renommer les champs (à caus de la fusion form ajout et form modifier)
 
         SpringApplication.run(TpCinemaSpringBootApplication.class, args);
     }

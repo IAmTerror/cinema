@@ -3,13 +3,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Modifier un film</title>
+    <title>Editer un film</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
-    <h1>Modifier un film :</h1>
+    <h1>Editer un film :</h1>
 
     <form action="#" th:action="@{/film/add}" th:object="${film}" enctype="multipart/form-data" method="post">
         <legend>Film</legend>
@@ -26,7 +26,7 @@
         </div>
         <br/>
         <div class="button">
-            <button type="submit" th:name="create" class="btn btn-primary">Modifier un film</button>
+            <button type="submit" th:name="create" class="btn btn-primary">Editer un film</button>
         </div>
 
         <p>Photo : <input type="file" name="poster"/> <span th:text="${film.imagePath}">Fichier photo</span></p>

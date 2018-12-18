@@ -112,7 +112,7 @@ public class FilmController {
 
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id")long id, Model model){
-        model.addAttribute("film", filmDao.findById(id));
+        model.addAttribute("film", filmDao.findById(id).get());
         return "film/detail";
     }
 
