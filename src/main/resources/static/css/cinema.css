@@ -50,7 +50,7 @@ footer {
     padding-right: 1%;
 }
 
-.afficheFilm {
+.afficheFilm, .posterPersonne {
     width: 15%;
     height: 15%;
     display: block;
@@ -60,7 +60,7 @@ footer {
     padding-bottom: 2%;
 }
 
-.photoPersonne, .affichesFilmsPageActeur {
+.affichesFilmsPageActeur {
     width: 80%;
     height: 80%;
 }
