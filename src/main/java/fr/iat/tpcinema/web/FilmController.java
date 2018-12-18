@@ -128,6 +128,12 @@ public class FilmController {
         return "film/form";
     }
 
+    @GetMapping("/delete/{id}")
+    public String filmDelete(@PathVariable("id") Long id){
+        filmDao.deleteById(id);
+        return "redirect:/film/list";
+    }
+
     @PostMapping("/add")
     public String submit(@RequestParam("poster")MultipartFile file, @ModelAttribute Film film){
         if(file.getContentType().equalsIgnoreCase("image/jpeg")){

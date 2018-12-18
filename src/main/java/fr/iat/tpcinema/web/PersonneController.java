@@ -195,6 +195,12 @@ public class PersonneController {
         return "person/form";
     }
 
+    @GetMapping("/delete/{id}")
+    public String personneDelete(@PathVariable("id") Long id){
+        personneDao.deleteById(id);
+        return "redirect:/person/list";
+    }
+
     @PostMapping("/add")
     public String submit(@RequestParam("photo") MultipartFile file, @ModelAttribute Personne personne){
         if(file.getContentType().equalsIgnoreCase("image/jpeg")){
