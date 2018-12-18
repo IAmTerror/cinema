@@ -125,7 +125,7 @@ public class FilmController {
     @GetMapping("/add")
     public String add(Model model){
         model.addAttribute("film", new Film());
-        return "film/add";
+        return "film/form";
     }
 
     @PostMapping("/add")

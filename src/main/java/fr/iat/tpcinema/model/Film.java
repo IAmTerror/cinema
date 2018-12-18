@@ -172,8 +172,8 @@ public class Film {
         return imagePath;
     }
 
-    public void setImagePath(String affiche) {
-        this.imagePath = affiche;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public String getResume() {

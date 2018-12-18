@@ -11,9 +11,10 @@
 <div class="corps">
     <h1>Modifier une personne :</h1>
 
-    <form action="#" th:action="@{/person/add}" th:object="${personne}" method="post">
+    <form action="#" th:action="@{/person/add}" th:object="${personne}" enctype="multipart/form-data" method="post">
         <legend>Personne</legend>
         <input type="hidden" th:id="id" th:name="id" th:value="${personne.id}"/>
+        <input type="hidden" th:field="${personne.imagePath}"/>
         <br/>
         <div class="form-group row">
             <label th:for="nom" class="col-sm-2 col-form-label">Nom</label>
@@ -38,6 +39,8 @@
         <div class="button">
             <button type="submit" th:name="create" class="btn btn-primary">Modifier une personne</button>
         </div>
+
+        <p>Photo : <input type="file" name="photo"/> <span th:text="${personne.imagePath}">Fichier photo</span></p>
     </form>
 </div>
 <div th:replace="fragments/footer :: footer"/>

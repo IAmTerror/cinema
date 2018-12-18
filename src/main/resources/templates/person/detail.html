@@ -9,7 +9,7 @@
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
     <h1 th:text="${personne.prenom}+' '+${personne.nom}"></h1>
-    <h6 th:text="'Date de naissance : '+${personne.getNaissance()}">Resumé</h6>
+    <h6 th:text="'Date de naissance : '+${personne.naissance}">Resumé</h6>
     <h6 th:text="'Filmographie :'"></h6>
     <!--<div class="container">-->
         <!--<div class="row">-->
