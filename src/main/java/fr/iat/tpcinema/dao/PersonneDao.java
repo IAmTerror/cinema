@@ -1,3 +1,4 @@
+// ========== IMPORT MANUEL ===================================================
 //package fr.iat.tpcinema.dao;
 //
 //import fr.iat.tpcinema.model.Film;
@@ -70,52 +71,63 @@
 //    }
 //}
 
+// ========== DAO SANS JPA ===================================================
+//package fr.iat.tpcinema.dao;
+//
+//import fr.iat.tpcinema.model.Personne;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Component;
+//import org.springframework.transaction.annotation.Transactional;
+//
+//import javax.persistence.EntityManager;
+//import javax.persistence.Query;
+//import java.math.BigInteger;
+//import java.util.List;
+//
+//@Component
+//public class PersonneDao {
+//
+//    @Autowired
+//    private EntityManager entityManager;
+//
+//    @Transactional
+//    public void save(Personne p){
+//        entityManager.merge(p);
+//    }
+//
+//    @Transactional
+//    public void delete(long id){
+//        Personne personne = entityManager.find (Personne.class, id);
+//        if (personne == null) {
+//            System.out.println("Cette personne n'existe pas dans la BDD");
+//        } else {
+//            entityManager.remove(personne);
+//        }
+//    }
+//
+//    public List<Personne> getAll(){
+//        Query query = entityManager.createQuery("Select p from persons p");
+//        return query.getResultList();
+//    }
+//
+//    public Personne getById(Long id){
+//        Personne retVal = null;
+//        Query query = entityManager.createQuery("select p from persons p where p.id = :id");
+//        query.setParameter("id", id);
+//        List<Personne> personnes = query.getResultList();
+//        if(!personnes.isEmpty()){
+//            retVal = personnes.get(0);
+//        }
+//        return retVal;
+//    }
+//}
+
+// ========== DAO AVEC JPA ===================================================
 package fr.iat.tpcinema.dao;
 
 import fr.iat.tpcinema.model.Personne;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.repository.CrudRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.math.BigInteger;
-import java.util.List;
+public interface PersonneDao extends CrudRepository<Personne, Long> {
 
-@Component
-public class PersonneDao {
-
-    @Autowired
-    private EntityManager entityManager;
-
-    @Transactional
-    public void save(Personne p){
-        entityManager.merge(p);
-    }
-
-    @Transactional
-    public void delete(long id){
-        Personne personne = entityManager.find (Personne.class, id);
-        if (personne == null) {
-            System.out.println("Cette personne n'existe pas dans la BDD");
-        } else {
-            entityManager.remove(personne);
-        }
-    }
-
-    public List<Personne> getAll(){
-        Query query = entityManager.createQuery("Select p from persons p");
-        return query.getResultList();
-    }
-
-    public Personne getById(Long id){
-        Personne retVal = null;
-        Query query = entityManager.createQuery("select p from persons p where p.id = :id");
-        query.setParameter("id", id);
-        List<Personne> personnes = query.getResultList();
-        if(!personnes.isEmpty()){
-            retVal = personnes.get(0);
-        }
-        return retVal;
-    }
 }

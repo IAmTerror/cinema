@@ -120,8 +120,6 @@
 package fr.iat.tpcinema.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity(name = "films")
@@ -138,7 +136,7 @@ public class Film {
     private Double notation;
     @Basic
     @Column(name = "image_path", nullable = true, length = 80)
-    private String affiche;
+    private String imagePath;
     @Basic
     @Column(name = "summary", nullable = true)
     private String resume;
@@ -170,12 +168,12 @@ public class Film {
         this.notation = notation;
     }
 
-    public String getAffiche() {
-        return affiche;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setAffiche(String affiche) {
-        this.affiche = affiche;
+    public void setImagePath(String affiche) {
+        this.imagePath = affiche;
     }
 
     public String getResume() {
@@ -202,14 +200,14 @@ public class Film {
         return getId() == film.getId() &&
                 Objects.equals(getTitre(), film.getTitre()) &&
                 Objects.equals(getNotation(), film.getNotation()) &&
-                Objects.equals(getAffiche(), film.getAffiche()) &&
+                Objects.equals(getImagePath(), film.getImagePath()) &&
                 Objects.equals(getResume(), film.getResume()) &&
                 Objects.equals(realisateur, film.realisateur);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitre(), getNotation(), getAffiche(), getResume(), realisateur);
+        return Objects.hash(getId(), getTitre(), getNotation(), getImagePath(), getResume(), realisateur);
     }
 
     @Override
@@ -218,7 +216,7 @@ public class Film {
                 "id=" + id +
                 ", titre='" + titre + '\'' +
                 ", notation=" + notation +
-                ", affiche='" + affiche + '\'' +
+                ", affiche='" + imagePath + '\'' +
                 ", resume='" + resume + '\'' +
                 ", realisateur=" + realisateur +
                 '}';

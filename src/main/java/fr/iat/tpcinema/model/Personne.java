@@ -137,7 +137,7 @@ public class Personne {
     private Integer naissance;
     @Basic
     @Column(name = "image_path", nullable = true, length = 80)
-    private String affiche;
+    private String imagePath;
     @OneToMany(mappedBy = "realisateur")
     private List<Film> films;
 
@@ -173,12 +173,12 @@ public class Personne {
         this.naissance = birthYear;
     }
 
-    public String getAffiche() {
-        return affiche;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setAffiche(String imagePath) {
-        this.affiche = imagePath;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public List<Film> getFilms() {
@@ -200,7 +200,7 @@ public class Personne {
         if (nom != null ? !nom.equals(persons.nom) : persons.nom != null) return false;
         if (prenom != null ? !prenom.equals(persons.prenom) : persons.prenom != null) return false;
         if (naissance != null ? !naissance.equals(persons.naissance) : persons.naissance != null) return false;
-        if (affiche != null ? !affiche.equals(persons.affiche) : persons.affiche != null) return false;
+        if (imagePath != null ? !imagePath.equals(persons.imagePath) : persons.imagePath != null) return false;
 
         return true;
     }
@@ -211,7 +211,7 @@ public class Personne {
         result = 31 * result + (nom != null ? nom.hashCode() : 0);
         result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
         result = 31 * result + (naissance != null ? naissance.hashCode() : 0);
-        result = 31 * result + (affiche != null ? affiche.hashCode() : 0);
+        result = 31 * result + (imagePath != null ? imagePath.hashCode() : 0);
         return result;
     }
 }

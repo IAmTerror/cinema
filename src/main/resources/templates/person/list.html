@@ -9,7 +9,7 @@
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
     <span class="pageTitre" th:text="'Liste des personnes'"></span>
-    <a class="btn btn-primary btn-lg button-add" th:href="@{'/person/form'}" role="button">Ajouter une personne</a>
+    <a class="btn btn-primary btn-lg button-add" th:href="@{'/person/add'}" role="button">Ajouter une personne</a>
 </div>
 
 
@@ -28,7 +28,7 @@
     </td>
     <td class="col-md-2 text-center">
         <a class="btn btn-warning btn-sm"
-           th:href="@{'/person/modif/' + ${personne.id}}">Modifier</a>
+           th:href="@{'/person/mod/' + ${personne.id}}">Modifier</a>
         <a class="btn btn-danger btn-sm" th:href="@{'/person/delete/' + ${personne.id}}">Supprimer</a>
     </td>
 </tr>
