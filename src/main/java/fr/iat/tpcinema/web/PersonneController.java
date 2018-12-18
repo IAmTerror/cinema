@@ -151,13 +151,19 @@ package fr.iat.tpcinema.web;
 import fr.iat.tpcinema.dao.PersonneDao;
 import fr.iat.tpcinema.model.Personne;
 import fr.iat.tpcinema.service.ImageManager;
+import fr.iat.tpcinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 @Controller
 @RequestMapping(value = "/person")
@@ -168,6 +174,9 @@ public class PersonneController {
 
     @Autowired
     ImageManager imm;
+
+    @Autowired
+    Path path;
 
     @GetMapping("/list")
     public String list(Model model){
@@ -210,5 +219,31 @@ public class PersonneController {
         }
         personneDao.save(personne);
         return "redirect:/person/list";
+    }
+
+
+    // ============ POSTERS PERSONNES ============ //
+    @GetMapping("/personnes/{id}")
+    public void personne(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
+
+        String filename = path.getPersonne() + id;
+
+        String mime = request.getServletContext().getMimeType(filename);
+        if (mime == null) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            return;
+        }
+        response.setContentType(mime);
+        File file = new File(filename);
+        response.setContentLength((int) file.length());
+        FileInputStream in = new FileInputStream(file);
+        OutputStream out = response.getOutputStream();
+        byte[] buf = new byte[1024];
+        int count = 0;
+        while ((count = in.read(buf)) >= 0) {
+            out.write(buf, 0, count);
+        }
+        out.close();
+        in.close();
     }
 }
