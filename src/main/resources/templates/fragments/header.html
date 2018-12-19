@@ -2,16 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <th:block th:fragment="header-css">
-        <!-- this is header-css -->
+        <!-- bootstrap css -->
         <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"
               href="/webjars/bootstrap/4.1.3/css/bootstrap.css"/>
+        <!--jumbotron css : allows the dropdown of the boostrap navbar to work-->
         <link rel="stylesheet" th:href="@{/css/jumbotron.css}"
               href="/static/css/jumbotron.css"/>
+        <!--font main css-->
         <link rel="stylesheet" th:href="@{/css/cinema.css}"
               href="/static/css/cinema.css"/>
+        <!--font awesome-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css"
               integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h"
               crossorigin="anonymous">
+        <!--favicon-->
+        <link rel="icon" type="image/png" th:href="@{/img/lolo-favicon.png}" />
     </th:block>
 </head>
 <body>

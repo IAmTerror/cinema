@@ -142,7 +142,7 @@ public class Film {
     private String resume;
     @ManyToOne
     @JoinColumn(name = "film_director")
-    private Personne realisateur;
+    private Personne director;
 
     public long getId() {
         return id;
@@ -184,12 +184,12 @@ public class Film {
         this.resume = resume;
     }
 
-    public Personne getRealisateur() {
-        return realisateur;
+    public Personne getDirector() {
+        return director;
     }
 
-    public void setRealisateur(Personne realisateur) {
-        this.realisateur = realisateur;
+    public void setDirector(Personne realisateur) {
+        this.director = realisateur;
     }
 
     @Override
@@ -201,13 +201,12 @@ public class Film {
                 Objects.equals(getTitre(), film.getTitre()) &&
                 Objects.equals(getNotation(), film.getNotation()) &&
                 Objects.equals(getImagePath(), film.getImagePath()) &&
-                Objects.equals(getResume(), film.getResume()) &&
-                Objects.equals(realisateur, film.realisateur);
+                Objects.equals(getResume(), film.getResume());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitre(), getNotation(), getImagePath(), getResume(), realisateur);
+        return Objects.hash(getId(), getTitre(), getNotation(), getImagePath(), getResume());
     }
 
     @Override
@@ -218,7 +217,7 @@ public class Film {
                 ", notation=" + notation +
                 ", affiche='" + imagePath + '\'' +
                 ", resume='" + resume + '\'' +
-                ", realisateur=" + realisateur +
+                ", realisateur=" + director +
                 '}';
     }
 }

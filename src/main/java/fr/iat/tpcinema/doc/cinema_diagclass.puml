@@ -16,9 +16,9 @@ id
 name
 }
 
-Play " * " -- " 1 " Person
-Play " * " -- " 1 " Film
+Play "  *  " -- "  1  " Person
+Play "  *  " -- "  1  " Film
 
-Film "*" - "1 director" Person :"                         "
+Film "* directedFilms" - "1 director" Person :"                                    "
 hide circle
 @enduml

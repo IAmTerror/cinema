@@ -138,8 +138,9 @@ public class Personne {
     @Basic
     @Column(name = "image_path", nullable = true, length = 80)
     private String imagePath;
-    @OneToMany(mappedBy = "realisateur")
-    private List<Film> films;
+    // TODO : replacer List par Set (permet de s'assurer qu'il n'y a pas de redondances dans la collection)
+    @OneToMany(mappedBy = "director")
+    private List<Film> directedFilms;
 
     public long getId() {
         return id;
@@ -181,12 +182,19 @@ public class Personne {
         this.imagePath = imagePath;
     }
 
-    public List<Film> getFilms() {
-        return films;
+    public List<Film> getDirectedFilms() {
+        return directedFilms;
     }
 
-    public void setFilms(List<Film> films) {
-        this.films = films;
+    public void setDirectedFilms(List<Film> films) {
+        this.directedFilms = films;
+    }
+
+    public void addDirectedFilm(Film film) {
+        if (!directedFilms.contains(film)) {
+            directedFilms.add(film);
+            film.setDirector(this);
+        }
     }
 
     @Override
