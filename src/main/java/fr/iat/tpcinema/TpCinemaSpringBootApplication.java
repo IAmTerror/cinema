@@ -18,6 +18,7 @@ public class TpCinemaSpringBootApplication {
         // TODO : créer panneau latéral
         // TODO : gérer de façon plus simple le stream des images
         // TODO : trouver une solution pour afficher les fieldset
+        // TODO : merge jpa_integration branch to master
 
         SpringApplication.run(TpCinemaSpringBootApplication.class, args);
     }
