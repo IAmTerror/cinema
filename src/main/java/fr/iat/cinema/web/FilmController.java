@@ -1,9 +1,9 @@
 // ========== OLD CONTROLLER 1 ===================================================
-//package fr.iat.tpcinema.web;
+//package fr.iat.cinema.web;
 //
-//import fr.iat.tpcinema.dao.FilmDao;
-//import fr.iat.tpcinema.model.Film;
-//import fr.iat.tpcinema.service.ImageManager;
+//import fr.iat.cinema.dao.FilmDao;
+//import fr.iat.cinema.model.Film;
+//import fr.iat.cinema.service.ImageManager;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
@@ -81,12 +81,12 @@
 //    }
 //}
 
-package fr.iat.tpcinema.web;
+package fr.iat.cinema.web;
 
-import fr.iat.tpcinema.dao.FilmDao;
-import fr.iat.tpcinema.model.Film;
-import fr.iat.tpcinema.service.ImageManager;
-import fr.iat.tpcinema.service.Path;
+import fr.iat.cinema.dao.FilmDao;
+import fr.iat.cinema.model.Film;
+import fr.iat.cinema.service.ImageManager;
+import fr.iat.cinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

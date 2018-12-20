@@ -1,7 +1,7 @@
-package fr.iat.tpcinema.service;
+package fr.iat.cinema.service;
 
-import fr.iat.tpcinema.model.Film;
-import fr.iat.tpcinema.model.Personne;
+import fr.iat.cinema.model.Film;
+import fr.iat.cinema.model.Personne;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 
 @Component
 public class ImageManager {
-    @Value("${tpcinema.img.path}")
+    @Value("${cinema.img.path}")
     String path;
 
     public int savePhoto(Personne p, InputStream fi){

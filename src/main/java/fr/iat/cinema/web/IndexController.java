@@ -1,4 +1,4 @@
-package fr.iat.tpcinema.web;
+package fr.iat.cinema.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

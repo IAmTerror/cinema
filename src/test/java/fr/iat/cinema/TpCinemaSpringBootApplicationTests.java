@@ -1,4 +1,4 @@
-package fr.iat.tpcinema;
+package fr.iat.cinema;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

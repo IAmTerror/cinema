@@ -1,4 +1,4 @@
-//package fr.iat.tpcinema.model;
+//package fr.iat.cinema.model;
 //
 //public class Role {
 //

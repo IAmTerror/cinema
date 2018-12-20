@@ -1,7 +1,7 @@
 // ========== IMPORT MANUEL ===================================================
-//package fr.iat.tpcinema.dao;
+//package fr.iat.cinema.dao;
 //
-//import fr.iat.tpcinema.model.Film;
+//import fr.iat.cinema.model.Film;
 //import org.springframework.stereotype.Component;
 //
 //import java.util.Arrays;
@@ -114,9 +114,9 @@
 
 
 // ========== DAO SANS JPA ===================================================
-//package fr.iat.tpcinema.dao;
-//import fr.iat.tpcinema.model.Film;
-//import fr.iat.tpcinema.model.Personne;
+//package fr.iat.cinema.dao;
+//import fr.iat.cinema.model.Film;
+//import fr.iat.cinema.model.Personne;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Component;
 //import org.springframework.transaction.annotation.Transactional;
@@ -171,12 +171,10 @@
 //}
 
 // ========== DAO JPA ===================================================
-package fr.iat.tpcinema.dao;
+package fr.iat.cinema.dao;
 
-import fr.iat.tpcinema.model.Film;
-import fr.iat.tpcinema.model.Personne;
+import fr.iat.cinema.model.Film;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-//package fr.iat.tpcinema.model;
+//package fr.iat.cinema.model;
 //
 //import java.util.ArrayList;
 //import java.util.List;
@@ -117,7 +117,7 @@
 //    }
 //}
 
-package fr.iat.tpcinema.model;
+package fr.iat.cinema.model;
 
 import javax.persistence.*;
 import java.util.Objects;

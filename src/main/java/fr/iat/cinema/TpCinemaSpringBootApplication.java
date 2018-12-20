@@ -1,7 +1,7 @@
-package fr.iat.tpcinema;
+package fr.iat.cinema;
 
 
-import fr.iat.tpcinema.service.Path;
+import fr.iat.cinema.service.Path;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -14,7 +14,7 @@ public class TpCinemaSpringBootApplication {
 
     public static void main(String[] args) {
 
-        // TODO : renommer package tpcinema en cinema
+        // TODO : renommer package cinema en cinema
         // TODO : créer panneau latéral
         // TODO : gérer de façon plus simple le stream des images
         // TODO : trouver une solution pour afficher les fieldset

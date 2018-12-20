@@ -1,8 +1,8 @@
-//package fr.iat.tpcinema.dao;
+//package fr.iat.cinema.dao;
 //
-//import fr.iat.tpcinema.model.Film;
-//import fr.iat.tpcinema.model.Personne;
-//import fr.iat.tpcinema.model.Role;
+//import fr.iat.cinema.model.Film;
+//import fr.iat.cinema.model.Personne;
+//import fr.iat.cinema.model.Role;
 //import org.springframework.stereotype.Component;
 //
 //@Component
