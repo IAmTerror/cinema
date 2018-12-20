@@ -118,6 +118,8 @@
 package fr.iat.cinema.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -135,7 +137,8 @@ public class Personne {
     private String prenom;
     @Basic
     @Column(name = "birthday", nullable = true)
-    private String naissance;
+    // TODO : manage LocalDate to controller
+    private LocalDate naissance;
     @Basic
     @Column(name = "image_path", nullable = true, length = 80)
     private String imagePath;
@@ -167,11 +170,11 @@ public class Personne {
         this.prenom = givenname;
     }
 
-    public String getNaissance() {
+    public LocalDate getNaissance() {
         return naissance;
     }
 
-    public void setNaissance(String naissance) {
+    public void setNaissance(LocalDate naissance) {
         this.naissance = naissance;
     }
 
