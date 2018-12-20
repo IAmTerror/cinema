@@ -180,7 +180,7 @@ public class PersonneController {
 
     @GetMapping("/list")
     public String list(Model model){
-        model.addAttribute("personnes", personneDao.findAll());
+        model.addAttribute("personnes", personneDao.findAllByOrderByIdAsc());
         return "person/list";
     }
 

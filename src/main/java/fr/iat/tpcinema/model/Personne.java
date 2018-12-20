@@ -133,8 +133,8 @@ public class Personne {
     @Column(name = "givenname", nullable = true, length = 40)
     private String prenom;
     @Basic
-    @Column(name = "birth_year", nullable = true)
-    private Integer naissance;
+    @Column(name = "birthday", nullable = true)
+    private String naissance;
     @Basic
     @Column(name = "image_path", nullable = true, length = 80)
     private String imagePath;
@@ -166,12 +166,12 @@ public class Personne {
         this.prenom = givenname;
     }
 
-    public Integer getNaissance() {
+    public String getNaissance() {
         return naissance;
     }
 
-    public void setNaissance(Integer birthYear) {
-        this.naissance = birthYear;
+    public void setNaissance(String naissance) {
+        this.naissance = naissance;
     }
 
     public String getImagePath() {

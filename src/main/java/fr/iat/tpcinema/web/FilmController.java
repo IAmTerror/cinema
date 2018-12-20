@@ -115,7 +115,7 @@ public class FilmController {
 
     @GetMapping("/list")
     public String list(Model model){
-        Iterable<Film> films = filmDao.findAll();
+        Iterable<Film> films = filmDao.findAllByOrderByIdAsc();
         model.addAttribute("films", films);
         return "film/list";
     }
