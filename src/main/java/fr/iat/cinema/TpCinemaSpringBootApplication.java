@@ -19,6 +19,9 @@ public class TpCinemaSpringBootApplication {
         // TODO : gérer de façon plus simple le stream des images
         // TODO : trouver une solution pour afficher les fieldset
         // TODO : merge jpa_integration branch to master
+        // TODO : bug fix : quand on ajoute une personne (et autre objet aussi ?), l'appli essaie de...
+        // ... lui donner l'id=1, échec, puis l'id=2, échec, jusqu'à un id pas pris. Faire en sorte que...
+        // après la fermeture le l'application, la mémoire du dernier id donné soit persistée
 
         SpringApplication.run(TpCinemaSpringBootApplication.class, args);
     }

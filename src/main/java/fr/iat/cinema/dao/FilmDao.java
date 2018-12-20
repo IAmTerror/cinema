@@ -175,9 +175,10 @@ package fr.iat.cinema.dao;
 
 import fr.iat.cinema.model.Film;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface FilmDao extends JpaRepository<Film, Long> {
+public interface FilmDao extends CrudRepository<Film, Long> {
     public List<Film> findAllByOrderByIdAsc();
 }

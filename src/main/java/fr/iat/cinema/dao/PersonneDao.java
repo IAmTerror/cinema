@@ -127,9 +127,10 @@ package fr.iat.cinema.dao;
 
 import fr.iat.cinema.model.Personne;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface PersonneDao extends JpaRepository<Personne, Long> {
+public interface PersonneDao extends CrudRepository<Personne, Long> {
     public List<Personne> findAllByOrderByIdAsc();
 }
