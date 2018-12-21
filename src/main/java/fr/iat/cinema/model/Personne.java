@@ -117,6 +117,8 @@
 
 package fr.iat.cinema.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -137,7 +139,7 @@ public class Personne {
     private String prenom;
     @Basic
     @Column(name = "birthday", nullable = true)
-    // TODO : manage LocalDate to controller
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate naissance;
     @Basic
     @Column(name = "image_path", nullable = true, length = 80)
