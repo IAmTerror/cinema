@@ -14,14 +14,14 @@ public class TpCinemaSpringBootApplication {
 
     public static void main(String[] args) {
 
-        // TODO : renommer package cinema en cinema
         // TODO : créer panneau latéral
         // TODO : gérer de façon plus simple le stream des images
         // TODO : trouver une solution pour afficher les fieldset
-        // TODO : merge jpa_integration branch to master
         // TODO : bug fix : quand on ajoute une person (et autre objet aussi ?), l'appli essaie de...
         // ... lui donner l'id=1, échec, puis l'id=2, échec, jusqu'à un id pas pris. Faire en sorte que...
         // après la fermeture le l'application, la mémoire du dernier id donné soit persistée
+        // TODO : CSS resize des images avec conservation des ratio H/W
+        // TODO : différencier acteurs des réalisateurs (et autres métiers)
 
         SpringApplication.run(TpCinemaSpringBootApplication.class, args);
     }
