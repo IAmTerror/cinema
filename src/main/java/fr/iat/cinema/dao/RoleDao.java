@@ -161,11 +161,11 @@
 
 package fr.iat.cinema.dao;
 
-import fr.iat.cinema.model.Play;
+import fr.iat.cinema.model.Role;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface PlayDao extends CrudRepository<Play, Long> {
-    public List<Play> findAllByOrderByIdAsc();
+public interface RoleDao extends CrudRepository<Role, Long> {
+    public List<Role> findAllByOrderByIdAsc();
 }

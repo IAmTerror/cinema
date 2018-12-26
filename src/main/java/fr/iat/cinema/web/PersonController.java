@@ -24,7 +24,7 @@
 //public class PersonneController {
 //
 //    @Autowired
-//    PersonDao playDao;
+//    PersonDao roleDao;
 //
 //    @Autowired
 //    ImageManager imm;
@@ -38,14 +38,14 @@
 //
 //    @GetMapping("/list")
 //    public String personnesListe(Model model) {
-//        model.addAttribute("persons", playDao.getAll());
+//        model.addAttribute("persons", roleDao.getAll());
 //        return "person/list";
 //    }
 //
 //    @GetMapping("/detail/{id}")
 //    public String person(Model model, @PathVariable("id") String id) {
 //        long idPersonne = Long.parseLong(id);
-//        model.addAttribute("person", playDao.getById(idPersonne));
+//        model.addAttribute("person", roleDao.getById(idPersonne));
 //        return "person/detail";
 //    }
 //
@@ -58,25 +58,25 @@
 //    @GetMapping("/modif/{id}")
 //    public String personneModif(Model model, @PathVariable("id") String id) {
 //        long idPersonne = Long.parseLong(id);
-//        model.addAttribute("person", playDao.getById(idPersonne));
+//        model.addAttribute("person", roleDao.getById(idPersonne));
 //        return "person/modif";
 //    }
 //
 //    @PostMapping("/update")
 //    public String personneUpdate(@ModelAttribute Person person){
-//        playDao.save(person);
+//        roleDao.save(person);
 //        return "redirect:/person/list";
 //    }
 //
 //    @GetMapping("/delete/{id}")
 //    public String personneDelete(@PathVariable("id") Long id){
-//        playDao.delete(id);
+//        roleDao.delete(id);
 //        return "redirect:/person/list";
 //    }
 //
 ////    @PostMapping("/add")
 ////    public String personneAdd(@ModelAttribute Person person){
-////        playDao.save(person);
+////        roleDao.save(person);
 ////        return "redirect:/person/list";
 ////    }
 //
@@ -89,7 +89,7 @@
 //                System.out.println("Erreur lecture : "+ioe.getMessage());
 //            }
 //        }
-//        playDao.save(person);
+//        roleDao.save(person);
 //        return "redirect:/person/list";
 //    }
 //

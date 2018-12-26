@@ -121,6 +121,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "persons")
@@ -129,22 +130,29 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private long id;
+
     @Basic
     @Column(name = "surname", nullable = false, length = 60)
     private String nom;
     @Basic
     @Column(name = "givenname", nullable = true, length = 40)
     private String prenom;
+
     @Basic
     @Column(name = "birthday", nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate naissance;
+
     @Basic
     @Column(name = "image_path", nullable = true, length = 80)
     private String imagePath;
+
     // TODO : replacer List par Set (permet de s'assurer qu'il n'y a pas de redondances dans la collection)
     @OneToMany(mappedBy = "director")
     private List<Film> directedFilms;
+
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Role> roles = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -158,16 +166,16 @@ public class Person {
         return nom;
     }
 
-    public void setNom(String surname) {
-        this.nom = surname;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getPrenom() {
         return prenom;
     }
 
-    public void setPrenom(String givenname) {
-        this.prenom = givenname;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public LocalDate getNaissance() {
@@ -190,8 +198,16 @@ public class Person {
         return directedFilms;
     }
 
-    public void setDirectedFilms(List<Film> films) {
-        this.directedFilms = films;
+    public void setDirectedFilms(List<Film> directedFilms) {
+        this.directedFilms = directedFilms;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public void addDirectedFilm(Film film) {

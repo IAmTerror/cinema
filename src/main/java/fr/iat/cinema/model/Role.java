@@ -62,22 +62,24 @@
 
 package fr.iat.cinema.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Objects;
 
-@Embeddable
-public class Play implements Serializable {
+@Entity
+@Table(name = "play")
+public class Role {
 
-    @Basic
-    @Column(name = "film_id")
-    private Long filmId;
+    // Composite key, for Person id + Film id (see RoleId)
+    @EmbeddedId
+    private RoleId id;
 
-    @Basic
-    @Column(name = "person_id")
-    private Long personId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("filmId")
+    private Film film;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("personId")
+    private Person person;
 
     @Basic
     @Column(name = "rank")
@@ -87,20 +89,37 @@ public class Play implements Serializable {
     @Column(name = "name")
     private String name;
 
-    public Long getFilmId() {
-        return filmId;
+    public Role(Film film, Person person) {
+        this.film = film;
+        this.person = person;
+        this.id = new RoleId(film.getId(), person.getId());
     }
 
-    public void setFilmId(Long filmId) {
-        this.filmId = filmId;
+    public Role() {
     }
 
-    public Long getPersonId() {
-        return personId;
+    public RoleId getId() {
+        return id;
     }
 
-    public void setPersonId(Long personId) {
-        this.personId = personId;
+    public void setId(RoleId id) {
+        this.id = id;
+    }
+
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public Integer getRank() {
@@ -122,16 +141,17 @@ public class Play implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Play)) return false;
-        Play play = (Play) o;
-        return Objects.equals(getFilmId(), play.getFilmId()) &&
-                Objects.equals(getPersonId(), play.getPersonId()) &&
-                Objects.equals(getRank(), play.getRank()) &&
-                Objects.equals(getName(), play.getName());
+        if (!(o instanceof Role)) return false;
+        Role role = (Role) o;
+        return Objects.equals(getId(), role.getId()) &&
+                Objects.equals(getFilm(), role.getFilm()) &&
+                Objects.equals(getPerson(), role.getPerson()) &&
+                Objects.equals(getRank(), role.getRank()) &&
+                Objects.equals(getName(), role.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFilmId(), getPersonId(), getRank(), getName());
+        return Objects.hash(getId(), getFilm(), getPerson(), getRank(), getName());
     }
 }
