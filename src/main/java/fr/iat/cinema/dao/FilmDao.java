@@ -16,7 +16,7 @@
 //@Component
 //public class FilmDao {
 //
-//    PersonneDao personneDao = new PersonneDao();
+//    PersonDao personneDao = new PersonDao();
 //    private List<Film> films;
 //
 //    public FilmDao() {
@@ -29,7 +29,7 @@
 //                        "Fin du XIXème, " +
 //                                "Joseph Bouvier est révoqué de l'armée à cause de ses excès de violence. Suite à ce renvoi, l'homme " +
 //                                "s'attaque à sa fiancée et tente de se suicider, en vain. Après un séjour en hôpital psychiatrique, " +
-//                                "Joseph ressort de cet endroit encore plus enragé et décide de se venger sur toutes les personnes qui " +
+//                                "Joseph ressort de cet endroit encore plus enragé et décide de se venger sur toutes les persons qui " +
 //                                "croiseront son chemin en Ardèche. Non loin de là, le juge Rousseau, passionné par l'affaire, prend " +
 //                                "part à l'investigation et se met sur les traces de Bouvier. Bien décidé à le mettre sous les verrous, " +
 //                                "c'est le début d'une chasse à l'homme...",
@@ -116,7 +116,7 @@
 // ========== DAO SANS JPA ===================================================
 //package fr.iat.cinema.dao;
 //import fr.iat.cinema.model.Film;
-//import fr.iat.cinema.model.Personne;
+//import fr.iat.cinema.model.Person;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Component;
 //import org.springframework.transaction.annotation.Transactional;

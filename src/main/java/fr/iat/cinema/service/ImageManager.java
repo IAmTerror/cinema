@@ -1,7 +1,7 @@
 package fr.iat.cinema.service;
 
 import fr.iat.cinema.model.Film;
-import fr.iat.cinema.model.Personne;
+import fr.iat.cinema.model.Person;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +16,8 @@ public class ImageManager {
     @Value("${cinema.img.path}")
     String path;
 
-    public int savePhoto(Personne p, InputStream fi){
-        p.setImagePath(save("p", "personnes", fi));
+    public int savePhoto(Person p, InputStream fi){
+        p.setImagePath(save("p", "persons", fi));
         return 0;
     }
 

@@ -10,10 +10,10 @@
 //    private Double notation;
 //    private String affiche;
 //    private String resume;
-//    private Personne realisateur;
+//    private Person realisateur;
 //    private List<Role> roles = new ArrayList<>();
 //
-//    public Film(int id, String titre, Double notation, String affiche, String resume, Personne realisateur) {
+//    public Film(int id, String titre, Double notation, String affiche, String resume, Person realisateur) {
 //        this.id = id;
 //        this.titre = titre;
 //        this.notation = notation;
@@ -62,11 +62,11 @@
 //        this.resume = resume;
 //    }
 //
-//    public Personne getRealisateur() {
+//    public Person getRealisateur() {
 //        return realisateur;
 //    }
 //
-//    public void setRealisateur(Personne realisateur) {
+//    public void setRealisateur(Person realisateur) {
 //        this.realisateur = realisateur;
 //    }
 //
@@ -142,7 +142,7 @@ public class Film {
     private String resume;
     @ManyToOne
     @JoinColumn(name = "film_director")
-    private Personne director;
+    private Person director;
 
     public long getId() {
         return id;
@@ -184,11 +184,11 @@ public class Film {
         this.resume = resume;
     }
 
-    public Personne getDirector() {
+    public Person getDirector() {
         return director;
     }
 
-    public void setDirector(Personne realisateur) {
+    public void setDirector(Person realisateur) {
         this.director = realisateur;
     }
 

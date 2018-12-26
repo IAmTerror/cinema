@@ -2,24 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${personne.nom}">Title</title>
+    <title th:text="${person.nom}">Title</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
-    <h1 th:text="${personne.prenom}+' '+${personne.nom}"></h1>
-    <img class="posterPersonne" th:src="'/person/personnes/'+${personne.imagePath}">
-    <h6 th:text="'Date de naissance : '+${personne.naissance}">Resumé</h6>
+    <h1 th:text="${person.prenom}+' '+${person.nom}"></h1>
+    <img class="posterPersonne" th:src="'/person/personnes/'+${person.imagePath}">
+    <h6 th:text="'Date de naissance : '+${person.naissance}">Resumé</h6>
     <h6 th:text="'Filmographie :'"></h6>
     <!--<div class="container">-->
         <!--<div class="row">-->
-            <!--<div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="personne : ${personne.getRoles()}">-->
-                <!--<a th:href="@{/film/{Id} (Id=${personne.getFilm().getId()})}"><img class="affichesFilmsPageActeur"-->
-                                                                                   <!--th:src="'/affiches/'+${personne.getFilm().getAffiche()}"></a>-->
+            <!--<div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="person : ${person.getRoles()}">-->
+                <!--<a th:href="@{/film/{Id} (Id=${person.getFilm().getId()})}"><img class="affichesFilmsPageActeur"-->
+                                                                                   <!--th:src="'/affiches/'+${person.getFilm().getAffiche()}"></a>-->
                 <!--<br/>-->
-                <!--<a th:text="${personne.getFilm().getTitre()}"-->
-                   <!--th:href="@{/film/{Id} (Id=${personne.getFilm().getId()})}"></a>-->
+                <!--<a th:text="${person.getFilm().getTitre()}"-->
+                   <!--th:href="@{/film/{Id} (Id=${person.getFilm().getId()})}"></a>-->
             <!--</div>-->
         <!--</div>-->
     <!--</div>-->

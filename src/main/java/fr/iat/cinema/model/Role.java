@@ -3,11 +3,11 @@
 //public class Role {
 //
 //    private String alias;
-//    private Personne acteur;
+//    private Person acteur;
 //    private Integer ordre;
 //    private Film film;
 //
-//    public Role(String alias, Personne acteur, Integer ordre, Film film) {
+//    public Role(String alias, Person acteur, Integer ordre, Film film) {
 //        this.alias = alias;
 //        this.acteur = acteur;
 //        this.ordre = ordre;
@@ -22,11 +22,11 @@
 //        this.alias = alias;
 //    }
 //
-//    public Personne getActeur() {
+//    public Person getActeur() {
 //        return acteur;
 //    }
 //
-//    public void setActeur(Personne acteur) {
+//    public void setActeur(Person acteur) {
 //        this.acteur = acteur;
 //    }
 //

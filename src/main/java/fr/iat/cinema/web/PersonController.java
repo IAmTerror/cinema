@@ -1,9 +1,9 @@
 // ========== OLD CONTROLLER 1 ===================================================
 //package fr.iat.cinema.web;
 //
-//import fr.iat.cinema.dao.PersonneDao;
+//import fr.iat.cinema.dao.PersonDao;
 //import fr.iat.cinema.model.Film;
-//import fr.iat.cinema.model.Personne;
+//import fr.iat.cinema.model.Person;
 //import fr.iat.cinema.service.ImageManager;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@
 //public class PersonneController {
 //
 //    @Autowired
-//    PersonneDao personneDao;
+//    PersonDao personDao;
 //
 //    @Autowired
 //    ImageManager imm;
@@ -38,58 +38,58 @@
 //
 //    @GetMapping("/list")
 //    public String personnesListe(Model model) {
-//        model.addAttribute("personnes", personneDao.getAll());
+//        model.addAttribute("persons", personDao.getAll());
 //        return "person/list";
 //    }
 //
 //    @GetMapping("/detail/{id}")
-//    public String personne(Model model, @PathVariable("id") String id) {
+//    public String person(Model model, @PathVariable("id") String id) {
 //        long idPersonne = Long.parseLong(id);
-//        model.addAttribute("personne", personneDao.getById(idPersonne));
+//        model.addAttribute("person", personDao.getById(idPersonne));
 //        return "person/detail";
 //    }
 //
 //    @GetMapping("/form")
 //    public String personneForm(Model model) {
-//        model.addAttribute("personne", new Personne());
+//        model.addAttribute("person", new Person());
 //        return "person/form";
 //    }
 //
 //    @GetMapping("/modif/{id}")
 //    public String personneModif(Model model, @PathVariable("id") String id) {
 //        long idPersonne = Long.parseLong(id);
-//        model.addAttribute("personne", personneDao.getById(idPersonne));
+//        model.addAttribute("person", personDao.getById(idPersonne));
 //        return "person/modif";
 //    }
 //
 //    @PostMapping("/update")
-//    public String personneUpdate(@ModelAttribute Personne personne){
-//        personneDao.save(personne);
+//    public String personneUpdate(@ModelAttribute Person person){
+//        personDao.save(person);
 //        return "redirect:/person/list";
 //    }
 //
 //    @GetMapping("/delete/{id}")
 //    public String personneDelete(@PathVariable("id") Long id){
-//        personneDao.delete(id);
+//        personDao.delete(id);
 //        return "redirect:/person/list";
 //    }
 //
 ////    @PostMapping("/add")
-////    public String personneAdd(@ModelAttribute Personne personne){
-////        personneDao.save(personne);
+////    public String personneAdd(@ModelAttribute Person person){
+////        personDao.save(person);
 ////        return "redirect:/person/list";
 ////    }
 //
 //    @PostMapping("/add")
-//    public String submit(@RequestParam("photo") MultipartFile file, @ModelAttribute Personne personne){
+//    public String submit(@RequestParam("photo") MultipartFile file, @ModelAttribute Person person){
 //        if(file.getContentType().equalsIgnoreCase("image/jpeg")){
 //            try {
-//                imm.savePhoto(personne, file.getInputStream());
+//                imm.savePhoto(person, file.getInputStream());
 //            } catch (IOException ioe){
 //                System.out.println("Erreur lecture : "+ioe.getMessage());
 //            }
 //        }
-//        personneDao.save(personne);
+//        personDao.save(person);
 //        return "redirect:/person/list";
 //    }
 //
@@ -120,10 +120,10 @@
 ////        in.close();
 ////    }
 ////
-////    @GetMapping("/personnes/{id}")
-////    public void personne(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
+////    @GetMapping("/persons/{id}")
+////    public void person(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 ////
-////        String filename = path.getPersonne() + id;
+////        String filename = path.getPerson() + id;
 ////
 ////        // ============ UTILITAIRE POUR IMPORTER DES IMAGES A PARTIR D'UN FOLDER EXTERNE A L'APPLICATION ============ //
 ////        String mime = request.getServletContext().getMimeType(filename);
@@ -148,8 +148,8 @@
 
 package fr.iat.cinema.web;
 
-import fr.iat.cinema.dao.PersonneDao;
-import fr.iat.cinema.model.Personne;
+import fr.iat.cinema.dao.PersonDao;
+import fr.iat.cinema.model.Person;
 import fr.iat.cinema.service.ImageManager;
 import fr.iat.cinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -164,14 +164,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.time.LocalDate;
 
 @Controller
 @RequestMapping(value = "/person")
-public class PersonneController {
+public class PersonController {
 
     @Autowired
-    PersonneDao personneDao;
+    PersonDao personDao;
 
     @Autowired
     ImageManager imm;
@@ -181,44 +180,44 @@ public class PersonneController {
 
     @GetMapping("/list")
     public String list(Model model){
-        model.addAttribute("personnes", personneDao.findAllByOrderByIdAsc());
+        model.addAttribute("persons", personDao.findAllByOrderByIdAsc());
         return "person/list";
     }
 
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id") long id, Model model){
-        model.addAttribute("personne", personneDao.findById(id).get());
+        model.addAttribute("person", personDao.findById(id).get());
         return "person/detail";
     }
 
     @GetMapping("/mod/{id}")
     public String mod(@PathVariable("id")long id, Model model){
-        model.addAttribute("personne", personneDao.findById(id).get());
+        model.addAttribute("person", personDao.findById(id).get());
         return "person/form";
     }
 
     @GetMapping("/add")
     public String add(Model model){
-        model.addAttribute("personne", new Personne());
+        model.addAttribute("person", new Person());
         return "person/form";
     }
 
     @GetMapping("/delete/{id}")
     public String personneDelete(@PathVariable("id") Long id){
-        personneDao.deleteById(id);
+        personDao.deleteById(id);
         return "redirect:/person/list";
     }
 
     @PostMapping("/add")
-    public String submit(@RequestParam("photo") MultipartFile file, @ModelAttribute Personne personne){
+    public String submit(@RequestParam("photo") MultipartFile file, @ModelAttribute Person person){
         if(file.getContentType().equalsIgnoreCase("image/jpeg")){
             try {
-                imm.savePhoto(personne, file.getInputStream());
+                imm.savePhoto(person, file.getInputStream());
             } catch (IOException ioe){
                 System.out.println("Erreur lecture : "+ioe.getMessage());
             }
         }
-        personneDao.save(personne);
+        personDao.save(person);
         return "redirect:/person/list";
     }
 
@@ -227,7 +226,7 @@ public class PersonneController {
     @GetMapping("/personnes/{id}")
     public void personne(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
 
-        String filename = path.getPersonne() + id;
+        String filename = path.getPerson() + id;
 
         String mime = request.getServletContext().getMimeType(filename);
         if (mime == null) {

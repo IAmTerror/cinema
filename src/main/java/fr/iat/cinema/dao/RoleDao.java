@@ -1,7 +1,7 @@
 //package fr.iat.cinema.dao;
 //
 //import fr.iat.cinema.model.Film;
-//import fr.iat.cinema.model.Personne;
+//import fr.iat.cinema.model.Person;
 //import fr.iat.cinema.model.Role;
 //import org.springframework.stereotype.Component;
 //
@@ -9,9 +9,9 @@
 //public class RoleDao {
 //
 ////    private FilmDao filmDao = new FilmDao();
-////    private PersonneDao personneDao = new PersonneDao();
+////    private PersonDao personneDao = new PersonDao();
 //
-//    public RoleDao(FilmDao filmDao, PersonneDao personneDao) {
+//    public RoleDao(FilmDao filmDao, PersonDao personneDao) {
 //
 ////        Role r;
 ////
@@ -83,52 +83,52 @@
 ////        System.out.println(filmDao.getById(6).getRoles());
 //
 //        Film film;
-//        Personne personne;
+//        Person person;
 //
 //        film = filmDao.getById(1);
-//        personne = personneDao.getById(1);
-//        new Role("Le juge Rousseau", personne,0, film).ajouterRole();
-//        personne = personneDao.getById(2);
-//        new Role("Joseph Bouvier", personne,1, film).ajouterRole();
-//        personne = personneDao.getById(3);
-//        new Role("Rose", personne,2, film).ajouterRole();
+//        person = personneDao.getById(1);
+//        new Role("Le juge Rousseau", person,0, film).ajouterRole();
+//        person = personneDao.getById(2);
+//        new Role("Joseph Bouvier", person,1, film).ajouterRole();
+//        person = personneDao.getById(3);
+//        new Role("Rose", person,2, film).ajouterRole();
 //        film = filmDao.getById(2);
-//        personne = personneDao.getById(4);
-//        new Role("Luke Skywalker", personne,0, film).ajouterRole();
-//        personne = personneDao.getById(5);
-//        new Role("Han Solo", personne,1, film).ajouterRole();
-//        personne = personneDao.getById(6);
-//        new Role("Princesse Leia Organa", personne,2, film).ajouterRole();
+//        person = personneDao.getById(4);
+//        new Role("Luke Skywalker", person,0, film).ajouterRole();
+//        person = personneDao.getById(5);
+//        new Role("Han Solo", person,1, film).ajouterRole();
+//        person = personneDao.getById(6);
+//        new Role("Princesse Leia Organa", person,2, film).ajouterRole();
 //        film = filmDao.getById(3);
-//        personne = personneDao.getById(7);
-//        new Role("Edward Lewis", personne,0, film).ajouterRole();
-//        personne = personneDao.getById(8);
-//        new Role("Vivan Ward", personne,1, film).ajouterRole();
-//        personne = personneDao.getById(9);
-//        new Role("James", personne,2, film).ajouterRole();
+//        person = personneDao.getById(7);
+//        new Role("Edward Lewis", person,0, film).ajouterRole();
+//        person = personneDao.getById(8);
+//        new Role("Vivan Ward", person,1, film).ajouterRole();
+//        person = personneDao.getById(9);
+//        new Role("James", person,2, film).ajouterRole();
 //        film = filmDao.getById(6);
-//        personne = personneDao.getById(10);
-//        new Role("Colonel William Ludlow", personne,0, film);
-//        personne = personneDao.getById(11);
-//        new Role("Tristan Ludlow", personne,1, film).ajouterRole();
-//        personne = personneDao.getById(12);
-//        new Role("Alfred Ludlow", personne,2, film).ajouterRole();
-//        personne = personneDao.getById(13);
-//        new Role("Samuel Ludlow", personne,3, film).ajouterRole();
+//        person = personneDao.getById(10);
+//        new Role("Colonel William Ludlow", person,0, film);
+//        person = personneDao.getById(11);
+//        new Role("Tristan Ludlow", person,1, film).ajouterRole();
+//        person = personneDao.getById(12);
+//        new Role("Alfred Ludlow", person,2, film).ajouterRole();
+//        person = personneDao.getById(13);
+//        new Role("Samuel Ludlow", person,3, film).ajouterRole();
 //        film = filmDao.getById(5);
-//        personne = personneDao.getById(13);
-//        new Role("Eliott", personne,0, film).ajouterRole();
-//        personne = personneDao.getById(14);
-//        new Role("Gertie", personne,1, film).ajouterRole();
-//        personne = personneDao.getById(15);
-//        new Role("Mary", personne,2, film).ajouterRole();
+//        person = personneDao.getById(13);
+//        new Role("Eliott", person,0, film).ajouterRole();
+//        person = personneDao.getById(14);
+//        new Role("Gertie", person,1, film).ajouterRole();
+//        person = personneDao.getById(15);
+//        new Role("Mary", person,2, film).ajouterRole();
 //        film = filmDao.getById(4);
-//        personne = personneDao.getById(16);
-//        new Role("Judas Ben-Hur", personne,0, film).ajouterRole();
-//        personne = personneDao.getById(17);
-//        new Role("Messala", personne,1, film).ajouterRole();
-//        personne = personneDao.getById(18);
-//        new Role("Quintus Arrius", personne,2, film).ajouterRole();
+//        person = personneDao.getById(16);
+//        new Role("Judas Ben-Hur", person,0, film).ajouterRole();
+//        person = personneDao.getById(17);
+//        new Role("Messala", person,1, film).ajouterRole();
+//        person = personneDao.getById(18);
+//        new Role("Quintus Arrius", person,2, film).ajouterRole();
 //
 //        // ============================== TEST AFFICHAGE ROLES PAR FILMS ET PAR ACTEURS ==============================
 //        System.out.println(filmDao.getById(1).getRoles());

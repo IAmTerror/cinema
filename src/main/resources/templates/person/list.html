@@ -9,7 +9,7 @@
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
     <span class="pageTitre" th:text="'Liste des personnes'"></span>
-    <a class="btn btn-primary btn-lg button-add" th:href="@{'/person/add'}" role="button">Ajouter une personne</a>
+    <a class="btn btn-primary btn-lg button-add" th:href="@{'/person/add'}" role="button">Ajouter une person</a>
 </div>
 
 
@@ -19,17 +19,17 @@
         <th>Nom</th>
         <th>Action</th>
     </tr>
-<tr th:each="personne : ${personnes}">
+<tr th:each="person : ${persons}">
     <td class="col-md-1">
-        <a th:text="${personne.id}" th:href="@{/person/detail/{id}(id=${personne.id})}"></a>
+        <a th:text="${person.id}" th:href="@{/person/detail/{id}(id=${person.id})}"></a>
     </td>
     <td class="col-md-9">
-    <a th:text="${personne.nom}+' '+${personne.prenom}" th:href="@{/person/detail/{id}(id=${personne.id})}"></a>
+    <a th:text="${person.nom}+' '+${person.prenom}" th:href="@{/person/detail/{id}(id=${person.id})}"></a>
     </td>
     <td class="col-md-2 text-center">
         <a class="btn btn-warning btn-sm"
-           th:href="@{'/person/mod/' + ${personne.id}}">Modifier</a>
-        <a class="btn btn-danger btn-sm" th:href="@{'/person/delete/' + ${personne.id}}">Supprimer</a>
+           th:href="@{'/person/mod/' + ${person.id}}">Modifier</a>
+        <a class="btn btn-danger btn-sm" th:href="@{'/person/delete/' + ${person.id}}">Supprimer</a>
     </td>
 </tr>
 </table>

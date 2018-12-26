@@ -4,7 +4,7 @@
 //import java.util.List;
 //import java.util.Objects;
 //
-//public class Personne {
+//public class Person {
 //    private int id;
 //    private String nom;
 //    private String prenom;
@@ -13,7 +13,7 @@
 //    private int type;  // 1 = acteur ; 2 = réalisateur
 //    private List<Role> roles = new ArrayList<>();
 //
-//    public Personne(int id, String nom, String prenom, Integer naissance, String affiche, int type) {
+//    public Person(int id, String nom, String prenom, Integer naissance, String affiche, int type) {
 //        this.id = id;
 //        this.nom = nom;
 //        this.prenom = prenom;
@@ -87,14 +87,14 @@
 //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
-//        if (!(o instanceof Personne)) return false;
-//        Personne personne = (Personne) o;
-//        return getId() == personne.getId() &&
-//                Objects.equals(getNom(), personne.getNom()) &&
-//                Objects.equals(getPrenom(), personne.getPrenom()) &&
-//                Objects.equals(getNaissance(), personne.getNaissance()) &&
-//                Objects.equals(getAffiche(), personne.getAffiche()) &&
-//                Objects.equals(roles, personne.roles);
+//        if (!(o instanceof Person)) return false;
+//        Person person = (Person) o;
+//        return getId() == person.getId() &&
+//                Objects.equals(getNom(), person.getNom()) &&
+//                Objects.equals(getPrenom(), person.getPrenom()) &&
+//                Objects.equals(getNaissance(), person.getNaissance()) &&
+//                Objects.equals(getAffiche(), person.getAffiche()) &&
+//                Objects.equals(roles, person.roles);
 //    }
 //
 //    @Override
@@ -104,7 +104,7 @@
 //
 //    @Override
 //    public String toString() {
-//        return "Personne{" +
+//        return "Person{" +
 //                "id=" + id +
 //                ", nom='" + nom + '\'' +
 //                ", prenom='" + prenom + '\'' +
@@ -121,12 +121,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity(name = "persons")
-public class Personne {
+public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -208,7 +206,7 @@ public class Personne {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Personne persons = (Personne) o;
+        Person persons = (Person) o;
 
         if (id != persons.id) return false;
         if (nom != null ? !nom.equals(persons.nom) : persons.nom != null) return false;

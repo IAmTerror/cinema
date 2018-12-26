@@ -10,7 +10,7 @@ import org.springframework.validation.annotation.Validated;
 public class Path {
 
     private String affiche;
-    private String personne;
+    private String person;
 
     public String getAffiche() {
         return affiche;
@@ -20,11 +20,11 @@ public class Path {
         this.affiche = affiche;
     }
 
-    public String getPersonne() {
-        return personne;
+    public String getPerson() {
+        return person;
     }
 
-    public void setPersonne(String personne) {
-        this.personne = personne;
+    public void setPerson(String person) {
+        this.person = person;
     }
 }

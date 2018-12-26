@@ -3,44 +3,44 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Editer une personne</title>
+    <title>Editer une person</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
-    <h1>Editer une personne :</h1>
+    <h1>Editer une person :</h1>
 
-    <form action="#" th:action="@{/person/add}" th:object="${personne}" enctype="multipart/form-data" method="post">
-        <input type="hidden" th:id="id" th:name="id" th:value="${personne.id}"/>
-        <input type="hidden" th:field="${personne.imagePath}"/>
+    <form action="#" th:action="@{/person/add}" th:object="${person}" enctype="multipart/form-data" method="post">
+        <input type="hidden" th:id="id" th:name="id" th:value="${person.id}"/>
+        <input type="hidden" th:field="${person.imagePath}"/>
         <div class="form-group row">
             <label th:for="nom" class="col-sm-2 col-form-label">Nom</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:id="nom" th:name="nom" th:value="${personne.nom}"/>
+                <input type="text" class="form-control" th:id="nom" th:name="nom" th:value="${person.nom}"/>
             </div>
         </div>
         <div class="form-group row">
             <label th:for="prenom" class="col-sm-2 col-form-label">Prénom</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:id="prenom" th:name="prenom" th:value="${personne.prenom}"/>
+                <input type="text" class="form-control" th:id="prenom" th:name="prenom" th:value="${person.prenom}"/>
             </div>
         </div>
         <div class="form-group row">
             <label th:for="nom" class="col-sm-2 col-form-label">Date de naissance</label>
             <div class="col-sm-10">
                 <input type="date" class="form-control" th:id="naissance" th:name="naissance"
-                       th:value="${personne.naissance}"/>
+                       th:value="${person.naissance}"/>
             </div>
         </div>
         <div class="form-group row">
             <label th:for="nom" class="col-sm-2 col-form-label">Ajouter une photo</label>
             <div class="col-sm-10">
-                <input type="file" class="btn btn-secondary btn-sm" name="photo"/> <span th:text="${personne.imagePath}">Fichier photo</span>
+                <input type="file" class="btn btn-secondary btn-sm" name="photo"/> <span th:text="${person.imagePath}">Fichier photo</span>
             </div>
         </div>
         <div class="button">
-            <button type="submit" th:name="create" class="btn btn-primary">Editer une personne</button>
+            <button type="submit" th:name="create" class="btn btn-primary">Editer une person</button>
         </div>
     </form>
 </div>
