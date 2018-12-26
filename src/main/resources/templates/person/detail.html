@@ -9,7 +9,7 @@
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
     <h1 th:text="${person.prenom}+' '+${person.nom}"></h1>
-    <img class="posterPersonne" th:src="'/person/personnes/'+${person.imagePath}">
+    <img class="posterPersonne" th:src="'/person/posters/'+${person.imagePath}">
     <h6 th:text="'Date de naissance : '+${person.naissance}">Resumé</h6>
     <h6 th:text="'Filmographie :'"></h6>
     <!--<div class="container">-->

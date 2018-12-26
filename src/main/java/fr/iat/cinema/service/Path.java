@@ -9,8 +9,8 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class Path {
 
-    private String affiche;
-    private String person;
+    private String affiche; // image d'in film
+    private String poster; // image d'une personne
 
     public String getAffiche() {
         return affiche;
@@ -20,11 +20,11 @@ public class Path {
         this.affiche = affiche;
     }
 
-    public String getPerson() {
-        return person;
+    public String getPoster() {
+        return poster;
     }
 
-    public void setPerson(String person) {
-        this.person = person;
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 }
