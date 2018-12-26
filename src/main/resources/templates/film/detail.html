@@ -16,18 +16,18 @@
     <h6 th:text="'Acteurs :'"></h6>
 
 
-    <!--<div class="container">-->
-        <!--<div class="row">-->
-        <!--<div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="role : ${film.getRoles()}">-->
-                    <!--<a th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}">-->
-                        <!--<img class="photoPersonne"-->
-                                <!--th:src="'/persons/'+${role.getActeur().getAffiche()}"></a>-->
-                    <!--<br />-->
-                    <!--<a th:text="${role.getActeur().getPrenom()}+' '+${role.getActeur().getNom()}+' dans le rôle de : '+${role.getAlias()}"-->
-                       <!--th:href="@{/acteur/{Id} (Id=${role.getActeur().getId()})}"></a>-->
-                <!--</div>-->
-            <!--</div>-->
-    <!--</div>-->
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="role : ${film.getRoles()}">
+                    <a th:href="@{/person/detail/{Id} (Id=${role.getPerson().getId()})}">
+                        <img class="posterPersonneInFilmView"
+                                th:src="'/person/posters/'+${role.getPerson().getImagePath()}"></a>
+                    <br />
+                    <a th:text="${role.getPerson().getPrenom()}+' '+${role.getPerson().getNom()}+' dans le rôle de : '+${role.getName()}"
+                       th:href="@{/person/detail/{Id} (Id=${role.getPerson().getId()})}"></a>
+                </div>
+            </div>
+    </div>
 
 
 </div>
