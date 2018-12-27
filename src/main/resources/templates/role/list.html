@@ -26,7 +26,7 @@
         <a th:text="${role.name}"></a>
     </td>
     <td class="col-md-3">
-        <a th:text="${role.person.prenom}+' '+${role.person.nom}" th:href="@{/person/detail/{id}(id=${role.person.id})}"></a>
+        <a th:text="${role.person.prenom}+' '+${role.person.nom}" th:href="@{/person/detail/{id}(id=${role.id.filmId})}"></a>
     </td>
     <td class="col-md-3">
         <a th:text="${role.film.titre}" th:href="@{/film/detail/{id}(id=${role.film.id})}"></a>

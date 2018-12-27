@@ -187,14 +187,6 @@ public class RoleController {
         return "role/list";
     }
 
-    @GetMapping("/detail/{id}")
-    public String detail(@PathVariable("id") long id, Model model){
-        model.addAttribute("role", roleDao.findById(id).get());
-//        model.addAttribute("person", personDao.findById(id).get());
-//        model.addAttribute("film", filmDao.findById(id).get());
-        return "role/detail";
-    }
-
     @GetMapping("/mod/{id}")
     public String mod(@PathVariable("id")long id, Model model){
         model.addAttribute("role", roleDao.findById(id).get());
