@@ -196,12 +196,20 @@ public class RoleController {
     @GetMapping("/add")
     public String add(Model model){
         model.addAttribute("role", new Role());
+        model.addAttribute("films", filmDao.findAll());
+        model.addAttribute("persons", personDao.findAll());
         return "role/form";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id){
         roleDao.deleteById(id);
+        return "redirect:/role/list";
+    }
+
+    @PostMapping("/add")
+    public String submit(@ModelAttribute Role role){
+        roleDao.save(role);
         return "redirect:/role/list";
     }
 }

@@ -23,6 +23,7 @@ public class CinemaSpringBootApplication {
         // TODO : CSS resize des images avec conservation des ratio H/W
         // TODO : différencier acteurs des réalisateurs (et autres métiers)
         // TODO : listes déroulantes dans les templates
+        // TODO : permettre de choisir un réalisateur lors de la création du film
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }
