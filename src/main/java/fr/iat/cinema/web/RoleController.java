@@ -148,6 +148,7 @@
 
 package fr.iat.cinema.web;
 
+import fr.iat.cinema.dao.FilmDao;
 import fr.iat.cinema.dao.PersonDao;
 import fr.iat.cinema.dao.RoleDao;
 import fr.iat.cinema.model.Person;
@@ -174,6 +175,12 @@ public class RoleController {
     @Autowired
     RoleDao roleDao;
 
+    @Autowired
+    PersonDao personDao;
+
+    @Autowired
+    FilmDao filmDao;
+
     @GetMapping("/list")
     public String list(Model model){
         model.addAttribute("roles", roleDao.findAllByOrderByIdAsc());
@@ -183,6 +190,8 @@ public class RoleController {
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id") long id, Model model){
         model.addAttribute("role", roleDao.findById(id).get());
+//        model.addAttribute("person", personDao.findById(id).get());
+//        model.addAttribute("film", filmDao.findById(id).get());
         return "role/detail";
     }
 

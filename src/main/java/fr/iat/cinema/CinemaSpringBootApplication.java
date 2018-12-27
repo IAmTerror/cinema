@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @Configuration
 @EnableConfigurationProperties(Path.class)
-public class TpCinemaSpringBootApplication {
+public class CinemaSpringBootApplication {
 
     public static void main(String[] args) {
 
@@ -22,7 +22,8 @@ public class TpCinemaSpringBootApplication {
         // après la fermeture le l'application, la mémoire du dernier id donné soit persistée
         // TODO : CSS resize des images avec conservation des ratio H/W
         // TODO : différencier acteurs des réalisateurs (et autres métiers)
+        // TODO : listes déroulantes dans les templates
 
-        SpringApplication.run(TpCinemaSpringBootApplication.class, args);
+        SpringApplication.run(CinemaSpringBootApplication.class, args);
     }
 }
