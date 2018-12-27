@@ -60,12 +60,7 @@ footer {
     padding-bottom: 2%;
 }
 
-.posterPersonneInFilmView {
-    width: 80%;
-    height: 80%;
-}
-
-.affichesFilmsPageActeur {
+.posterPersonneInFilmView, .afficheFilmInPersonView {
     width: 80%;
     height: 80%;
 }

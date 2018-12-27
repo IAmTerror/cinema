@@ -149,7 +149,9 @@
 package fr.iat.cinema.web;
 
 import fr.iat.cinema.dao.PersonDao;
+import fr.iat.cinema.dao.RoleDao;
 import fr.iat.cinema.model.Person;
+import fr.iat.cinema.model.Role;
 import fr.iat.cinema.service.ImageManager;
 import fr.iat.cinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -166,84 +168,39 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 @Controller
-@RequestMapping(value = "/person")
-public class PersonController {
+@RequestMapping(value = "/role")
+public class RoleController {
 
     @Autowired
-    PersonDao personDao;
-
-    @Autowired
-    ImageManager imm;
-
-    @Autowired
-    Path path;
+    RoleDao roleDao;
 
     @GetMapping("/list")
     public String list(Model model){
-        model.addAttribute("persons", personDao.findAllByOrderByIdAsc());
-        return "person/list";
+        model.addAttribute("roles", roleDao.findAllByOrderByIdAsc());
+        return "role/list";
     }
 
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id") long id, Model model){
-        model.addAttribute("person", personDao.findById(id).get());
-        return "person/detail";
+        model.addAttribute("role", roleDao.findById(id).get());
+        return "role/detail";
     }
 
     @GetMapping("/mod/{id}")
     public String mod(@PathVariable("id")long id, Model model){
-        model.addAttribute("person", personDao.findById(id).get());
-        return "person/form";
+        model.addAttribute("role", roleDao.findById(id).get());
+        return "role/form";
     }
 
     @GetMapping("/add")
     public String add(Model model){
-        model.addAttribute("person", new Person());
-        return "person/form";
+        model.addAttribute("role", new Role());
+        return "role/form";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id){
-        personDao.deleteById(id);
-        return "redirect:/person/list";
-    }
-
-    @PostMapping("/add")
-    public String submit(@RequestParam("photo") MultipartFile file, @ModelAttribute Person person){
-        if(file.getContentType().equalsIgnoreCase("image/jpeg")){
-            try {
-                imm.savePhoto(person, file.getInputStream());
-            } catch (IOException ioe){
-                System.out.println("Erreur lecture : "+ioe.getMessage());
-            }
-        }
-        personDao.save(person);
-        return "redirect:/person/list";
-    }
-
-
-    // ============ POSTERS PERSONNES ============ //
-    @GetMapping("/posters/{id}")
-    public void personne(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
-
-        String filename = path.getPoster() + id;
-
-        String mime = request.getServletContext().getMimeType(filename);
-        if (mime == null) {
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            return;
-        }
-        response.setContentType(mime);
-        File file = new File(filename);
-        response.setContentLength((int) file.length());
-        FileInputStream in = new FileInputStream(file);
-        OutputStream out = response.getOutputStream();
-        byte[] buf = new byte[1024];
-        int count = 0;
-        while ((count = in.read(buf)) >= 0) {
-            out.write(buf, 0, count);
-        }
-        out.close();
-        in.close();
+        roleDao.deleteById(id);
+        return "redirect:/role/list";
     }
 }

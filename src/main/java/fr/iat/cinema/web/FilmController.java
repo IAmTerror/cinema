@@ -139,7 +139,7 @@ public class FilmController {
     }
 
     @GetMapping("/delete/{id}")
-    public String filmDelete(@PathVariable("id") Long id){
+    public String delete(@PathVariable("id") Long id){
         filmDao.deleteById(id);
         return "redirect:/film/list";
     }

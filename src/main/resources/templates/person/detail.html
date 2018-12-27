@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="person : ${person.getRoles()}">
                 <a th:href="@{/film/detail/{Id} (Id=${person.getFilm().getId()})}">
-                    <img class="affichesFilmsPageActeur"
+                    <img class="afficheFilmInPersonView"
                          th:src="'/film/affiches/'+${person.getFilm().getImagePath()}">
                 </a>
                 <br/>
