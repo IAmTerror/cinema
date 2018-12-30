@@ -65,8 +65,7 @@ package fr.iat.cinema.model;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "play")
+@Entity(name = "play")
 public class Role {
 
     // Composite key, for Person id + Film id (see RoleId)
@@ -74,10 +73,12 @@ public class Role {
     private RoleId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "film_id") // TODO : très probablement inutile mais...
     @MapsId("filmId")
     private Film film;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id") // TODO : très probablement inutile mais...
     @MapsId("personId")
     private Person person;
 
@@ -136,6 +137,11 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void ajouterRole() {
+        film.addRole(this);
+        person.addRole(this);
     }
 
     @Override

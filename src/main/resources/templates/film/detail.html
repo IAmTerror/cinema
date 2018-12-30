@@ -13,9 +13,10 @@
     <img class="afficheFilm" th:src="'/film/affiches/'+${film.imagePath}">
     <h6 th:text="'Résumé : '+${film.resume}">Resumé</h6>
     <h6 th:text="'Realisateur : '+${film.director.prenom}+' '+${film.director.nom}">Realisateur</h6>
+    <h6 th:text="'Genres : '">Genres</h6>
+    <span th:each="genre : ${film.getGenres()}" th:text="${genre.name}+', '">Genres</span>
+
     <h6 th:text="'Acteurs :'"></h6>
-
-
     <div class="container">
         <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="role : ${film.getRoles()}">

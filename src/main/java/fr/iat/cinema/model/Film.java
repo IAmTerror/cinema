@@ -120,16 +120,14 @@
 package fr.iat.cinema.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity(name = "films")
 public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Long id;
 
     @Basic
     @Column(name = "title", nullable = false, length = 210)
@@ -154,11 +152,14 @@ public class Film {
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Role> roles = new ArrayList<>();
 
-    public long getId() {
+    @ManyToMany(mappedBy = "films")
+    private Set<Genre> genres = new HashSet<>();
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -210,23 +211,35 @@ public class Film {
         this.roles = roles;
     }
 
+    public Set<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
+    }
+
+    public void addRole(Role role) {
+        if (!roles.contains(role)) {
+            this.roles.add(role);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Film)) return false;
         Film film = (Film) o;
-        return getId() == film.getId() &&
+        return Objects.equals(getId(), film.getId()) &&
                 Objects.equals(getTitre(), film.getTitre()) &&
                 Objects.equals(getNotation(), film.getNotation()) &&
                 Objects.equals(getImagePath(), film.getImagePath()) &&
-                Objects.equals(getResume(), film.getResume()) &&
-                Objects.equals(getDirector(), film.getDirector()) &&
-                Objects.equals(getRoles(), film.getRoles());
+                Objects.equals(getResume(), film.getResume());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitre(), getNotation(), getImagePath(), getResume(), getDirector(), getRoles());
+        return Objects.hash(getId(), getTitre(), getNotation(), getImagePath(), getResume());
     }
 
     @Override

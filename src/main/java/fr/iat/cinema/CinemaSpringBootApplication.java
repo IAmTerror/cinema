@@ -24,6 +24,7 @@ public class CinemaSpringBootApplication {
         // TODO : différencier acteurs des réalisateurs (et autres métiers)
         // TODO : listes déroulantes dans les templates
         // TODO : permettre de choisir un réalisateur lors de la création du film
+        // TODO : le CRUD de Role ne fonctionne pas (erreur Hbernate : Could not set field value by reflection)
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }

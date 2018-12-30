@@ -123,13 +123,14 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity(name = "persons")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Long id;
 
     @Basic
     @Column(name = "surname", nullable = false, length = 60)
@@ -154,11 +155,11 @@ public class Person {
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Role> roles = new ArrayList<>();
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -217,30 +218,28 @@ public class Person {
         }
     }
 
+    public void addRole(Role role) {
+        if (!roles.contains(role)) {
+            this.roles.add(role);
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Person persons = (Person) o;
-
-        if (id != persons.id) return false;
-        if (nom != null ? !nom.equals(persons.nom) : persons.nom != null) return false;
-        if (prenom != null ? !prenom.equals(persons.prenom) : persons.prenom != null) return false;
-        if (naissance != null ? !naissance.equals(persons.naissance) : persons.naissance != null) return false;
-        if (imagePath != null ? !imagePath.equals(persons.imagePath) : persons.imagePath != null) return false;
-
-        return true;
+        if (!(o instanceof Person)) return false;
+        Person person = (Person) o;
+        return Objects.equals(getId(), person.getId()) &&
+                Objects.equals(getNom(), person.getNom()) &&
+                Objects.equals(getPrenom(), person.getPrenom()) &&
+                Objects.equals(getNaissance(), person.getNaissance()) &&
+                Objects.equals(getImagePath(), person.getImagePath()) &&
+                Objects.equals(getDirectedFilms(), person.getDirectedFilms()) &&
+                Objects.equals(getRoles(), person.getRoles());
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (nom != null ? nom.hashCode() : 0);
-        result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
-        result = 31 * result + (naissance != null ? naissance.hashCode() : 0);
-        result = 31 * result + (imagePath != null ? imagePath.hashCode() : 0);
-        return result;
+        return Objects.hash(getId(), getNom(), getPrenom(), getNaissance(), getImagePath(), getDirectedFilms(), getRoles());
     }
 }
