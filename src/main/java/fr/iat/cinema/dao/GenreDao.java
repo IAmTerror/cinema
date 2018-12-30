@@ -162,7 +162,6 @@
 package fr.iat.cinema.dao;
 
 import fr.iat.cinema.model.Genre;
-import fr.iat.cinema.model.Role;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

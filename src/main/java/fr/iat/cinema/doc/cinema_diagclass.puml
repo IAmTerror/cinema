@@ -1,23 +1,29 @@
 @startuml
-class Play {
-id
-name
+class Role {
+- id
+- name
 }
 
 class Film {
-id
-name
-rank
-imagePath
+- id
+- name
+- rank
+- imagePath
 }
 
 class Person {
-id
-name
+- id
+- name
 }
 
-Play "  *  " -- "  1  " Person
-Play "  *  " -- "  1  " Film
+class Genre {
+- id
+- name
+}
+
+Role "  *  " -- "  1  " Person
+Role "  *  " -- "  1  " Film
+Genre "  *  " -- "  *  " Film
 
 Film "* directedFilms" - "1 director" Person :"                                    "
 hide circle
