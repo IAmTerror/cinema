@@ -169,6 +169,12 @@ public class GenreController {
         return "genre/list";
     }
 
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable("id") long id, Model model){
+        model.addAttribute("genre", genreDao.findById(id).get());
+        return "genre/detail";
+    }
+
     @GetMapping("/mod/{id}")
     public String mod(@PathVariable("id")long id, Model model){
         model.addAttribute("genre", genreDao.findById(id).get());
