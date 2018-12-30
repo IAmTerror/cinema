@@ -148,68 +148,48 @@
 
 package fr.iat.cinema.web;
 
-import fr.iat.cinema.dao.FilmDao;
-import fr.iat.cinema.dao.PersonDao;
-import fr.iat.cinema.dao.RoleDao;
-import fr.iat.cinema.model.Person;
-import fr.iat.cinema.model.Role;
-import fr.iat.cinema.service.ImageManager;
-import fr.iat.cinema.service.Path;
+import fr.iat.cinema.dao.GenreDao;
+import fr.iat.cinema.model.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 @Controller
-@RequestMapping(value = "/role")
-public class RoleController {
+@RequestMapping(value = "/genre")
+public class GenreController {
 
     @Autowired
-    RoleDao roleDao;
+    GenreDao genreDao;
 
-    @Autowired
-    PersonDao personDao;
-
-    @Autowired
-    FilmDao filmDao;
 
     @GetMapping("/list")
     public String list(Model model){
-        model.addAttribute("roles", roleDao.findAllByOrderByIdAsc());
-        return "role/list";
+        model.addAttribute("genres", genreDao.findAllByOrderByIdAsc());
+        return "genre/list";
     }
 
     @GetMapping("/mod/{id}")
     public String mod(@PathVariable("id")long id, Model model){
-        model.addAttribute("role", roleDao.findById(id).get());
-        return "role/form";
+        model.addAttribute("genre", genreDao.findById(id).get());
+        return "genre/form";
     }
 
     @GetMapping("/add")
     public String add(Model model){
-        model.addAttribute("role", new Role());
-        model.addAttribute("films", filmDao.findAll());
-        model.addAttribute("persons", personDao.findAll());
-        return "role/form";
+        model.addAttribute("genre", new Genre());
+        return "genre/form";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id){
-        roleDao.deleteById(id);
-        return "redirect:/role/list";
+        genreDao.deleteById(id);
+        return "redirect:/genre/list";
     }
 
     @PostMapping("/add")
-    public String submit(@ModelAttribute Role role){
-        roleDao.save(role);
-        return "redirect:/role/list";
+    public String submit(@ModelAttribute Genre genre){
+        genreDao.save(genre);
+        return "redirect:/genre/list";
     }
 }

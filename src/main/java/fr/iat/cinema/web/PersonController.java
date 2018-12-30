@@ -24,13 +24,13 @@
 //public class PersonneController {
 //
 //    @Autowired
-//    PersonDao roleDao;
+//    PersonDao genreDao;
 //
 //    @Autowired
 //    ImageManager imm;
 //
 ////    @Autowired
-////    RoleDao roleDao;
+////    RoleDao genreDao;
 //
 ////    @Autowired
 ////    private Path path;
@@ -38,14 +38,14 @@
 //
 //    @GetMapping("/list")
 //    public String personnesListe(Model model) {
-//        model.addAttribute("persons", roleDao.getAll());
+//        model.addAttribute("persons", genreDao.getAll());
 //        return "person/list";
 //    }
 //
 //    @GetMapping("/detail/{id}")
 //    public String person(Model model, @PathVariable("id") String id) {
 //        long idPersonne = Long.parseLong(id);
-//        model.addAttribute("person", roleDao.getById(idPersonne));
+//        model.addAttribute("person", genreDao.getById(idPersonne));
 //        return "person/detail";
 //    }
 //
@@ -58,25 +58,25 @@
 //    @GetMapping("/modif/{id}")
 //    public String personneModif(Model model, @PathVariable("id") String id) {
 //        long idPersonne = Long.parseLong(id);
-//        model.addAttribute("person", roleDao.getById(idPersonne));
+//        model.addAttribute("person", genreDao.getById(idPersonne));
 //        return "person/modif";
 //    }
 //
 //    @PostMapping("/update")
 //    public String personneUpdate(@ModelAttribute Person person){
-//        roleDao.save(person);
+//        genreDao.save(person);
 //        return "redirect:/person/list";
 //    }
 //
 //    @GetMapping("/delete/{id}")
 //    public String personneDelete(@PathVariable("id") Long id){
-//        roleDao.delete(id);
+//        genreDao.delete(id);
 //        return "redirect:/person/list";
 //    }
 //
 ////    @PostMapping("/add")
 ////    public String personneAdd(@ModelAttribute Person person){
-////        roleDao.save(person);
+////        genreDao.save(person);
 ////        return "redirect:/person/list";
 ////    }
 //
@@ -89,7 +89,7 @@
 //                System.out.println("Erreur lecture : "+ioe.getMessage());
 //            }
 //        }
-//        roleDao.save(person);
+//        genreDao.save(person);
 //        return "redirect:/person/list";
 //    }
 //
