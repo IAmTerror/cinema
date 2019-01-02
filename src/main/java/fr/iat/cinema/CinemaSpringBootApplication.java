@@ -18,13 +18,12 @@ public class CinemaSpringBootApplication {
         // TODO : gérer de façon plus simple le stream des images
         // TODO : trouver une solution pour afficher les fieldset
         // TODO : bug fix : quand on ajoute une person (et autre objet aussi ?), l'appli essaie de...
-        // ... lui donner l'id=1, échec, puis l'id=2, échec, jusqu'à un id pas pris. Faire en sorte que...
-        // après la fermeture le l'application, la mémoire du dernier id donné soit persistée
         // TODO : CSS resize des images avec conservation des ratio H/W
         // TODO : différencier acteurs des réalisateurs (et autres métiers)
-        // TODO : listes déroulantes dans les templates
         // TODO : permettre de choisir un réalisateur lors de la création du film
-        // TODO : le CRUD de Role ne fonctionne pas (erreur Hbernate : Could not set field value by reflection)
+        // TODO : le CRUD de Role ne fonctionne pas (erreur Hibernate : Could not set field value by reflection)
+        // TODO : le CRUD de Genre ne fonctionne pas
+        // TODO : Remplacer les List par des Set
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }
