@@ -12,25 +12,24 @@
     <h1>Editer une personne :</h1>
 
     <form action="#" th:action="@{/person/add}" th:object="${actor}" enctype="multipart/form-data" method="post">
-        <input type="hidden" th:id="id" th:name="id" th:value="${actor.id}"/>
+        <input type="hidden" th:field="${actor.id}"/>
         <input type="hidden" th:field="${actor.imagePath}"/>
         <div class="form-group row">
             <label th:for="surname" class="col-sm-2 col-form-label">Nom</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:id="surname" th:name="surname" th:value="${actor.surname}"/>
+                <input type="text" class="form-control" th:object="${actor.surname}"/>
             </div>
         </div>
         <div class="form-group row">
             <label th:for="givenname" class="col-sm-2 col-form-label">Prénom</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:id="givenname" th:name="givenname" th:value="${actor.givenname}"/>
+                <input type="text" class="form-control" th:object="${actor.givenname}"/>
             </div>
         </div>
         <div class="form-group row">
             <label th:for="birthday" class="col-sm-2 col-form-label">Date de naissance</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" th:id="birthday" th:name="birthday"
-                       th:value="${actor.birthday}"/>
+                <input type="date" class="form-control" th:object="${actor.birthday}"/>
             </div>
         </div>
         <div class="form-group row">

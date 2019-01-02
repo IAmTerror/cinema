@@ -22,7 +22,6 @@ public class CinemaSpringBootApplication {
         // TODO : différencier acteurs des réalisateurs (et autres métiers)
         // TODO : permettre de choisir un réalisateur lors de la création du film
         // TODO : le CRUD de Role ne fonctionne pas (erreur Hibernate : Could not set field value by reflection)
-        // TODO : le CRUD de Genre ne fonctionne pas
         // TODO : Remplacer les List par des Set
         // TODO : intégrer le release_date de Film dans les vues correspondantes
         // TODO : trouver un bugfix pour Review et User

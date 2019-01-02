@@ -156,7 +156,8 @@ public class Film {
     @JoinColumn(name = "film_director")
     private Person director;
 
-    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
+    // TODO : repasser orphanRemoval à true si nécessaire pour la persistance
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = false)
     private Set<Role> roles;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})

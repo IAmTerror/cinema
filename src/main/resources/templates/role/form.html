@@ -45,7 +45,7 @@
         <div class="form-group row">
             <label th:for="films" class="col-sm-2 col-form-label">Film</label>
             <div class="col-sm-10">
-                <input list="films" class="form-control" id="filmsList" name="films" th:field="${role.film}">
+                <input list="films" class="form-control" th:field="${role.film}">
                 <datalist id="films">
                     <option th:each="film : ${films}" th:value="${film.id}" th:label="${film.title}"></option>
                 </datalist>
@@ -55,8 +55,7 @@
         <div class="form-group row">
             <label th:for="rank" class="col-sm-2 col-form-label">Rang</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:id="rank" th:name="rank"
-                       th:value="${role.rank}"/>
+                <input type="text" class="form-control" th:value="${role.rank}"/>
             </div>
         </div>
         <div class="button">

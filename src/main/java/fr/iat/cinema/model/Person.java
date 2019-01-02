@@ -155,7 +155,8 @@ public class Person {
     @OneToMany(mappedBy = "director")
     private Set<Film> directedFilms;
 
-    @OneToMany(mappedBy = "actor", cascade = CascadeType.ALL, orphanRemoval = true)
+    // TODO : repasser orphanRemoval à true si nécessaire pour la persistance
+    @OneToMany(mappedBy = "actor", cascade = CascadeType.ALL, orphanRemoval = false)
     private Set<Role> roles;
 
     public long getId() {
