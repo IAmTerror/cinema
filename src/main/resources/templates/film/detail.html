@@ -20,12 +20,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="role : ${film.getRoles()}">
-                <a th:href="@{/person/detail/{Id} (Id=${role.getPerson().getId()})}">
+                <a th:href="@{/person/detail/{Id} (Id=${role.getActor().getId()})}">
                     <img class="posterPersonneInFilmView"
-                         th:src="'/person/posters/'+${role.getPerson().getImagePath()}"></a>
+                         th:src="'/person/posters/'+${role.getActor().getImagePath()}"></a>
                 <br/>
-                <a th:text="${role.getPerson().getPrenom()}+' '+${role.getPerson().getNom()}+' dans le rôle de : '+${role.getName()}"
-                   th:href="@{/person/detail/{Id} (Id=${role.getPerson().getId()})}"></a>
+                <a th:text="${role.getActor().getSurname()}+' '+${role.getActor().getGivenname()}+' dans le rôle de : '+${role.getName()}"
+                   th:href="@{/person/detail/{Id} (Id=${role.getActor().getId()})}"></a>
             </div>
         </div>
     </div>

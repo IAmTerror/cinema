@@ -164,8 +164,8 @@ public class Film {
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private Set<Genre> genres;
 
-    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Review> reviews;
+//    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<Review> reviews;
 
     public long getId() {
         return id;
@@ -239,13 +239,13 @@ public class Film {
         this.genres = genres;
     }
 
-    public Set<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Set<Review> reviews) {
-        this.reviews = reviews;
-    }
+//    public Set<Review> getReviews() {
+//        return reviews;
+//    }
+//
+//    public void setReviews(Set<Review> reviews) {
+//        this.reviews = reviews;
+//    }
 
     @Override
     public boolean equals(Object o) {

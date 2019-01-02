@@ -2,26 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${person.surname}">Title</title>
+    <title th:text="${actor.surname}">Title</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
-    <h1 th:text="${person.givenname}+' '+${person.surname}"></h1>
-    <img class="posterPersonne" th:src="'/person/posters/'+${person.imagePath}">
-    <h6 th:text="'Date de naissance : '+${person.birthday}">Resumé</h6>
+    <h1 th:text="${actor.givenname}+' '+${actor.surname}"></h1>
+    <img class="posterPersonne" th:src="'/person/posters/'+${actor.imagePath}">
+    <h6 th:text="'Date de naissance : '+${actor.birthday}">Resumé</h6>
     <h6 th:text="'Filmographie :'"></h6>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="person : ${person.getRoles()}">
-                <a th:href="@{/film/detail/{Id} (Id=${person.getFilm().getId()})}">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="actor : ${actor.getRoles()}">
+                <a th:href="@{/film/detail/{Id} (Id=${actor.getFilm().getId()})}">
                     <img class="afficheFilmInPersonView"
-                         th:src="'/film/affiches/'+${person.getFilm().getImagePath()}">
+                         th:src="'/film/affiches/'+${actor.getFilm().getImagePath()}">
                 </a>
                 <br/>
-                <a th:text="${person.getFilm().getTitre()}"
-                   th:href="@{/film/detail/{Id} (Id=${person.getFilm().getId()})}"></a>
+                <a th:text="${actor.getFilm().getTitle()}"
+                   th:href="@{/film/detail/{Id} (Id=${actor.getFilm().getId()})}"></a>
             </div>
         </div>
     </div>

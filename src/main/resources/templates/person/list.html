@@ -19,17 +19,17 @@
         <th>Nom</th>
         <th>Action</th>
     </tr>
-<tr th:each="person : ${persons}">
+<tr th:each="actor : ${actors}">
     <td class="col-md-1">
-        <a th:text="${person.id}" th:href="@{/person/detail/{id}(id=${person.id})}"></a>
+        <a th:text="${actor.id}" th:href="@{/person/detail/{id}(id=${actor.id})}"></a>
     </td>
     <td class="col-md-9">
-    <a th:text="${person.surname}+' '+${person.givenname}" th:href="@{/person/detail/{id}(id=${person.id})}"></a>
+    <a th:text="${actor.surname}+' '+${actor.givenname}" th:href="@{/person/detail/{id}(id=${actor.id})}"></a>
     </td>
     <td class="col-md-2 text-center">
         <a class="btn btn-warning btn-sm"
-           th:href="@{'/person/mod/' + ${person.id}}">Modifier</a>
-        <a class="btn btn-danger btn-sm" th:href="@{'/person/delete/' + ${person.id}}">Supprimer</a>
+           th:href="@{'/person/mod/' + ${actor.id}}">Modifier</a>
+        <a class="btn btn-danger btn-sm" th:href="@{'/person/delete/' + ${actor.id}}">Supprimer</a>
     </td>
 </tr>
 </table>

@@ -180,25 +180,25 @@ public class PersonController {
 
     @GetMapping("/list")
     public String list(Model model){
-        model.addAttribute("persons", personDao.findAllByOrderByIdAsc());
+        model.addAttribute("actors", personDao.findAllByOrderByIdAsc());
         return "person/list";
     }
 
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id") long id, Model model){
-        model.addAttribute("person", personDao.findById(id).get());
+        model.addAttribute("actor", personDao.findById(id).get());
         return "person/detail";
     }
 
     @GetMapping("/mod/{id}")
     public String mod(@PathVariable("id")long id, Model model){
-        model.addAttribute("person", personDao.findById(id).get());
+        model.addAttribute("actor", personDao.findById(id).get());
         return "person/form";
     }
 
     @GetMapping("/add")
     public String add(Model model){
-        model.addAttribute("person", new Person());
+        model.addAttribute("actor", new Person());
         return "person/form";
     }
 

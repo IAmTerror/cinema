@@ -25,6 +25,7 @@ public class CinemaSpringBootApplication {
         // TODO : le CRUD de Genre ne fonctionne pas
         // TODO : Remplacer les List par des Set
         // TODO : intégrer le release_date de Film dans les vues correspondantes
+        // TODO : trouver un bugfix pour Review et User
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }
