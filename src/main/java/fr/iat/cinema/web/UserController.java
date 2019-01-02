@@ -83,8 +83,9 @@
 
 package fr.iat.cinema.web;
 
-import fr.iat.cinema.dao.FilmDao;
+import fr.iat.cinema.dao.UserDao;
 import fr.iat.cinema.model.Film;
+import fr.iat.cinema.model.User;
 import fr.iat.cinema.service.ImageManager;
 import fr.iat.cinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,11 +102,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 @Controller
-@RequestMapping("/film")
-public class FilmController {
+@RequestMapping("/user")
+public class UserController {
 
     @Autowired
-    FilmDao filmDao;
+    UserDao userDao;
 
     @Autowired
     ImageManager imm;
@@ -115,73 +116,38 @@ public class FilmController {
 
     @GetMapping("/list")
     public String list(Model model){
-        Iterable<Film> films = filmDao.findAllByOrderByIdAsc();
-        model.addAttribute("films", films);
-        return "film/list";
+        Iterable<User> users = userDao.findAllByOrderByIdAsc();
+        model.addAttribute("users", users);
+        return "user/list";
     }
 
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id")long id, Model model){
-        model.addAttribute("film", filmDao.findById(id).get());
-        return "film/detail";
+        model.addAttribute("user", userDao.findById(id).get());
+        return "user/detail";
     }
 
     @GetMapping("/mod/{id}")
     public String mod(@PathVariable("id")long id, Model model){
-        model.addAttribute("film", filmDao.findById(id).get());
-        return "film/form";
+        model.addAttribute("user", userDao.findById(id).get());
+        return "user/form";
     }
 
     @GetMapping("/add")
     public String add(Model model){
-        model.addAttribute("film", new Film());
-        return "film/form";
+        model.addAttribute("user", new User());
+        return "user/form";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id){
-        filmDao.deleteById(id);
-        return "redirect:/film/list";
+        userDao.deleteById(id);
+        return "redirect:/user/list";
     }
 
     @PostMapping("/add")
-    public String submit(@RequestParam("poster")MultipartFile file, @ModelAttribute Film film){
-        if(file.getContentType().equalsIgnoreCase("image/jpeg")){
-            try {
-                imm.savePoster(film, file.getInputStream());
-            } catch (IOException ioe){
-                System.out.println("Erreur lecture : "+ioe.getMessage());
-            }
-        }
-        filmDao.save(film);
-
-        return "redirect:/film/list";
-    }
-
-    // ========== AFFICHES =======================================================
-    @GetMapping("/affiches/{id}")
-    public void affiche(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) throws IOException {
-
-//        String affichesPath="C:\\Users\\cyril\\OUTER HEAVEN\\CDA\\varni\\tp-springboot\\sources\\affiches\\";
-        String filename = path.getAffiche() + id;
-
-        // ============ UTILITAIRE POUR IMPORTER DES IMAGES A PARTIR D'UN FOLDER EXTERNE A L'APPLICATION ============ //
-        String mime = request.getServletContext().getMimeType(filename);
-        if (mime == null) {
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            return;
-        }
-        response.setContentType(mime);
-        File file = new File(filename);
-        response.setContentLength((int) file.length());
-        FileInputStream in = new FileInputStream(file);
-        OutputStream out = response.getOutputStream();
-        byte[] buf = new byte[1024];
-        int count = 0;
-        while ((count = in.read(buf)) >= 0) {
-            out.write(buf, 0, count);
-        }
-        out.close();
-        in.close();
+    public String submit(@ModelAttribute User user){
+        userDao.save(user);
+        return "redirect:/user/list";
     }
 }

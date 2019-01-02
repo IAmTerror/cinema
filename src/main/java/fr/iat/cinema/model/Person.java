@@ -129,6 +129,7 @@ import java.util.Set;
 @Entity
 @Table(name = "persons")
 public class Person {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -137,6 +138,7 @@ public class Person {
     @Basic
     @Column(name = "surname", nullable = false, length = 60)
     private String surname; //nom
+
     @Basic
     @Column(name = "givenname", nullable = true, length = 40)
     private String givenname; //prenom

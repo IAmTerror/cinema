@@ -24,6 +24,7 @@ public class CinemaSpringBootApplication {
         // TODO : le CRUD de Role ne fonctionne pas (erreur Hibernate : Could not set field value by reflection)
         // TODO : le CRUD de Genre ne fonctionne pas
         // TODO : Remplacer les List par des Set
+        // TODO : intégrer le release_date de Film dans les vues correspondantes
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }

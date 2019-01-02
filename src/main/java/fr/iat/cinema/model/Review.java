@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "review")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +38,6 @@ public class Review {
     public void setArticle(String article) {
         this.article = article;
     }
-
 
     public Timestamp getDate() {
         return date;

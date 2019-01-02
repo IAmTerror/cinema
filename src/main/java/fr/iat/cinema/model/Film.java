@@ -121,9 +121,11 @@ package fr.iat.cinema.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.*;
 
-@Entity(name = "films")
+@Entity
+@Table(name = "films")
 public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -146,6 +148,10 @@ public class Film {
     @Column(name = "summary", nullable = true, length = -1)
     private String summary;
 
+    @Basic
+    @Column(name="release_date", nullable = true)
+    private LocalDate releaseDate;
+
     @ManyToOne
     @JoinColumn(name = "film_director")
     private Person director;
@@ -153,12 +159,10 @@ public class Film {
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Role> roles;
 
-
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name="film_genre", joinColumns = @JoinColumn(name="film_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private Set<Genre> genres;
-
 
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Review> reviews;
@@ -203,6 +207,14 @@ public class Film {
         this.summary = summary;
     }
 
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
     public Person getDirector() {
         return director;
     }
@@ -244,11 +256,12 @@ public class Film {
                 Objects.equals(getTitle(), film.getTitle()) &&
                 Objects.equals(getRating(), film.getRating()) &&
                 Objects.equals(getImagePath(), film.getImagePath()) &&
-                Objects.equals(getSummary(), film.getSummary());
+                Objects.equals(getSummary(), film.getSummary()) &&
+                Objects.equals(getReleaseDate(), film.getReleaseDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getRating(), getImagePath(), getSummary());
+        return Objects.hash(getId(), getTitle(), getRating(), getImagePath(), getSummary(), getReleaseDate());
     }
 }
