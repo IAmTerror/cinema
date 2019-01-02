@@ -124,67 +124,68 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
-@Entity(name = "persons")
+@Entity
+@Table(name = "persons")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private long id;
 
     @Basic
     @Column(name = "surname", nullable = false, length = 60)
-    private String nom;
+    private String surname; //nom
     @Basic
     @Column(name = "givenname", nullable = true, length = 40)
-    private String prenom;
+    private String givenname; //prenom
 
     @Basic
     @Column(name = "birthday", nullable = true)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate naissance;
+    private LocalDate birthday;
 
     @Basic
     @Column(name = "image_path", nullable = true, length = 80)
     private String imagePath;
 
-    // TODO : replacer List par Set (permet de s'assurer qu'il n'y a pas de redondances dans la collection)
     @OneToMany(mappedBy = "director")
-    private List<Film> directedFilms;
+    private Set<Film> directedFilms;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Role> roles = new ArrayList<>();
+    @OneToMany(mappedBy = "actor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Role> roles;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getGivenname() {
+        return givenname;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setGivenname(String givenname) {
+        this.givenname = givenname;
     }
 
-    public LocalDate getNaissance() {
-        return naissance;
+    public LocalDate getBirthday() {
+        return birthday;
     }
 
-    public void setNaissance(LocalDate naissance) {
-        this.naissance = naissance;
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     public String getImagePath() {
@@ -195,33 +196,20 @@ public class Person {
         this.imagePath = imagePath;
     }
 
-    public List<Film> getDirectedFilms() {
+    public Set<Film> getDirectedFilms() {
         return directedFilms;
     }
 
-    public void setDirectedFilms(List<Film> directedFilms) {
+    public void setDirectedFilms(Set<Film> directedFilms) {
         this.directedFilms = directedFilms;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public void addDirectedFilm(Film film) {
-        if (!directedFilms.contains(film)) {
-            directedFilms.add(film);
-            film.setDirector(this);
-        }
-    }
-
-    public void addRole(Role role) {
-        if (!roles.contains(role)) {
-            this.roles.add(role);
-        }
     }
 
     @Override
@@ -229,17 +217,15 @@ public class Person {
         if (this == o) return true;
         if (!(o instanceof Person)) return false;
         Person person = (Person) o;
-        return Objects.equals(getId(), person.getId()) &&
-                Objects.equals(getNom(), person.getNom()) &&
-                Objects.equals(getPrenom(), person.getPrenom()) &&
-                Objects.equals(getNaissance(), person.getNaissance()) &&
-                Objects.equals(getImagePath(), person.getImagePath()) &&
-                Objects.equals(getDirectedFilms(), person.getDirectedFilms()) &&
-                Objects.equals(getRoles(), person.getRoles());
+        return getId() == person.getId() &&
+                Objects.equals(getSurname(), person.getSurname()) &&
+                Objects.equals(getGivenname(), person.getGivenname()) &&
+                Objects.equals(getBirthday(), person.getBirthday()) &&
+                Objects.equals(getImagePath(), person.getImagePath());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNom(), getPrenom(), getNaissance(), getImagePath(), getDirectedFilms(), getRoles());
+        return Objects.hash(getId(), getSurname(), getGivenname(), getBirthday(), getImagePath());
     }
 }

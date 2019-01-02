@@ -120,6 +120,7 @@
 package fr.iat.cinema.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.*;
 
 @Entity(name = "films")
@@ -127,56 +128,63 @@ public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private long id;
 
     @Basic
     @Column(name = "title", nullable = false, length = 210)
-    private String titre;
+    private String title;
 
     @Basic
-    @Column(name = "rating", nullable = true)
-    private Double notation;
+    @Column(name = "rating", nullable = true, precision = 1)
+    private BigDecimal rating;
 
     @Basic
-    @Column(name = "image_path", nullable = true, length = 80)
+    @Column(name = "image_path", nullable = true, length = 120)
     private String imagePath;
 
     @Basic
-    @Column(name = "summary", nullable = true)
-    private String resume;
+    @Column(name = "summary", nullable = true, length = -1)
+    private String summary;
 
     @ManyToOne
     @JoinColumn(name = "film_director")
     private Person director;
 
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Role> roles = new ArrayList<>();
+    private Set<Role> roles;
 
-    @ManyToMany(mappedBy = "films")
-    private Set<Genre> genres = new HashSet<>();
 
-    public Long getId() {
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name="film_genre", joinColumns = @JoinColumn(name="film_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private Set<Genre> genres;
+
+
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Review> reviews;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Double getNotation() {
-        return notation;
+    public BigDecimal getRating() {
+        return rating;
     }
 
-    public void setNotation(Double notation) {
-        this.notation = notation;
+    public void setRating(BigDecimal rating) {
+        this.rating = rating;
     }
 
     public String getImagePath() {
@@ -187,12 +195,12 @@ public class Film {
         this.imagePath = imagePath;
     }
 
-    public String getResume() {
-        return resume;
+    public String getSummary() {
+        return summary;
     }
 
-    public void setResume(String resume) {
-        this.resume = resume;
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
     public Person getDirector() {
@@ -203,11 +211,11 @@ public class Film {
         this.director = director;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
@@ -219,10 +227,12 @@ public class Film {
         this.genres = genres;
     }
 
-    public void addRole(Role role) {
-        if (!roles.contains(role)) {
-            this.roles.add(role);
-        }
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
     }
 
     @Override
@@ -230,27 +240,15 @@ public class Film {
         if (this == o) return true;
         if (!(o instanceof Film)) return false;
         Film film = (Film) o;
-        return Objects.equals(getId(), film.getId()) &&
-                Objects.equals(getTitre(), film.getTitre()) &&
-                Objects.equals(getNotation(), film.getNotation()) &&
+        return getId() == film.getId() &&
+                Objects.equals(getTitle(), film.getTitle()) &&
+                Objects.equals(getRating(), film.getRating()) &&
                 Objects.equals(getImagePath(), film.getImagePath()) &&
-                Objects.equals(getResume(), film.getResume());
+                Objects.equals(getSummary(), film.getSummary());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitre(), getNotation(), getImagePath(), getResume());
-    }
-
-    @Override
-    public String toString() {
-        return "Film{" +
-                "id=" + id +
-                ", titre='" + titre + '\'' +
-                ", notation=" + notation +
-                ", affiche='" + imagePath + '\'' +
-                ", resume='" + resume + '\'' +
-                ", realisateur=" + director +
-                '}';
+        return Objects.hash(getId(), getTitle(), getRating(), getImagePath(), getSummary());
     }
 }

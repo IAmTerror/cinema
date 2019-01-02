@@ -24,7 +24,7 @@
         <a th:text="${person.id}" th:href="@{/person/detail/{id}(id=${person.id})}"></a>
     </td>
     <td class="col-md-9">
-    <a th:text="${person.nom}+' '+${person.prenom}" th:href="@{/person/detail/{id}(id=${person.id})}"></a>
+    <a th:text="${person.surname}+' '+${person.givenname}" th:href="@{/person/detail/{id}(id=${person.id})}"></a>
     </td>
     <td class="col-md-2 text-center">
         <a class="btn btn-warning btn-sm"

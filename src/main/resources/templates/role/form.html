@@ -28,9 +28,9 @@
         <div class="form-group row">
             <label th:for="persons" class="col-sm-2 col-form-label">Acteur</label>
             <div class="col-sm-10">
-                <input list="persons" class="form-control" id="personsList" name="persons" th:field="${role.person}">
+                <input list="persons" class="form-control" id="personsList" name="persons" th:field="${role.actor}">
                 <datalist id="persons">
-                    <option th:each="person : ${persons}" th:value="${person.id}" th:label="${person.nom}"></option>
+                    <option th:each="person : ${persons}" th:value="${person.id}" th:label="${person.givenname}"></option>
                 </datalist>
             </div>
             </input>
@@ -47,7 +47,7 @@
             <div class="col-sm-10">
                 <input list="films" class="form-control" id="filmsList" name="films" th:field="${role.film}">
                 <datalist id="films">
-                    <option th:each="film : ${films}" th:value="${film.id}" th:label="${film.titre}"></option>
+                    <option th:each="film : ${films}" th:value="${film.id}" th:label="${film.title}"></option>
                 </datalist>
             </div>
             </input>

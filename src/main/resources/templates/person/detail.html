@@ -2,15 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${person.nom}">Title</title>
+    <title th:text="${person.surname}">Title</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
-    <h1 th:text="${person.prenom}+' '+${person.nom}"></h1>
+    <h1 th:text="${person.givenname}+' '+${person.surname}"></h1>
     <img class="posterPersonne" th:src="'/person/posters/'+${person.imagePath}">
-    <h6 th:text="'Date de naissance : '+${person.naissance}">Resumé</h6>
+    <h6 th:text="'Date de naissance : '+${person.birthday}">Resumé</h6>
     <h6 th:text="'Filmographie :'"></h6>
     <div class="container">
         <div class="row">

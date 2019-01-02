@@ -18,7 +18,7 @@
                          th:src="'/film/affiches/'+${film.getImagePath()}">
                 </a>
                 <br/>
-                <a th:text="${film.getTitre()}"
+                <a th:text="${film.getTitle()}"
                    th:href="@{/film/detail/{Id} (Id=${film.getId()})}"></a>
             </div>
         </div>

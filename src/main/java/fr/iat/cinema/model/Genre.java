@@ -5,31 +5,27 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@Entity(name = "genres")
+@Entity
+@Table(name = "genres")
 public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private long id;
 
     @Basic
-    @Column(name = "name", nullable = false, length = 60)
+    @Column(name = "name", nullable = false, length = 30)
     private String name;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "film_genre",
-            joinColumns = { @JoinColumn(name = "genre_id") },
-            inverseJoinColumns = { @JoinColumn(name = "film_id") }
-    )
-    Set<Film> films = new HashSet<>();
+    @ManyToMany(mappedBy = "genres")
+    Set<Film> films;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -54,7 +50,7 @@ public class Genre {
         if (this == o) return true;
         if (!(o instanceof Genre)) return false;
         Genre genre = (Genre) o;
-        return Objects.equals(getId(), genre.getId()) &&
+        return getId() == genre.getId() &&
                 Objects.equals(getName(), genre.getName());
     }
 

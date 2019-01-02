@@ -2,32 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${film.titre}">Title</title>
+    <title th:text="${film.title}">Title</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="corps">
-    <h1 th:text="${film.titre}">Titre du film</h1>
-    <h2>Note : <span th:text="${film.notation}"></span></h2>
+    <h1 th:text="${film.title}">Titre du film</h1>
+    <h2>Note : <span th:text="${film.rating}"></span></h2>
     <img class="afficheFilm" th:src="'/film/affiches/'+${film.imagePath}">
-    <h6 th:text="'Résumé : '+${film.resume}">Resumé</h6>
-    <h6 th:text="'Realisateur : '+${film.director.prenom}+' '+${film.director.nom}">Realisateur</h6>
+    <h6 th:text="'Résumé : '+${film.summary}">Resumé</h6>
+    <h6 th:text="'Realisateur : '+${film.director.surname}+' '+${film.director.givenname}">Realisateur</h6>
     <h6 th:text="'Genres : '">Genres</h6>
     <span th:each="genre : ${film.getGenres()}" th:text="${genre.name}+', '">Genres</span>
 
     <h6 th:text="'Acteurs :'"></h6>
     <div class="container">
         <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="role : ${film.getRoles()}">
-                    <a th:href="@{/person/detail/{Id} (Id=${role.getPerson().getId()})}">
-                        <img class="posterPersonneInFilmView"
-                                th:src="'/person/posters/'+${role.getPerson().getImagePath()}"></a>
-                    <br />
-                    <a th:text="${role.getPerson().getPrenom()}+' '+${role.getPerson().getNom()}+' dans le rôle de : '+${role.getName()}"
-                       th:href="@{/person/detail/{Id} (Id=${role.getPerson().getId()})}"></a>
-                </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="role : ${film.getRoles()}">
+                <a th:href="@{/person/detail/{Id} (Id=${role.getPerson().getId()})}">
+                    <img class="posterPersonneInFilmView"
+                         th:src="'/person/posters/'+${role.getPerson().getImagePath()}"></a>
+                <br/>
+                <a th:text="${role.getPerson().getPrenom()}+' '+${role.getPerson().getNom()}+' dans le rôle de : '+${role.getName()}"
+                   th:href="@{/person/detail/{Id} (Id=${role.getPerson().getId()})}"></a>
             </div>
+        </div>
     </div>
 
 

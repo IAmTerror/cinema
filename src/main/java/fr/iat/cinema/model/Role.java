@@ -63,64 +63,40 @@
 package fr.iat.cinema.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-@Entity(name = "play")
+@Entity
+@Table(name="play")
 public class Role {
 
-    // Composite key, for Person id + Film id (see RoleId)
-    @EmbeddedId
-    private RoleId id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "film_id") // TODO : très probablement inutile mais...
-    @MapsId("filmId")
-    private Film film;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id") // TODO : très probablement inutile mais...
-    @MapsId("personId")
-    private Person person;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    private Long id;
 
     @Basic
-    @Column(name = "rank")
+    @Column(name = "rank", nullable = false)
     private Integer rank;
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 90)
     private String name;
 
-    public Role(Film film, Person person) {
-        this.film = film;
-        this.person = person;
-        this.id = new RoleId(film.getId(), person.getId());
-    }
+    @ManyToOne
+    @JoinColumn(name="person_id")
+    private Person actor;
 
-    public Role() {
-    }
+    @ManyToOne
+    @JoinColumn(name="film_id")
+    private Film film;
 
-    public RoleId getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(RoleId id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public Film getFilm() {
-        return film;
-    }
-
-    public void setFilm(Film film) {
-        this.film = film;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 
     public Integer getRank() {
@@ -139,9 +115,20 @@ public class Role {
         this.name = name;
     }
 
-    public void ajouterRole() {
-        film.addRole(this);
-        person.addRole(this);
+    public Person getActor() {
+        return actor;
+    }
+
+    public void setActor(Person actor) {
+        this.actor = actor;
+    }
+
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
     }
 
     @Override
@@ -149,15 +136,11 @@ public class Role {
         if (this == o) return true;
         if (!(o instanceof Role)) return false;
         Role role = (Role) o;
-        return Objects.equals(getId(), role.getId()) &&
-                Objects.equals(getFilm(), role.getFilm()) &&
-                Objects.equals(getPerson(), role.getPerson()) &&
-                Objects.equals(getRank(), role.getRank()) &&
-                Objects.equals(getName(), role.getName());
+        return Objects.equals(getId(), role.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFilm(), getPerson(), getRank(), getName());
+        return Objects.hash(getId());
     }
 }

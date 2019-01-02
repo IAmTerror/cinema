@@ -1,18 +1,18 @@
 <!--<!DOCTYPE html>-->
 <!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
 <!--<head>-->
-    <!--<meta charset="UTF-8">-->
-    <!--<title>Liste des films</title>-->
-    <!--<div th:replace="fragments/header :: header-css"/>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Liste des films</title>-->
+<!--<div th:replace="fragments/header :: header-css"/>-->
 <!--</head>-->
 <!--<body>-->
 <!--<div th:replace="fragments/header :: header"/>-->
 <!--<div class="corps">-->
-    <!--<h1 th:text="'Liste des films :'"></h1>-->
+<!--<h1 th:text="'Liste des films :'"></h1>-->
 
-    <!--<div th:each="film : ${films}">-->
-        <!--<a th:text="${film.titre} + ' ('+${film.notation}+')'" th:href="@{/film/{id}(id=${film.id})}"></a>-->
-    <!--</div>-->
+<!--<div th:each="film : ${films}">-->
+<!--<a th:text="${film.titre} + ' ('+${film.notation}+')'" th:href="@{/film/{id}(id=${film.id})}"></a>-->
+<!--</div>-->
 <!--</div>-->
 <!--<div th:replace="fragments/footer :: footer"/>-->
 <!--</body>-->
@@ -44,7 +44,7 @@
             <a th:text="${film.id}" th:href="@{/film/detail/{id}(id=${film.id})}"></a>
         </td>
         <td class="col-md-9">
-            <a th:text="${film.titre}" th:href="@{/film/detail/{id}(id=${film.id})}"></a>
+            <a th:text="${film.title}" th:href="@{/film/detail/{id}(id=${film.id})}"></a>
         </td>
         <td class="col-md-2 text-center">
             <a class="btn btn-warning btn-sm"
