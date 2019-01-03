@@ -21,6 +21,7 @@ public class CinemaSpringBootApplication {
         // TODO : intégrer le release_date de Film dans les vues correspondantes
         // TODO : trouver un bugfix pour Review et User
         // TODO : pour la value du genre du film dans film/mod template, ne renvoyer qu'un genre au lieu de tous
+        // TODO : remplacer Bootstrap par SemanticUI
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }
