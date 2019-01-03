@@ -175,12 +175,6 @@ public class RoleController {
     @Autowired
     RoleDao roleDao;
 
-    @Autowired
-    PersonDao personDao;
-
-    @Autowired
-    FilmDao filmDao;
-
     @GetMapping("/list")
     public String list(Model model){
         model.addAttribute("roles", roleDao.findAllByOrderByIdAsc());
@@ -196,8 +190,6 @@ public class RoleController {
     @GetMapping("/add")
     public String add(Model model){
         model.addAttribute("role", new Role());
-        model.addAttribute("films", filmDao.findAll());
-        model.addAttribute("persons", personDao.findAll());
         return "role/form";
     }
 

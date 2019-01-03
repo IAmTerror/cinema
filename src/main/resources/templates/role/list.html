@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Liste des genres</title>
+    <title>Liste des rôles</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
@@ -15,6 +15,7 @@
 
 <table class="table table-hover table-dark table-bordered">
     <tr>
+        <th>ID</th>
         <th>Nom du rôle</th>
         <th>Acteur</th>
         <th>Film</th>
@@ -22,7 +23,10 @@
         <th>Action</th>
     </tr>
 <tr th:each="role : ${roles}">
-    <td class="col-md-3">
+    <td class="col-md-1">
+        <a th:text="${role.id}"></a>
+    </td>
+    <td class="col-md-2">
         <a th:text="${role.name}"></a>
     </td>
     <td class="col-md-3">
