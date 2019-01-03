@@ -119,6 +119,8 @@
 
 package fr.iat.cinema.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -149,6 +151,7 @@ public class Film {
     private String summary;
 
     @Basic
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name="release_date", nullable = true)
     private LocalDate releaseDate;
 

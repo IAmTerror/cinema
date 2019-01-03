@@ -16,13 +16,8 @@ public class CinemaSpringBootApplication {
 
         // TODO : créer panneau latéral
         // TODO : gérer de façon plus simple le stream des images
-        // TODO : trouver une solution pour afficher les fieldset
-        // TODO : bug fix : quand on ajoute une person (et autre objet aussi ?), l'appli essaie de...
         // TODO : CSS resize des images avec conservation des ratio H/W
         // TODO : différencier acteurs des réalisateurs (et autres métiers)
-        // TODO : permettre de choisir un réalisateur lors de la création du film
-        // TODO : le CRUD de Role ne fonctionne pas (erreur Hibernate : Could not set field value by reflection)
-        // TODO : Remplacer les List par des Set
         // TODO : intégrer le release_date de Film dans les vues correspondantes
         // TODO : trouver un bugfix pour Review et User
         // TODO : pour la value du genre du film dans film/mod template, ne renvoyer qu'un genre au lieu de tous

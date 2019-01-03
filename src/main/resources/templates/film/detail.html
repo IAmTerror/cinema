@@ -12,6 +12,7 @@
     <h2>Note : <span th:text="${film.rating}"></span></h2>
     <img class="afficheFilm" th:src="'/film/affiches/'+${film.imagePath}">
     <h6 th:text="'Résumé : '+${film.summary}">Resumé</h6>
+    <h6 th:text="'Date de sortie : '+${#temporals.format(film.releaseDate, 'dd-MM-yyyy')}">Date de sortie</h6>
     <h6 th:text="'Realisateur : '+${film.director.surname}+' '+${film.director.givenname}">Realisateur</h6>
     <h6 th:text="'Genres : '">Genres</h6>
     <span th:each="genre : ${film.getGenres()}" th:text="${genre.name}+', '">Genres</span>

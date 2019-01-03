@@ -10,7 +10,7 @@
 <div class="corps">
     <h1 th:text="${actor.givenname}+' '+${actor.surname}"></h1>
     <img class="posterPersonne" th:src="'/person/posters/'+${actor.imagePath}">
-    <h6 th:text="'Date de naissance : '+${actor.birthday}">Resumé</h6>
+    <h6 th:text="'Date de naissance : '+${#temporals.format(actor.birthday, 'dd-MM-yyyy')}">Resumé</h6>
     <h6 th:text="'Filmographie :'"></h6>
     <div class="container">
         <div class="row">
