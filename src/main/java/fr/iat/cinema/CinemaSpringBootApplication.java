@@ -25,6 +25,7 @@ public class CinemaSpringBootApplication {
         // TODO : Remplacer les List par des Set
         // TODO : intégrer le release_date de Film dans les vues correspondantes
         // TODO : trouver un bugfix pour Review et User
+        // TODO : pour la value du genre du film dans film/mod template, ne renvoyer qu'un genre au lieu de tous
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }

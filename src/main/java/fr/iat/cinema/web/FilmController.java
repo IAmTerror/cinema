@@ -84,6 +84,7 @@
 package fr.iat.cinema.web;
 
 import fr.iat.cinema.dao.FilmDao;
+import fr.iat.cinema.dao.GenreDao;
 import fr.iat.cinema.dao.PersonDao;
 import fr.iat.cinema.dao.RoleDao;
 import fr.iat.cinema.model.Film;
@@ -113,6 +114,9 @@ public class FilmController {
     PersonDao personDao;
 
     @Autowired
+    GenreDao genreDao;
+
+    @Autowired
     ImageManager imm;
 
     @Autowired
@@ -135,6 +139,7 @@ public class FilmController {
     public String mod(@PathVariable("id")long id, Model model){
         model.addAttribute("film", filmDao.findById(id).get());
         model.addAttribute("persons", personDao.findAll());
+        model.addAttribute("genres", genreDao.findAll());
         return "film/form";
     }
 
@@ -142,6 +147,7 @@ public class FilmController {
     public String add(Model model){
         model.addAttribute("film", new Film());
         model.addAttribute("persons", personDao.findAll());
+        model.addAttribute("genres", genreDao.findAll());
         return "film/form";
     }
 

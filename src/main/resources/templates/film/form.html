@@ -34,19 +34,42 @@
                     <input type="text" class="form-control" th:field="${film.summary}"/>
                 </div>
             </div>
-            <!--Solution temporaire en commentaire : fonctionne en balancant un ID-->
-            <!--<div class="form-group row">-->
-                <!--<label th:for="realisateur" class="col-sm-2 col-form-label">Réalisateur</label>-->
-                <!--<div class="col-sm-10">-->
-                    <!--<input type="text" class="form-control" th:field="${film.director}"/>-->
-                <!--</div>-->
-            <!--</div>-->
             <div class="form-group row">
                 <label th:for="persons" class="col-sm-2 col-form-label">Réalisateur</label>
                 <div class="col-sm-10">
                     <input list="persons" class="form-control" id="personsList" name="persons" th:field="${film.director}">
                     <datalist id="persons">
                         <option th:each="person : ${persons}" th:value="${person.id}" th:label="${person.givenname}"></option>
+                    </datalist>
+                </div>
+                </input>
+            </div>
+            <div class="form-group row">
+                <label th:for="genres" class="col-sm-2 col-form-label">Genre n°1</label>
+                <div class="col-sm-10">
+                    <input list="genres1" class="form-control" id="genre1" name="genres" th:field="${film.genres}">
+                    <datalist id="genres1">
+                        <option th:each="genre : ${genres}" th:value="${genre.id}" th:label="${genre.name}"></option>
+                    </datalist>
+                </div>
+                </input>
+            </div>
+            <div class="form-group row">
+                <label th:for="genres" class="col-sm-2 col-form-label">Genre n°2</label>
+                <div class="col-sm-10">
+                    <input list="genres2" class="form-control" id="genre2" name="genres" th:field="${film.genres}">
+                    <datalist id="genres2">
+                        <option th:each="genre : ${genres}" th:value="${genre.id}" th:label="${genre.name}"></option>
+                    </datalist>
+                </div>
+                </input>
+            </div>
+            <div class="form-group row">
+                <label th:for="genres" class="col-sm-2 col-form-label">Genre n°3</label>
+                <div class="col-sm-10">
+                    <input list="genres3" class="form-control" id="genre3" name="genres" th:field="${film.genres}">
+                    <datalist id="genres3">
+                        <option th:each="genre : ${genres}" th:value="${genre.id}" th:label="${genre.name}"></option>
                     </datalist>
                 </div>
                 </input>
