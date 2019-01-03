@@ -72,15 +72,15 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Basic
-    @Column(name = "rank", nullable = false)
+    @Column(name = "rank")
     private Integer rank;
 
     @Basic
-    @Column(name = "name", nullable = false, length = 90)
+    @Column(name = "name", length = 90)
     private String name;
 
     @ManyToOne

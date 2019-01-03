@@ -175,6 +175,12 @@ public class RoleController {
     @Autowired
     RoleDao roleDao;
 
+    @Autowired
+    PersonDao personDao;
+
+    @Autowired
+    FilmDao filmDao;
+
     @GetMapping("/list")
     public String list(Model model){
         model.addAttribute("roles", roleDao.findAllByOrderByIdAsc());
@@ -184,12 +190,16 @@ public class RoleController {
     @GetMapping("/mod/{id}")
     public String mod(@PathVariable("id")long id, Model model){
         model.addAttribute("role", roleDao.findById(id).get());
+        model.addAttribute("persons", personDao.findAll());
+        model.addAttribute("films", filmDao.findAll());
         return "role/form";
     }
 
     @GetMapping("/add")
     public String add(Model model){
         model.addAttribute("role", new Role());
+        model.addAttribute("persons", personDao.findAll());
+        model.addAttribute("films", filmDao.findAll());
         return "role/form";
     }
 
