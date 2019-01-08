@@ -4,7 +4,10 @@
     <th:block th:fragment="header-css">
         <!-- bootstrap css -->
         <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"
-              href="/webjars/bootstrap/4.1.3/css/bootstrap.css"/>
+        href="/webjars/bootstrap/4.1.3/css/bootstrap.css"/>
+        <!-- Semantic UI -->
+        <!--<link rel="stylesheet" type="text/css" th:href="@{/webjars/Semantic-UI/2.4.1/semantic.css}"-->
+              <!--href="/webjars/Semantic-UI/2.4.1/semantic.css"/>-->
         <!--jumbotron css : allows the dropdown of the boostrap navbar to work-->
         <link rel="stylesheet" th:href="@{/css/jumbotron.css}"
               href="/static/css/jumbotron.css"/>
@@ -23,49 +26,164 @@
 <div th:fragment="header">
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <!--<a class="navbar-brand" th:href="@{/}">Navbar</a>-->
-            <a th:href="@{/}"><i class="fas fa-video fa-2x"></i></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <!--<a class="navbar-brand" th:href="@{/}">Navbar</a>-->
+        <a th:href="@{/}"><i class="fas fa-video fa-2x"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/film/list}">Liste des films <span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/person/list}">Liste des personnes</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/role/list}">Liste des rôles</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/genre/list}">Liste des genres</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+        <a class="nav-link" th:href="@{/film/list}">Liste des films <span
+        class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+        <a class="nav-link" th:href="@{/person/list}">Liste des personnes</a>
+        </li>
+        <li class="nav-item active">
+        <a class="nav-link" th:href="@{/role/list}">Liste des rôles</a>
+        </li>
+        <li class="nav-item active">
+        <a class="nav-link" th:href="@{/genre/list}">Liste des genres</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+        </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        </div>
         </nav>
     </header>
 </div>
 </div>
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head>-->
+    <!--<th:block th:fragment="header-css">-->
+        <!--&lt;!&ndash; bootstrap css &ndash;&gt;-->
+        <!--&lt;!&ndash;<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"&ndash;&gt;-->
+              <!--&lt;!&ndash;href="/webjars/bootstrap/4.1.3/css/bootstrap.css"/>&ndash;&gt;-->
+        <!--&lt;!&ndash; Semantic UI &ndash;&gt;-->
+        <!--<link rel="stylesheet" type="text/css" th:href="@{/webjars/Semantic-UI/2.4.1/semantic.css}"-->
+              <!--href="/webjars/Semantic-UI/2.4.1/semantic.css"/>-->
+        <!--&lt;!&ndash;jumbotron css : allows the dropdown of the boostrap navbar to work&ndash;&gt;-->
+        <!--<link rel="stylesheet" th:href="@{/css/jumbotron.css}"-->
+              <!--href="/static/css/jumbotron.css"/>-->
+        <!--&lt;!&ndash;font main css&ndash;&gt;-->
+        <!--<link rel="stylesheet" th:href="@{/css/cinema.css}"-->
+              <!--href="/static/css/cinema.css"/>-->
+        <!--&lt;!&ndash;font awesome&ndash;&gt;-->
+        <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css"-->
+              <!--integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h"-->
+              <!--crossorigin="anonymous">-->
+        <!--&lt;!&ndash;favicon&ndash;&gt;-->
+        <!--<link rel="icon" type="image/png" th:href="@{/img/lolo-favicon.png}" />-->
+    <!--</th:block>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:fragment="header">-->
+    <!--<header>-->
+        <!--&lt;!&ndash;<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;<a class="navbar-brand" th:href="@{/}">Navbar</a>&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<a th:href="@{/}"><i class="fas fa-video fa-2x"></i></a>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"&ndash;&gt;-->
+                    <!--&lt;!&ndash;aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="navbar-toggler-icon"></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;</button>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<div class="collapse navbar-collapse" id="navbarsExampleDefault">&ndash;&gt;-->
+                <!--&lt;!&ndash;<ul class="navbar-nav mr-auto">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li class="nav-item active">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a class="nav-link" th:href="@{/film/list}">Liste des films <span&ndash;&gt;-->
+                                <!--&lt;!&ndash;class="sr-only">(current)</span></a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li class="nav-item active">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a class="nav-link" th:href="@{/person/list}">Liste des personnes</a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li class="nav-item active">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a class="nav-link" th:href="@{/role/list}">Liste des rôles</a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li class="nav-item active">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a class="nav-link" th:href="@{/genre/list}">Liste des genres</a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li class="nav-item">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a class="nav-link disabled" href="#">Disabled</a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li class="nav-item dropdown">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"&ndash;&gt;-->
+                           <!--&lt;!&ndash;aria-haspopup="true" aria-expanded="false">Dropdown</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="dropdown-menu" aria-labelledby="dropdown01">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a class="dropdown-item" href="#">Action</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a class="dropdown-item" href="#">Another action</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a class="dropdown-item" href="#">Something else here</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;<form class="form-inline my-2 my-lg-0">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</form>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</nav>&ndash;&gt;-->
+        <!--<div class="ui fixed inverted menu">-->
+            <!--<a class="active blue item">-->
+                <!--<i class="video camera icon"></i>-->
+            <!--</a>-->
+            <!--<a class="item">-->
+                <!--Messages-->
+            <!--</a>-->
+            <!--<a class="blue item">-->
+                <!--Friends-->
+            <!--</a>-->
+            <!--<div class="ui simple dropdown item">-->
+                <!--Dropdown <i class="dropdown icon"></i>-->
+                <!--<div class="menu">-->
+                    <!--<a class="item" href="#">Link Item</a>-->
+                    <!--<a class="item" href="#">Link Item</a>-->
+                    <!--<div class="divider"></div>-->
+                    <!--<div class="header">Header Item</div>-->
+                    <!--<div class="item">-->
+                        <!--<i class="dropdown icon"></i>-->
+                        <!--Sub Menu-->
+                        <!--<div class="menu">-->
+                            <!--<a class="item" href="#">Link Item</a>-->
+                            <!--<a class="item" href="#">Link Item</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<a class="item" href="#">Link Item</a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="right menu">-->
+                <!--<div class="item">-->
+                    <!--<div class="ui icon input">-->
+                        <!--<input type="text" placeholder="Recherche...">-->
+                        <!--<i class="search link icon"></i>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<a class="ui item active">-->
+                    <!--Logout-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</header>-->
+<!--</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

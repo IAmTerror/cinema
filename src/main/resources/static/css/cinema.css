@@ -1,3 +1,80 @@
+/*Bootstrap Version TEMP*/
+
+/*html {*/
+    /*position: relative;*/
+    /*min-height: 100%;*/
+/*}*/
+
+/*body {*/
+    /*padding-top: 5%;*/
+    /*padding-bottom: 5%;*/
+/*}*/
+
+/*.bg-dark {*/
+    /*background-color: #0056b3 !important;*/
+/*}*/
+
+/*body {*/
+    /*!*background-color: #212529;*!*/
+/*}*/
+
+/*h1, h2, h3, h4, h5, h6, p, label, legend, fieldset, span {*/
+    /*!*color: white;*!*/
+    /*!*margin-top: 0.5rem;*!*/
+    /*!*margin-bottom: 0.5rem;*!*/
+/*}*/
+
+/*.pageTitre {*/
+    /*!*color: white;*!*/
+    /*!*margin-top: 0.5rem;*!*/
+    /*!*margin-bottom: 0.5rem;*!*/
+    /*font-size: 36px;*/
+/*}*/
+
+/*.fas {*/
+    /*color : white;*/
+    /*padding-right: 0.5rem;*/
+/*}*/
+
+/*.fas:hover {*/
+    /*color: #34A1FB*/
+/*}*/
+
+/*footer {*/
+    /*background-color: #0056b3 !important;*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*width: 100%;*/
+/*}*/
+
+/*.corps {*/
+    /*padding-left: 1%;*/
+    /*padding-right: 1%;*/
+/*}*/
+
+/*.afficheFilm, .posterPersonne {*/
+    /*width: 15%;*/
+    /*height: 15%;*/
+    /*display: block;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*padding-top: 2%;*/
+    /*padding-bottom: 2%;*/
+/*}*/
+
+/*.posterPersonneInFilmView, .afficheFilmInPersonView {*/
+    /*width: 80%;*/
+    /*height: 80%;*/
+/*}*/
+
+/*.button-add {*/
+    /*margin-bottom: 15px;*/
+    /*float: right;*/
+/*}*/
+
+
+/*----------------------------------------------------------------------*/
+
 html {
     position: relative;
     min-height: 100%;
