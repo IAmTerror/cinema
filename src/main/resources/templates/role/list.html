@@ -12,39 +12,39 @@
     <a class="btn btn-primary btn-lg button-add" th:href="@{'/role/add'}" role="button">Ajouter un rôle</a>
 
 
-
-<table class="table table-hover table-bordered table-sm">
-    <tr>
-        <th>ID</th>
-        <th>Nom du rôle</th>
-        <th>Acteur</th>
-        <th>Film</th>
-        <th>Rang</th>
-        <th>Action</th>
-    </tr>
-<tr th:each="role : ${roles}">
-    <td class="col-md-1">
-        <a th:text="${role.id}"></a>
-    </td>
-    <td class="col-md-2">
-        <a th:text="${role.name}"></a>
-    </td>
-    <td class="col-md-3">
-        <a th:text="${role.actor.givenname}+' '+${role.actor.surname}" th:href="@{/person/detail/{id}(id=${role.id})}"></a>
-    </td>
-    <td class="col-md-3">
-        <a th:text="${role.film.title}" th:href="@{/film/detail/{id}(id=${role.film.id})}"></a>
-    </td>
-    <td class="col-md-1">
-        <a th:text="${role.rank}"></a>
-    </td>
-    <td class="col-md-2 text-center">
-        <a class="btn btn-warning btn-sm"
-           th:href="@{'/role/mod/' + ${role.id}}">Modifier</a>
-        <a class="btn btn-danger btn-sm" th:href="@{'/role/delete/' + ${role.id}}">Supprimer</a>
-    </td>
-</tr>
-</table>
+    <table class="table table-hover table-bordered table-sm">
+        <tr>
+            <th>ID</th>
+            <th>Nom du rôle</th>
+            <th>Acteur</th>
+            <th>Film</th>
+            <th>Rang</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="role : ${roles}">
+            <td class="col-md-1">
+                <a th:text="${role.id}"></a>
+            </td>
+            <td class="col-md-2">
+                <a th:text="${role.name}"></a>
+            </td>
+            <td class="col-md-3">
+                <a th:text="${role.actor.givenname}+' '+${role.actor.surname}"
+                   th:href="@{/person/detail/{id}(id=${role.id})}"></a>
+            </td>
+            <td class="col-md-3">
+                <a th:text="${role.film.title}" th:href="@{/film/detail/{id}(id=${role.film.id})}"></a>
+            </td>
+            <td class="col-md-1">
+                <a th:text="${role.rank}"></a>
+            </td>
+            <td class="col-md-2 text-center">
+                <a class="btn btn-warning btn-sm"
+                   th:href="@{'/role/mod/' + ${role.id}}">Modifier</a>
+                <a class="btn btn-danger btn-sm" th:href="@{'/role/delete/' + ${role.id}}">Supprimer</a>
+            </td>
+        </tr>
+    </table>
 </div>
 <div th:replace="fragments/footer :: footer"/>
 </body>

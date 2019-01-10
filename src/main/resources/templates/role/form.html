@@ -24,7 +24,8 @@
             <div class="col-sm-10">
                 <input list="persons" class="form-control" id="personsList" name="persons" th:field="${role.actor}">
                 <datalist id="persons">
-                    <option th:each="person : ${persons}" th:value="${person.id}" th:label="${person.givenname}"></option>
+                    <option th:each="person : ${persons}" th:value="${person.id}"
+                            th:label="${person.givenname}"></option>
                 </datalist>
             </div>
             </input>

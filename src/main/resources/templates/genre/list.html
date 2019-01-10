@@ -11,27 +11,27 @@
     <span class="pageTitre" th:text="'Liste des genres'"></span>
     <a class="btn btn-primary btn-lg button-add" th:href="@{'/genre/add'}" role="button">Ajouter un genre</a>
 
-<table class="table table-hover table-bordered table-sm">
-    <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Action</th>
-    </tr>
-<tr th:each="genre : ${genres}">
-    <td class="col-md-1">
-        <a th:text="${genre.id}" th:href="@{/genre/detail/{id}(id=${genre.id})}"></a>
-    </td>
-    <td class="col-md-9">
-        <a th:text="${genre.name}" th:href="@{/genre/detail/{id}(id=${genre.id})}"></a>
-    </td>
-    <td class="col-md-2 text-center">
-        <a class="btn btn-warning btn-sm"
-           th:href="@{'/genre/mod/' + ${genre.id}}">Modifier</a>
-        <a class="btn btn-danger btn-sm" th:href="@{'/genre/delete/' + ${genre.id}}">Supprimer</a>
-    </td>
-</tr>
-</table>
-    </div>
+    <table class="table table-hover table-bordered table-sm">
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="genre : ${genres}">
+            <td class="col-md-1">
+                <a th:text="${genre.id}" th:href="@{/genre/detail/{id}(id=${genre.id})}"></a>
+            </td>
+            <td class="col-md-9">
+                <a th:text="${genre.name}" th:href="@{/genre/detail/{id}(id=${genre.id})}"></a>
+            </td>
+            <td class="col-md-2 text-center">
+                <a class="btn btn-warning btn-sm"
+                   th:href="@{'/genre/mod/' + ${genre.id}}">Modifier</a>
+                <a class="btn btn-danger btn-sm" th:href="@{'/genre/delete/' + ${genre.id}}">Supprimer</a>
+            </td>
+        </tr>
+    </table>
+</div>
 <div th:replace="fragments/footer :: footer"/>
 </body>
 </html>

@@ -43,9 +43,11 @@
             <div class="form-group row">
                 <label th:for="persons" class="col-sm-2 col-form-label">Réalisateur</label>
                 <div class="col-sm-10">
-                    <input list="persons" class="form-control" id="personsList" name="persons" th:field="${film.director}">
+                    <input list="persons" class="form-control" id="personsList" name="persons"
+                           th:field="${film.director}">
                     <datalist id="persons">
-                        <option th:each="person : ${persons}" th:value="${person.id}" th:label="${person.givenname}"></option>
+                        <option th:each="person : ${persons}" th:value="${person.id}"
+                                th:label="${person.givenname}"></option>
                     </datalist>
                 </div>
                 </input>
