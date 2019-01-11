@@ -1,4 +1,5 @@
 /* Move down content because we have a fixed navbar that is 3.5rem tall */
+/*TODO: remove ce CSS une fois que la bascule de Bootstrap a SEMANTIC UI sera définitive (+ enlever les include dans le header)*/
 body {
     padding-top: 3.5rem;
 }
