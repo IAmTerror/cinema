@@ -8,29 +8,30 @@
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="content">
-    <span class="pageTitre" th:text="'Liste des personnes'"></span>
-    <a class="btn btn-primary btn-lg button-add" th:href="@{'/person/add'}" role="button">Ajouter une personne</a>
-
-    <table class="table table-hover table-bordered table-sm">
+    <h3 class="ui dividing header" th:text="'Liste des personnes'">Liste des personnes</h3>
+    <a class="ui right floated primary button" th:href="@{'/person/add'}">Ajouter une personne</a>
+    <table class="ui celled table">
+        <thead>
         <tr>
             <th>ID</th>
             <th>Nom</th>
             <th>Action</th>
         </tr>
+        </thead>
+        <tbody>
         <tr th:each="actor : ${actors}">
-            <td class="col-md-1">
+            <td class="twelve wide">
                 <a th:text="${actor.id}" th:href="@{/person/detail/{id}(id=${actor.id})}"></a>
             </td>
-            <td class="col-md-9">
-                <a th:text="${actor.surname}+' '+${actor.givenname}"
-                   th:href="@{/person/detail/{id}(id=${actor.id})}"></a>
+            <td class="two wide">
+                <a th:text="${actor.surname}+' '+${actor.givenname}" th:href="@{/person/detail/{id}(id=${actor.id})}"></a>
             </td>
-            <td class="col-md-2 text-center">
-                <a class="btn btn-warning btn-sm"
-                   th:href="@{'/person/mod/' + ${actor.id}}">Modifier</a>
-                <a class="btn btn-danger btn-sm" th:href="@{'/person/delete/' + ${actor.id}}">Supprimer</a>
+            <td class="two wide center aligned">
+                <a th:href="@{'/person/mod/' + ${actor.id}}"><i class="edit big icon"></i></a>
+                <a th:href="@{'/person/delete/' + ${actor.id}}"><i class="red erase big icon"></i></a>
             </td>
         </tr>
+        </tbody>
     </table>
 </div>
 <div th:replace="fragments/footer :: footer"/>

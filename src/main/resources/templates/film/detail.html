@@ -8,30 +8,30 @@
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="content">
-    <h1 th:text="${film.title}">Titre du film</h1>
-    <img class="afficheFilm" th:src="'/film/affiches/'+${film.imagePath}">
-    <h6 th:text="'Note : '+${film.rating}">Note</h6>
-    <h6 th:text="'Résumé : '+${film.summary}">Resumé</h6>
-    <h6 th:text="'Date de sortie : '+${#temporals.format(film.releaseDate, 'dd-MM-yyyy')}">Date de sortie</h6>
-    <h6 th:text="'Realisateur : '+${film.director.surname}+' '+${film.director.givenname}">Realisateur</h6>
-    <h6 th:text="'Genres : '">Genres</h6>
-    <span th:each="genre : ${film.getGenres()}" th:text="${genre.name}+', '">Genres</span>
-
-    <h6 th:text="'Acteurs :'"></h6>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="role : ${film.getRoles()}">
-                <a th:href="@{/person/detail/{Id} (Id=${role.getActor().getId()})}">
-                    <img class="posterPersonneInFilmView"
-                         th:src="'/person/posters/'+${role.getActor().getImagePath()}"></a>
-                <br/>
-                <a th:text="${role.getActor().getSurname()}+' '+${role.getActor().getGivenname()}+' dans le rôle de : '+${role.getName()}"
-                   th:href="@{/person/detail/{Id} (Id=${role.getActor().getId()})}"></a>
+    <div class="ui container padded grid">
+        <div class="two column row">
+            <div class="four wide column">
+                <div class="ui medium image">
+                    <img src="#" th:src="'/film/affiches/'+${film.imagePath}"/>
+                </div>
+            </div>
+            <div class="twelve wide column">
+                <h1 th:text="${film.title}">Titre</h1>
+                <div th:utext="${film.summary}">Résumé du film</div>
+                <h4>Notation : <span th:text="${film.rating}">5.0</span></h4>
+                <h4>Date de sortie : <span
+                        th:text="${#temporals.format(film.releaseDate, 'dd-MM-yyyy')}">01/01/2000</span></h4>
+                <h4>Réslisateur : <span
+                        th:text="${film.director.givenname}+' '+${film.director.surname}">John Doe</span></h4>
+                <h4>Genres : <span th:each="genre: ${film.genres}"><span th:text="${genre.name}">genre </span>, </span>
+                </h4>
+                <h3 class="ui dividing header">Casting</h3>
+                <h4 th:each="role: ${film.roles}"><span th:text="${role.actor.givenname}">John</span>
+                    <span th:text="${role.actor.surname}">Doe</span> joue : <span th:text="${role.name}">un rôle</span>
+                </h4>
             </div>
         </div>
     </div>
-
-
 </div>
 <div th:replace="fragments/footer :: footer"/>
 </body>
