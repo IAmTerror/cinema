@@ -76,26 +76,31 @@
 /*----------------------------------------------------------------------*/
 
 
-/* ==================== FOOTER FIXED BOTTOM WITH FLEXBOX ====================*/
 html, body {
+    /* property for : sticky footer with flexbox */
     height: 100%;
 }
 
 body {
+    /* property for : sticky footer with flexbox */
+    /* https://css-tricks.com/couple-takes-sticky-footer/ */
     display: flex;
+    /* property for : sticky footer with flexbox */
     flex-direction: column;
-    padding-right: 10%;
-    padding-left: 10%;
 }
 
 .content {
+    /* property for : sticky footer with flexbox */
     flex: 1 0 auto;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-bottom: 1%;
 }
 
 .footer {
+    /* property for : sticky footer with flexbox */
     flex-shrink: 0;
 }
-/* -------------------------------------------------------------------------------- */
 
 /* ==================== REDUCE FOOTER SIZE ====================*/
 .ui.grid > .column:not(.row) {
