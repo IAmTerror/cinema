@@ -100,6 +100,10 @@ body {
     flex-shrink: 0;
 }
 
+.ui.right.floated.primary.button {
+    margin-bottom: 1%;
+}
+
 /* ==================== REDUCE FOOTER SIZE ====================*/
 .ui.grid > .column:not(.row) {
     padding-top: 1rem;
