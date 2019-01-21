@@ -11,36 +11,26 @@
 <div class="content">
     <h1>Editer une personne :</h1>
 
-    <form action="#" th:action="@{/person/add}" th:object="${actor}" enctype="multipart/form-data" method="post">
+    <form class="ui form" action="#" th:action="@{/person/add}" th:object="${actor}" enctype="multipart/form-data" method="post">
         <input type="hidden" th:field="${actor.id}"/>
         <input type="hidden" th:field="${actor.imagePath}"/>
-        <div class="form-group row">
-            <label th:for="surname" class="col-sm-2 col-form-label">Nom</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="${actor.surname}"/>
-            </div>
+        <div class="field">
+            <label th:for="surname">Nom</label>
+            <input type="text" th:field="${actor.surname}"/>
         </div>
-        <div class="form-group row">
-            <label th:for="givenname" class="col-sm-2 col-form-label">Prénom</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="${actor.givenname}"/>
-            </div>
+        <div class="field">
+            <label th:for="givenname">Prénom</label>
+            <input type="text" th:field="${actor.givenname}"/>
         </div>
-        <div class="form-group row">
-            <label th:for="birthday" class="col-sm-2 col-form-label">Date de naissance</label>
-            <div class="col-sm-10">
-                <input type="date" class="form-control" th:field="${actor.birthday}"/>
-            </div>
+        <div class="field">
+            <label th:for="birthday">Date de naissance</label>
+            <input type="date" th:field="${actor.birthday}"/>
         </div>
-        <div class="form-group row">
-            <label th:for="photo" class="col-sm-2 col-form-label">Ajouter une photo</label>
-            <div class="col-sm-10">
-                <input type="file" class="btn btn-secondary btn-sm" name="photo"/> <span th:text="${actor.imagePath}">Fichier photo</span>
-            </div>
+        <div class="field">
+            <label th:for="photo">Ajouter une photo</label>
+            <input type="file" name="photo"/> <span th:text="${actor.imagePath}">Fichier photo</span>
         </div>
-        <div class="button">
-            <button type="submit" th:name="create" class="btn btn-primary">Editer une personne</button>
-        </div>
+        <button type="submit" th:name="create" class="ui button">Editer une personne</button>
     </form>
 </div>
 <div th:replace="fragments/footer :: footer"/>
