@@ -11,51 +11,37 @@
 <div class="content">
     <h1>Editer un rôle:</h1>
 
-    <form action="#" th:action="@{/role/add}" th:object="${role}" method="post">
+    <form action="#" class="ui form" th:action="@{/role/add}" th:object="${role}" method="post">
         <input type="hidden" th:field="${role.id}"/>
-        <div class="form-group row">
-            <label th:for="roleName" class="col-sm-2 col-form-label">Nom du rôle</label>
+        <div class="field">
+            <label th:for="roleName">Nom du rôle</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="${role.name}"/>
+                <input type="text" th:field="${role.name}"/>
             </div>
         </div>
-        <div class="form-group row">
-            <label th:for="persons" class="col-sm-2 col-form-label">Acteur</label>
-            <div class="col-sm-10">
-                <input list="persons" class="form-control" id="personsList" name="persons" th:field="${role.actor}">
-                <datalist id="persons">
-                    <option th:each="person : ${persons}" th:value="${person.id}"
-                            th:label="${person.givenname}"></option>
-                </datalist>
-            </div>
+        <div class="field">
+            <label th:for="persons">Acteur</label>
+            <input list="persons" id="personsList" name="persons" th:field="${role.actor}">
+            <datalist id="persons">
+                <option th:each="person : ${persons}" th:value="${person.id}"
+                        th:label="${person.givenname}"></option>
+            </datalist>
             </input>
         </div>
-        <!--<div class="form-group row">-->
-        <!--<label th:for="filmTitle" class="col-sm-2 col-form-label">Nom film</label>-->
-        <!--<div class="col-sm-10">-->
-        <!--<input type="text" class="form-control" th:id="filmTitle" th:name="filmTitle"-->
-        <!--th:value="${role.film.titre}"/>-->
-        <!--</div>-->
-        <!--</div>-->
-        <div class="form-group row">
-            <label th:for="films" class="col-sm-2 col-form-label">Film</label>
-            <div class="col-sm-10">
-                <input list="films" class="form-control" th:field="${role.film}">
-                <datalist id="films">
-                    <option th:each="film : ${films}" th:value="${film.id}" th:label="${film.title}"></option>
-                </datalist>
-            </div>
+        <div class="field">
+            <label th:for="films">Film</label>
+
+            <input list="films" th:field="${role.film}">
+            <datalist id="films">
+                <option th:each="film : ${films}" th:value="${film.id}" th:label="${film.title}"></option>
+            </datalist>
             </input>
         </div>
-        <div class="form-group row">
-            <label th:for="rank" class="col-sm-2 col-form-label">Rang</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" th:field="${role.rank}"/>
-            </div>
+        <div class="field">
+            <label th:for="rank">Rang</label>
+            <input type="text" th:field="${role.rank}"/>
         </div>
-        <div class="button">
-            <button type="submit" th:name="create" class="btn btn-primary">Editer un rôle</button>
-        </div>
+        <button type="submit" th:name="create" class="ui button">Editer un rôle</button>
     </form>
 </div>
 <div th:replace="fragments/footer :: footer"/>
