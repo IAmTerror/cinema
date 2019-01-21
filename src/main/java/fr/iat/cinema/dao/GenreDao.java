@@ -168,4 +168,10 @@ import java.util.List;
 
 public interface GenreDao extends CrudRepository<Genre, Long> {
     public List<Genre> findAllByOrderByIdAsc();
+
+    /**
+     * La liste des genres par ordre alphabétique croissant
+     * @return la liste de genres
+     */
+    public List<Genre> findAllByOrderByNameAsc();
 }

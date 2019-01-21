@@ -62,6 +62,8 @@
 
 package fr.iat.cinema.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
@@ -72,7 +74,7 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @NotNull
     private Long id;
 
     @Basic
@@ -85,10 +87,12 @@ public class Role {
 
     @ManyToOne
     @JoinColumn(name="person_id")
+    @JsonManagedReference
     private Person actor;
 
     @ManyToOne
     @JoinColumn(name="film_id")
+    @JsonManagedReference
     private Film film;
 
     public Long getId() {

@@ -148,10 +148,12 @@
 
 package fr.iat.cinema.web;
 
+import fr.iat.cinema.dao.FilmDao;
 import fr.iat.cinema.dao.PersonDao;
 import fr.iat.cinema.model.Person;
 import fr.iat.cinema.service.ImageManager;
 import fr.iat.cinema.service.Path;
+import org.aspectj.apache.bcel.util.Play;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -171,6 +173,9 @@ public class PersonController {
 
     @Autowired
     PersonDao personDao;
+
+    @Autowired
+    FilmDao filmDao;
 
     @Autowired
     ImageManager imm;
@@ -193,6 +198,7 @@ public class PersonController {
     @GetMapping("/mod/{id}")
     public String mod(@PathVariable("id")long id, Model model){
         model.addAttribute("actor", personDao.findById(id).get());
+        model.addAttribute("newrole", new Play());
         return "person/form";
     }
 

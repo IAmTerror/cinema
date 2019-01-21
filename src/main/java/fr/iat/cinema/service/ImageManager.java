@@ -67,4 +67,22 @@ public class ImageManager {
 
         return fileName;
     }
+
+    public InputStream retreivePhoto(String fileName){
+        return retreiveImage("personnes", fileName);
+    }
+
+    public InputStream retreivePoster(String fileName){
+        return retreiveImage("affiches", fileName);
+    }
+
+    private InputStream retreiveImage(String subPath, String fileName){
+        InputStream is = null;
+        try {
+            is = new FileInputStream(path+"/"+subPath+"/"+fileName);
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("Erreur récupération de l'image "+fileName+" : "+fnfe.getMessage());
+        }
+        return is;
+    }
 }

@@ -87,6 +87,7 @@ body {
     display: flex;
     /* property for : sticky footer with flexbox */
     flex-direction: column;
+    padding-top: 2rem;
 }
 
 .content {

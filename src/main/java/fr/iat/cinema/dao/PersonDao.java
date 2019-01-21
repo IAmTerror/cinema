@@ -132,4 +132,6 @@ import java.util.List;
 
 public interface PersonDao extends CrudRepository<Person, Long> {
     public List<Person> findAllByOrderByIdAsc();
+
+    public List<Person> findAllByOrderBySurname();
 }

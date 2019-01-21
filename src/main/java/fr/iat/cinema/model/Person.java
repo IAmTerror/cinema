@@ -117,6 +117,7 @@
 
 package fr.iat.cinema.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -153,10 +154,11 @@ public class Person {
     private String imagePath;
 
     @OneToMany(mappedBy = "director")
+    @JsonBackReference
     private Set<Film> directedFilms;
 
-    // TODO: repasser orphanRemoval à true si nécessaire pour la persistance
     @OneToMany(mappedBy = "actor", cascade = CascadeType.ALL, orphanRemoval = false)
+    @JsonBackReference
     private Set<Role> roles;
 
     public long getId() {

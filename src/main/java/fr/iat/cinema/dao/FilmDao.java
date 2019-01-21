@@ -181,4 +181,6 @@ import java.util.List;
 
 public interface FilmDao extends CrudRepository<Film, Long> {
     public List<Film> findAllByOrderByIdAsc();
+
+    public List<Film> findAllByOrderByTitle();
 }

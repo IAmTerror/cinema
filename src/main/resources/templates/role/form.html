@@ -9,7 +9,7 @@
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="content">
-    <h1>Editer un rôle:</h1>
+    <h2 class="ui dividing header">Ajouter / Modifier un rôle</h2>
 
     <form action="#" class="ui form" th:action="@{/role/add}" th:object="${role}" method="post">
         <input type="hidden" th:field="${role.id}"/>

@@ -1,67 +1,249 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
 
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Editer un film</title>-->
+<!--<div th:replace="fragments/header :: header-css"/>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:replace="fragments/header :: header"/>-->
+<!--<div class="content">-->
+<!--<form class="ui form" action="#" th:action="@{/film/add}" th:object="${film}" enctype="multipart/form-data"-->
+<!--method="post">-->
+<!--<input type="hidden" th:field="${film.id}"/>-->
+<!--<input type="hidden" th:field="${film.imagePath}"/>-->
+<!--<h4 class="ui dividing header">Ajouter / Modifier un film</h4>-->
+<!--<div class="field">-->
+<!--<label th:for="title">Titre</label>-->
+<!--<input type="text" th:field="${film.title}">-->
+<!--</div>-->
+<!--<div class="field">-->
+<!--<label th:for="title">Notation</label>-->
+<!--<input type="text" th:field="${film.rating}">-->
+<!--</div>-->
+<!--<div class="field">-->
+<!--<label th:for="title">Résumé</label>-->
+<!--<input type="text" th:field="${film.summary}">-->
+<!--</div>-->
+<!--<div class="field">-->
+<!--<label th:for="title">Date de sortie</label>-->
+<!--<input type="date" th:field="${film.releaseDate}">-->
+<!--</div>-->
+<!--<div class="field">-->
+<!--<label th:for="genres">Genre n°1</label>-->
+<!--<input list="genres1" id="genre1" name="genres" th:field="${film.genres}">-->
+<!--<datalist id="genres1">-->
+<!--<option th:each="genre : ${genres}" th:value="${genre.id}" th:label="${genre.name}"></option>-->
+<!--</datalist>-->
+<!--</input>-->
+<!--</div>-->
+<!--<div class="field">-->
+<!--<label th:for="genres">Genre n°2</label>-->
+<!--<input list="genres2" id="genre2" name="genres" th:field="${film.genres}">-->
+<!--<datalist id="genres2">-->
+<!--<option th:each="genre : ${genres}" th:value="${genre.id}" th:label="${genre.name}"></option>-->
+<!--</datalist>-->
+<!--</input>-->
+<!--</div>-->
+<!--<div class="field">-->
+<!--<label th:for="genres">Genre n°3</label>-->
+<!--<input list="genres3" id="genre3" name="genres" th:field="${film.genres}">-->
+<!--<datalist id="genres3">-->
+<!--<option th:each="genre : ${genres}" th:value="${genre.id}" th:label="${genre.name}"></option>-->
+<!--</datalist>-->
+<!--</input>-->
+<!--</div>-->
+<!--<div class="field">-->
+<!--<label th:for="poster">Ajouter une photo</label>-->
+<!--<input type="file" name="poster"/>-->
+<!--<span th:text="${film.imagePath}">Fichier photo</span>-->
+<!--</div>-->
+<!--<button class="ui button" type="submit" th:name="create">Editer un film</button>-->
+<!--</form>-->
+<!--</div>-->
+<!--<div th:replace="fragments/footer :: footer"/>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Editer un film</title>
     <div th:replace="fragments/header :: header-css"/>
+
+    </div>
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
-<div class="content">
-    <form class="ui form" action="#" th:action="@{/film/add}" th:object="${film}" enctype="multipart/form-data"
-          method="post">
-        <input type="hidden" th:field="${film.id}"/>
-        <input type="hidden" th:field="${film.imagePath}"/>
-        <h4 class="ui dividing header">Ajouter / Modifier un film</h4>
-        <div class="field">
-            <label th:for="title">Titre</label>
-            <input type="text" th:field="${film.title}">
-        </div>
-        <div class="field">
-            <label th:for="title">Notation</label>
-            <input type="text" th:field="${film.rating}">
-        </div>
-        <div class="field">
-            <label th:for="title">Résumé</label>
-            <input type="text" th:field="${film.summary}">
-        </div>
-        <div class="field">
-            <label th:for="title">Date de sortie</label>
-            <input type="date" th:field="${film.releaseDate}">
-        </div>
-        <div class="field">
-            <label th:for="genres">Genre n°1</label>
-            <input list="genres1" id="genre1" name="genres" th:field="${film.genres}">
-            <datalist id="genres1">
-                <option th:each="genre : ${genres}" th:value="${genre.id}" th:label="${genre.name}"></option>
-            </datalist>
-            </input>
-        </div>
-        <div class="field">
-            <label th:for="genres">Genre n°2</label>
-            <input list="genres2" id="genre2" name="genres" th:field="${film.genres}">
-            <datalist id="genres2">
-                <option th:each="genre : ${genres}" th:value="${genre.id}" th:label="${genre.name}"></option>
-            </datalist>
-            </input>
-        </div>
-        <div class="field">
-            <label th:for="genres">Genre n°3</label>
-            <input list="genres3" id="genre3" name="genres" th:field="${film.genres}">
-            <datalist id="genres3">
-                <option th:each="genre : ${genres}" th:value="${genre.id}" th:label="${genre.name}"></option>
-            </datalist>
-            </input>
-        </div>
-        <div class="field">
-            <label th:for="poster">Ajouter une photo</label>
-            <input type="file" name="poster"/>
-            <span th:text="${film.imagePath}">Fichier photo</span>
-        </div>
-        <button class="ui button" type="submit" th:name="create">Editer un film</button>
-    </form>
 </div>
-<div th:replace="fragments/footer :: footer"/>
+<div class="content">
+
+<h2 class="ui dividing header">Ajouter / Modifier un film</h2>
+<form
+        action="#"
+        class="ui form"
+        id="film-form"
+        method="post"
+        th:action="@{/film/add}"
+        th:object="${film}"
+>
+    <input th:field="${film.id}" type="hidden">
+    <input th:field="${film.imagePath}" type="hidden">
+    <div class="field">
+        <label>Titre</label>
+        <input th:field="${film.title}" type="text">
+    </div>
+    <div class="three fields">
+        <div class="two wide field">
+            <label>Notation</label>
+            <input th:field="*{rating}" type="number">
+        </div>
+        <div class="four wide field">
+            <label>Date de sortie</label>
+            <input th:field="*{releaseDate}" type="date">
+        </div>
+        <div class="ten wide field">
+            <label>Réalisateur</label>
+            <select th:field="${film.director}" class="ui search dropdown">
+                <option
+                        th:each="person: ${persons}"
+                        th:text="${person.givenname}+' '+${person.surname}"
+                        th:value="${person.id}"
+
+                >
+                    Prénom Nom
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="field">
+        <label>Genres</label>
+        <select class="ui fluid dropdown" multiple="" th:field="*{genres}">
+            <option
+                    th:each="genre: ${genresFilm}"
+                    th:text="${genre.name}"
+                    th:value="${genre.id}"
+            >
+                Drame
+            </option>
+        </select>
+    </div>
+    <div class="field">
+        <label>Résumé</label>
+        <textarea form="film-form" rows="5" th:field="*{summary}"></textarea>
+    </div>
+    <input class="ui button" type="submit" value="Valider">
+</form>
+
+<h3 class="ui dividing header">Casting</h3>
+
+<form class="ui form"
+      method="post"
+      th:action="@{'/film/modrole/'+${play.id}}"
+      th:each="play: ${film.roles}"
+      th:object="${play}"
+
+>
+    <input id="film" name="film" th:value="${film.id}" type="hidden">
+
+    <div class="four fields">
+        <div class="five wide field">
+            <label>Acteur</label>
+            <select name="actor" th:value="*{actor.id}" class="ui search dropdown">
+                <option
+                        th:each="person: ${persons}"
+                        th:selected="${person.id == play.actor.id}"
+                        th:text="${person.givenname}+' '+${person.surname}"
+                        th:value="${person.id}"
+                >
+                    Prénom Nom
+                </option>
+            </select>
+        </div>
+        <div class="six wide field">
+            <label>Rôle</label>
+            <input name="name" th:value="*{name}" type="text">
+        </div>
+        <div class="two wide field">
+            <label>Rang</label>
+            <input name="rank" th:value="*{rank}" type="number">
+        </div>
+
+
+        <div class="three wide field">
+            <label>&nbsp;</label>
+
+
+            <button type="submit" class="circular ui green icon button">
+                <i class="white check icon icon"></i>
+            </button>
+
+            <a href="#" th:href="@{'/film/rmrole/'+ *{id}}" class="circular ui icon red button">
+                <i class="white close icon icon"></i>
+            </a>
+
+        </div>
+    </div>
+
+
+</form>
+
+<form
+        action="#"
+        class="ui form"
+        method="post"
+        th:action="@{/film/addrole}"
+        th:object="${newrole}"
+>
+    <input id="film" name="film" th:value="${film.id}" type="hidden">
+    <div class="four fields">
+        <div class="five wide field">
+            <label>Acteur</label>
+            <select name="actor" class="ui search dropdown">
+                <option value="" selected disabled>Choisissez un acteur</option>
+                <option
+                        th:each="person: ${persons}"
+                        th:text="${person.givenname}+' '+${person.surname}"
+                        th:value="${person.id}"
+
+                >
+                    Prénom Nom
+                </option>
+            </select>
+        </div>
+        <div class="six wide field">
+            <label>Rôle</label>
+            <input name="name" th:value="*{name}" type="text">
+        </div>
+        <div class="two wide field">
+            <label>Rang</label>
+            <input name="rank" th:value="*{rank}" type="number">
+        </div>
+
+
+        <div class="three wide field">
+            <label>&nbsp;</label>
+            <button type="submit" class="circular ui green icon button ">
+                <i class="white plus icon"></i>
+            </button>
+        </div>
+    </div>
+</form>
+</div>
+
+<div th:replace="fragments/footer :: footer"/></div>
+
+<script type="application/javascript">
+    $('#menu-films').addClass("active");
+    $('.ui.dropdown').dropdown();
+    $(document).ready(function () {
+        tinymce.init({
+            selector: '#summary'
+        });
+    })
+
+</script>
 </body>
 </html>

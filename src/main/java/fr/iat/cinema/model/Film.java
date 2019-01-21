@@ -119,6 +119,9 @@
 
 package fr.iat.cinema.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -135,7 +138,7 @@ public class Film {
     private long id;
 
     @Basic
-    @Column(name = "title", nullable = false, length = 210)
+    @Column(name = "title", nullable = true, length = 50)
     private String title;
 
     @Basic
@@ -157,19 +160,22 @@ public class Film {
 
     @ManyToOne
     @JoinColumn(name = "film_director")
+    @JsonManagedReference
     private Person director;
 
-    // TODO : repasser orphanRemoval à true si nécessaire pour la persistance
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = false)
+    @JsonBackReference
     private Set<Role> roles;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name="film_genre", joinColumns = @JoinColumn(name="film_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    @JsonManagedReference
     private Set<Genre> genres;
 
-//    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private Set<Review> reviews;
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = false)
+    @JsonIgnore
+    private Set<Review> reviews;
 
     public long getId() {
         return id;
@@ -243,13 +249,13 @@ public class Film {
         this.genres = genres;
     }
 
-//    public Set<Review> getReviews() {
-//        return reviews;
-//    }
-//
-//    public void setReviews(Set<Review> reviews) {
-//        this.reviews = reviews;
-//    }
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
 
     @Override
     public boolean equals(Object o) {

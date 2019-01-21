@@ -21,6 +21,7 @@ public class CinemaSpringBootApplication {
         // TODO : trouver un bugfix pour Review et User
         // TODO : pour la value du genre du film dans film/mod template, ne renvoyer qu'un genre au lieu de tous
         // TODO : responsive
+        // TODO : séparer le JS du HTML
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }
