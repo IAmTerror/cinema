@@ -13,6 +13,7 @@
     <table class="ui celled table">
         <thead>
         <tr>
+            <th>Photo</th>
             <th>ID</th>
             <th>Nom</th>
             <th>Action</th>
@@ -20,7 +21,12 @@
         </thead>
         <tbody>
         <tr th:each="actor : ${actors}">
-            <td class="twelve wide">
+            <td class="one wide">
+                <div class="ui mini images">
+                    <img class="ui image" src="#" th:src="'/person/posters/'+${actor.imagePath}"/>
+                </div>
+            </td>
+            <td class="eleven wide">
                 <a th:text="${actor.id}" th:href="@{/person/detail/{id}(id=${actor.id})}"></a>
             </td>
             <td class="two wide">

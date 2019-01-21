@@ -9,7 +9,7 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class Path {
 
-    private String affiche; // image d'in film
+    private String affiche; // image d'un film
     private String poster; // image d'une personne
 
     public String getAffiche() {
