@@ -8,20 +8,34 @@
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="content">
-    <h1 th:text="${actor.givenname}+' '+${actor.surname}"></h1>
-    <img class="posterPersonne" th:src="'/person/posters/'+${actor.imagePath}">
-    <h6 th:text="'Date de naissance : '+${#temporals.format(actor.birthday, 'dd-MM-yyyy')}">Resumé</h6>
-    <h6 th:text="'Filmographie :'"></h6>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12" th:each="actor : ${actor.getRoles()}">
-                <a th:href="@{/film/detail/{Id} (Id=${actor.getFilm().getId()})}">
-                    <img class="afficheFilmInPersonView"
-                         th:src="'/film/affiches/'+${actor.getFilm().getImagePath()}">
-                </a>
-                <br/>
-                <a th:text="${actor.getFilm().getTitle()}"
-                   th:href="@{/film/detail/{Id} (Id=${actor.getFilm().getId()})}"></a>
+    <div class="ui container padded grid">
+        <div class="two column row">
+            <div class="four wide column">
+                <div class="ui medium image">
+                    <img src="#" th:src="'/person/posters/'+${actor.imagePath}"/>
+                </div>
+            </div>
+            <div class="twelve wide column">
+                <h1 th:text="${actor.givenname}+' '+${actor.surname}">Michel Galabru</h1>
+                <h4>Date de naissance : <span
+                        th:text="${#temporals.format(actor.birthday, 'dd-MM-yyyy')}">01/01/1901</span></h4>
+                <h3 class="ui dividing header">Filmographie</h3>
+                <div class="ui three column grid">
+                    <div class="ui small images" th:each="actor : ${actor.getRoles()}">
+                        <div class="column">
+                            <div class="ui segment">
+                                <a th:href="@{/film/detail/{Id} (Id=${actor.getFilm().getId()})}">
+                                    <img class="ui image"
+                                         th:src="'/film/affiches/'+${actor.getFilm().getImagePath()}">
+                                </a>
+                                <div class="ui segment">
+                                <a th:text="${actor.getFilm().getTitle()}"
+                                th:href="@{/film/detail/{Id} (Id=${actor.getFilm().getId()})}"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

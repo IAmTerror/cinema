@@ -16,12 +16,11 @@ public class CinemaSpringBootApplication {
 
         // TODO : créer panneau latéral
         // TODO : gérer de façon plus simple le stream des images
-        // TODO : CSS resize des images avec conservation des ratio H/W
         // TODO : différencier acteurs des réalisateurs (et autres métiers)
         // TODO : intégrer le release_date de Film dans les vues correspondantes
         // TODO : trouver un bugfix pour Review et User
         // TODO : pour la value du genre du film dans film/mod template, ne renvoyer qu'un genre au lieu de tous
-        // TODO : remplacer Bootstrap par SemanticUI
+        // TODO : responsive
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }
