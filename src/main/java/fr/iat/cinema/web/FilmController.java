@@ -119,7 +119,6 @@
 package fr.iat.cinema.web;
 
 
-import fr.iat.cinema.dao.FilmDao;
 import fr.iat.cinema.model.Film;
 import fr.iat.cinema.model.Role;
 import fr.iat.cinema.service.*;
@@ -130,10 +129,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 @Controller
 @RequestMapping("/film")

@@ -22,6 +22,7 @@ public class CinemaSpringBootApplication {
         // TODO : pour la value du genre du film dans film/mod template, ne renvoyer qu'un genre au lieu de tous
         // TODO : responsive
         // TODO : séparer le JS du HTML
+        // TODO : uniformiser appelations Role et Play (convertir classe Role en Play, de même pour les model.attribute)
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }
