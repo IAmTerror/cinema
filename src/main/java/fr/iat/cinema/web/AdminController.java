@@ -15,13 +15,17 @@ public class AdminController {
     @Autowired
     private TmdbFilmDao tmdbFilmDao;
 
+    @Autowired
+    private  ImportFilmsFromTMDB importFilmsFromTMDB;
+
     @GetMapping("/populate")
     public String populate(Model model) {
 
         model.addAttribute("nom", "Cyril");
 
-        ImportFilmsFromTMDB importFilmsFromTMDB = new ImportFilmsFromTMDB(tmdbFilmDao);
-        importFilmsFromTMDB.ImportMoviesViaOnlineTmdbFile();
+//        ImportFilmsFromTMDB importFilmsFromTMDB = new ImportFilmsFromTMDB(tmdbFilmDao);
+//        importFilmsFromTMDB.ImportMoviesViaOnlineTmdbFile();
+        importFilmsFromTMDB.ImportMoviesViaLocalTempTmdbFile();
 
         //TODO: devra plus tard retourner une interface d'administration plutôt que l'index
         return "index";

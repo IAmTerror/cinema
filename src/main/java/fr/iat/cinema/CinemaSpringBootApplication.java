@@ -23,6 +23,7 @@ public class CinemaSpringBootApplication {
         // TODO : responsive
         // TODO : séparer le JS du HTML
         // TODO : uniformiser appelations Role et Play (convertir classe Role en Play, de même pour les model.attribute)
+        // TODO : afficher un message à la fin des populate pour prévenir que l'import via ETL est terminé
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
     }

@@ -1,6 +1,7 @@
 package fr.iat.cinema.service;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.common.io.ByteStreams;
 import fr.iat.cinema.dao.TmdbFilmDao;
 import fr.iat.cinema.model.TmdbFilm;
 import org.json.JSONException;
@@ -23,10 +24,14 @@ public class ImportFilmsFromTMDB {
 
     /**
      * ETL for movies : import movies from TMDB (The Movie DataBase)
+     * ImportMoviesViaOnlineTmdbFile() processes the movies list file directly from TMDB website
+     * ImportMoviesViaLocalTempTmdbFile()load the movies list file from TMDB website to tmpFilePath for local process...
+     * ... and avoid timeout because of limit request for TMDB API
+     * Please choose one of the two methods to call in controller (Admin Controller)
      *
      * */
 
-    @Value("${cinema.tmp.movies.path}")
+    @Value("${cinema.path.movies}")
     private String tmpFilePath;
 
     @Autowired
@@ -37,9 +42,6 @@ public class ImportFilmsFromTMDB {
     }
 
     public void ImportMoviesViaOnlineTmdbFile() {
-
-        // TODO : il faudra sauvegarder le fichier en local plutôt que de le traiter directement en ligne...
-        // pour éviter le timeout (connexion pas assez rapide pour lire tout le fichier avant le timeout).
 
         // we recover the date of the day before to avoid loading a file still unpublished by TMDV
         LocalDate date = LocalDate.now().minusDays(1);
@@ -58,13 +60,61 @@ public class ImportFilmsFromTMDB {
             InputStream httpIS = new URL(url).openStream();
             // unzip file
             InputStream gzipIS = new GZIPInputStream(httpIS);
-            // buffering the file: read block by block to gain performance
+            // buffering the file : read block by block to gain performance
             InputStream bufferedIS = new BufferedInputStream(gzipIS);
 
             System.out.println(bufferedIS);
 
             // parsing the file with json.org library
             BufferedReader br = new BufferedReader(new InputStreamReader(bufferedIS, StandardCharsets.UTF_8));
+            String line;
+            while((line = br.readLine()) != null) {
+                JSONObject json = new JSONObject(line);
+                String title = json.get("original_title").toString();
+                long tmdbId = Long.valueOf(json.get("id").toString());
+                boolean adult = Boolean.valueOf(json.get("adult").toString());
+                TmdbFilm film = new TmdbFilm(title, tmdbId);
+                if(!adult && tmdbFilmDao.findByIdtmdb(tmdbId) == null) {
+                    tmdbFilmDao.save(film);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ImportMoviesViaLocalTempTmdbFile() {
+        // we recover the date of the day before to avoid loading a file still unpublished by TMDV
+        LocalDate date = LocalDate.now().minusDays(1);
+        // date format to add zeros for months and days less than 10
+        String day = String.format("%02d", date.getDayOfMonth());
+        String month = String.format("%02d", date.getMonthValue());
+        String year = String.valueOf(date.getYear());
+
+
+        // url construction
+        String fileName = "movie_ids_"+month+"_"+day+"_"+year+".json.gz";
+        String url = "http://files.tmdb.org/p/exports/"+fileName;
+
+        String tmpFile = tmpFilePath+""+fileName;
+
+        try {
+            // file stream
+            InputStream is = new URL(url).openStream();
+            // write file stream datas in a temp local file (tmpFile)
+            FileOutputStream fos = new FileOutputStream(tmpFile);
+            // do it with Guava (Google API for Java)
+            ByteStreams.copy(is, fos);
+            is.close();
+            fos.flush();
+            fos.close();
+            BufferedInputStream bis = new BufferedInputStream(new GZIPInputStream(new FileInputStream(tmpFile)));
+
+            // parsing the file with json.org library
+            BufferedReader br = new BufferedReader(new InputStreamReader(bis, StandardCharsets.UTF_8));
             String line;
             while((line = br.readLine()) != null) {
                 JSONObject json = new JSONObject(line);
