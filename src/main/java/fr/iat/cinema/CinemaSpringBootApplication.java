@@ -43,6 +43,9 @@ public class CinemaSpringBootApplication {
         //  ... de l'admin par id (ou titre / name), importer UN film...
         //  ... (avec toutes les informations relatives à ce film, y compris les personnes
         // TODO : Completer le TmdbClientRecupérer les personnes et les réalisateurs
+        // TODO : externaliser le fichier application.properties afin de ne pas exposer publiquement la clé API de TMDB
+        // TODO: Faire un petit ETL pour ajouter les genres de TMDB en BDD locale
+        // (importer tout, pas besoin de 2nd ETL discriminatoire comme pour Person et Film
 
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);

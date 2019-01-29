@@ -118,9 +118,11 @@
 package fr.iat.cinema.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.checkerframework.common.aliasing.qual.Unique;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -135,6 +137,9 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private long id;
+
+    @Unique
+    private long idtmdb;
 
     @Basic
     @Column(name = "name", nullable = true, length = 100)
@@ -163,6 +168,14 @@ public class Person {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getIdtmdb() {
+        return idtmdb;
+    }
+
+    public void setIdtmdb(long idtmdb) {
+        this.idtmdb = idtmdb;
     }
 
     public String getName() {
@@ -211,6 +224,7 @@ public class Person {
         if (!(o instanceof Person)) return false;
         Person person = (Person) o;
         return getId() == person.getId() &&
+                getIdtmdb() == person.getIdtmdb() &&
                 Objects.equals(getName(), person.getName()) &&
                 Objects.equals(getBirthday(), person.getBirthday()) &&
                 Objects.equals(getImagePath(), person.getImagePath());
@@ -218,6 +232,6 @@ public class Person {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getBirthday(), getImagePath());
+        return Objects.hash(getId(), getIdtmdb(), getName(), getBirthday(), getImagePath());
     }
 }

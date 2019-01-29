@@ -122,9 +122,11 @@ package fr.iat.cinema.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.checkerframework.common.aliasing.qual.Unique;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
@@ -136,6 +138,9 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private long id;
+
+    @Unique
+    private long idtmdb;
 
     @Basic
     @Column(name = "title", nullable = true, length = 256)
@@ -183,6 +188,14 @@ public class Film {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getIdtmdb() {
+        return idtmdb;
+    }
+
+    public void setIdtmdb(long idtmdb) {
+        this.idtmdb = idtmdb;
     }
 
     public String getTitle() {
@@ -263,6 +276,7 @@ public class Film {
         if (!(o instanceof Film)) return false;
         Film film = (Film) o;
         return getId() == film.getId() &&
+                getIdtmdb() == film.getIdtmdb() &&
                 Objects.equals(getTitle(), film.getTitle()) &&
                 Objects.equals(getRating(), film.getRating()) &&
                 Objects.equals(getImagePath(), film.getImagePath()) &&
@@ -272,6 +286,6 @@ public class Film {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getRating(), getImagePath(), getSummary(), getReleaseDate());
+        return Objects.hash(getId(), getIdtmdb(), getTitle(), getRating(), getImagePath(), getSummary(), getReleaseDate());
     }
 }

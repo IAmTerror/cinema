@@ -31,7 +31,7 @@ public class ImportFilmsFromTMDB {
      *
      * */
 
-    @Value("${cinema.path.movies}")
+    @Value("${cinema.path.etl}")
     private String tmpFilePath;
 
     @Autowired
@@ -86,7 +86,7 @@ public class ImportFilmsFromTMDB {
         }
     }
 
-    public void ImportMoviesViaLocalTempTmdbFile() {
+    public void ImportFilmsViaLocalTempTmdbFile() {
         // we recover the date of the day before to avoid loading a file still unpublished by TMDV
         LocalDate date = LocalDate.now().minusDays(1);
         // date format to add zeros for months and days less than 10

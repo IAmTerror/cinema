@@ -12,20 +12,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @Autowired
-    private TmdbFilmDao tmdbFilmDao;
 
     @Autowired
-    private  ImportFilmsFromTMDB importFilmsFromTMDB;
+    private ImportFilmsFromTMDB importFilmsFromTMDB;
 
-    @GetMapping("/populate")
-    public String populate(Model model) {
+    @GetMapping("/populate/films")
+    public String populateFilms(Model model) {
 
         model.addAttribute("nom", "Cyril");
 
 //        ImportFilmsFromTMDB importFilmsFromTMDB = new ImportFilmsFromTMDB(tmdbFilmDao);
 //        importFilmsFromTMDB.ImportMoviesViaOnlineTmdbFile();
-        importFilmsFromTMDB.ImportMoviesViaLocalTempTmdbFile();
+        importFilmsFromTMDB.ImportFilmsViaLocalTempTmdbFile();
 
         //TODO: devra plus tard retourner une interface d'administration plutôt que l'index
         return "index";
