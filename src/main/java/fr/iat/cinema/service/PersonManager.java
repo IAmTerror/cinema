@@ -13,6 +13,6 @@ public class PersonManager {
     PersonDao personDao;
 
     public List<Person> getAll(){
-        return personDao.findAllByOrderBySurname();
+        return personDao.findAllByOrderByName();
     }
 }

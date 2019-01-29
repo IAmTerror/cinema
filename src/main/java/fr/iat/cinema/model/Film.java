@@ -138,7 +138,7 @@ public class Film {
     private long id;
 
     @Basic
-    @Column(name = "title", nullable = true, length = 50)
+    @Column(name = "title", nullable = true, length = 256)
     private String title;
 
     @Basic

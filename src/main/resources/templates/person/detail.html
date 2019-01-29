@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="twelve wide column">
-                <h1 th:text="${actor.givenname}+' '+${actor.surname}">Michel Galabru</h1>
+                <h1 th:text="${actor.name}">Michel Galabru</h1>
                 <h4>Date de naissance : <span
                         th:text="${#temporals.format(actor.birthday, 'dd-MM-yyyy')}">01/01/1901</span></h4>
                 <h3 class="ui dividing header">Filmographie</h3>

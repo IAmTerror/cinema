@@ -137,12 +137,8 @@ public class Person {
     private long id;
 
     @Basic
-    @Column(name = "surname", nullable = false, length = 60)
-    private String surname; //nom
-
-    @Basic
-    @Column(name = "givenname", nullable = true, length = 40)
-    private String givenname; //prenom
+    @Column(name = "name", nullable = true, length = 100)
+    private String name; // surname + givenname
 
     @Basic
     @Column(name = "birthday", nullable = true)
@@ -169,20 +165,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getName() {
+        return name;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getGivenname() {
-        return givenname;
-    }
-
-    public void setGivenname(String givenname) {
-        this.givenname = givenname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public LocalDate getBirthday() {
@@ -223,14 +211,13 @@ public class Person {
         if (!(o instanceof Person)) return false;
         Person person = (Person) o;
         return getId() == person.getId() &&
-                Objects.equals(getSurname(), person.getSurname()) &&
-                Objects.equals(getGivenname(), person.getGivenname()) &&
+                Objects.equals(getName(), person.getName()) &&
                 Objects.equals(getBirthday(), person.getBirthday()) &&
                 Objects.equals(getImagePath(), person.getImagePath());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getSurname(), getGivenname(), getBirthday(), getImagePath());
+        return Objects.hash(getId(), getName(), getBirthday(), getImagePath());
     }
 }

@@ -30,7 +30,7 @@
                 <a th:text="${actor.id}" th:href="@{/person/detail/{id}(id=${actor.id})}"></a>
             </td>
             <td class="two wide">
-                <a th:text="${actor.surname}+' '+${actor.givenname}" th:href="@{/person/detail/{id}(id=${actor.id})}"></a>
+                <a th:text="${actor.name}" th:href="@{/person/detail/{id}(id=${actor.id})}"></a>
             </td>
             <td class="two wide center aligned">
                 <a th:href="@{'/person/mod/' + ${actor.id}}"><i class="edit big icon"></i></a>
