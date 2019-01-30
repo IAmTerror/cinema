@@ -26,6 +26,7 @@ public class CinemaSpringBootApplication {
         // TODO : séparer le JS du HTML
         // TODO : uniformiser appelations Role et Play (convertir classe Role en Play, de même pour les model.attribute)
         // TODO : afficher un message à la fin des populate pour prévenir que l'import via ETL est terminé
+        // TODO : remplacer les @Autowired depréciés par des constructeurs
 
         // ----------- TRAVAIL du 28/01/2019
         // TODO : creer des identifiants TMDB dans Persons et Movies, puis dans les DAO, ajouter une condition pour...

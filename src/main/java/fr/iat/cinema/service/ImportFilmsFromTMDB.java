@@ -41,9 +41,9 @@ public class ImportFilmsFromTMDB {
         this.tmdbFilmDao = tmdbFilmDao;
     }
 
-    public void ImportMoviesViaOnlineTmdbFile() {
+    public void ImportFilmsViaOnlineTmdbFile() {
 
-        // we recover the date of the day before to avoid loading a file still unpublished by TMDV
+        // we recover the date of the day before to avoid loading a file still unpublished by TMDB
         LocalDate date = LocalDate.now().minusDays(1);
         // date format to add zeros for months and days less than 10
         String day = String.format("%02d", date.getDayOfMonth());
