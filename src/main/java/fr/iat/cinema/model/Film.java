@@ -140,7 +140,7 @@ public class Film {
     private long id;
 
     @Unique
-    private long idtmdb;
+    private Long idtmdb;
 
     @Basic
     @Column(name = "title", nullable = true, length = 256)
@@ -190,11 +190,11 @@ public class Film {
         this.id = id;
     }
 
-    public long getIdtmdb() {
+    public Long getIdtmdb() {
         return idtmdb;
     }
 
-    public void setIdtmdb(long idtmdb) {
+    public void setIdtmdb(Long idtmdb) {
         this.idtmdb = idtmdb;
     }
 

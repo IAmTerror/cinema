@@ -139,7 +139,7 @@ public class Person {
     private long id;
 
     @Unique
-    private long idtmdb;
+    private Long idtmdb;
 
     @Basic
     @Column(name = "name", nullable = true, length = 100)
@@ -170,11 +170,11 @@ public class Person {
         this.id = id;
     }
 
-    public long getIdtmdb() {
+    public Long getIdtmdb() {
         return idtmdb;
     }
 
-    public void setIdtmdb(long idtmdb) {
+    public void setIdtmdb(Long idtmdb) {
         this.idtmdb = idtmdb;
     }
 

@@ -24,7 +24,7 @@
             <input list="persons" id="personsList" name="persons" th:field="${role.actor}">
             <datalist id="persons">
                 <option th:each="person : ${persons}" th:value="${person.id}"
-                        th:label="${person.givenname}"></option>
+                        th:label="${person.name}"></option>
             </datalist>
             </input>
         </div>

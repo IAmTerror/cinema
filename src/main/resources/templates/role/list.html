@@ -67,7 +67,7 @@
                 <a th:text="${role.name}"></a>
             </td>
             <td class="four wide">
-                <a th:text="${role.actor.surname}+' '+${role.actor.givenname}" th:href="@{/person/detail/{id}(id=${role.id})}"></a>
+                <a th:text="${role.actor.name}" th:href="@{/person/detail/{id}(id=${role.id})}"></a>
             </td>
             <td class="four wide">
                 <a th:text="${role.film.title}" th:href="@{/film/detail/{id}(id=${role.film.id})}"></a>
