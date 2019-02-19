@@ -1,0 +1,24 @@
+' doc : http://plantuml.com/fr/state-diagram
+
+@startuml
+
+hide empty description
+
+[*] --> WaitingModeration
+
+WaitingModeration --> WaitingModeration : editByUser
+WaitingModeration --> Published : validByModerator
+WaitingModeration --> Rejected : rejectedByModerator
+WaitingModeration --> MustBeModified : keepForEditByModerator
+
+MustBeModified --> WaitingModeration : editByUser
+
+MustBeModified --> Abandoned : abandonByUser
+
+Published --> WaitingModeration : editByUser
+Published --> Delete : deleteByUser
+
+Rejected --> [*]
+Abandoned --> [*]
+Deleted --> [*]
+@enduml
