@@ -6,6 +6,13 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "review")
 public class Review {
+
+    public static final long ATTENTE_MODERATION = 1;
+    public static final long PUBLIE = 2;
+    public static final long ATTENTE_MODIFICATION = 3 ;
+
+    private long state = Review.ATTENTE_MODERATION;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -22,6 +29,7 @@ public class Review {
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
+
 
     public long getId() {
         return id;
@@ -63,6 +71,26 @@ public class Review {
         this.user = user;
     }
 
+    public long getState() {
+        return this.state;
+    }
+
+    public void valider() throws IllegalTransitionStateException {
+        if(this.getState() == Review.ATTENTE_MODERATION) {
+            this.state = Review.PUBLIE;
+        } else {
+            throw new IllegalTransitionStateException("Transition non autorisée");
+        }
+    }
+
+    public void retenirPourModification() throws IllegalTransitionStateException {
+        if(this.getState() == Review.ATTENTE_MODERATION) {
+            this.state = Review.ATTENTE_MODIFICATION;
+        } else {
+            throw new IllegalTransitionStateException("Transition non autorisée");
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,4 +112,7 @@ public class Review {
         result = 31 * result + (date != null ? date.hashCode() : 0);
         return result;
     }
+
+
+
 }
