@@ -7,17 +7,16 @@ import java.sql.Timestamp;
 @Table(name = "review")
 public class Review {
 
-    // TODO: renommer valider() en validByModerator(), delete() en deleteByUser(), etc...
     // TODO : faire un PlantUML du cycle de vie des commentaires
 
-    public static final long ATTENTE_MODERATION = 1;
-    public static final long PUBLIE = 2;
-    public static final long ATTENTE_MODIFICATION = 3 ;
-    public static final long SUPPRIME = 4;
-    public static final long ABANDONNE = 5;
-    public static final long REJETE = 6 ;
+    public static final long WAITING_MODERATION = 1;
+    public static final long PUBLISHED = 2;
+    public static final long MUST_BE_MODIFIED = 3 ;
+    public static final long DELETED = 4;
+    public static final long ABANDONED = 5;
+    public static final long REJECTED = 6 ;
 
-    private long state = Review.ATTENTE_MODERATION;
+    private long state = Review.WAITING_MODERATION;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -81,50 +80,50 @@ public class Review {
         return this.state;
     }
 
-    public void valider() throws IllegalTransitionStateException {
-        if(this.getState() == Review.ATTENTE_MODERATION) {
-            this.state = Review.PUBLIE;
+    public void validByModerator() throws IllegalTransitionStateException {
+        if(this.getState() == Review.WAITING_MODERATION) {
+            this.state = Review.PUBLISHED;
         } else {
             throw new IllegalTransitionStateException("Transition non autorisée");
         }
     }
 
-    public void retenirPourModification() throws IllegalTransitionStateException {
-        if(this.getState() == Review.ATTENTE_MODERATION) {
-            this.state = Review.ATTENTE_MODIFICATION;
+    public void keepForEditByModerator() throws IllegalTransitionStateException {
+        if(this.getState() == Review.WAITING_MODERATION) {
+            this.state = Review.MUST_BE_MODIFIED;
         } else {
             throw new IllegalTransitionStateException("Transition non autorisée");
         }
     }
 
-    public void supprimer() throws IllegalTransitionStateException {
-        if(this.getState() == Review.PUBLIE) {
-            this.state = Review.SUPPRIME;
+    public void deleteByUser() throws IllegalTransitionStateException {
+        if(this.getState() == Review.PUBLISHED) {
+            this.state = Review.DELETED;
         } else {
             throw new IllegalTransitionStateException("Transition non autorisée");
         }
     }
 
-    public void annuler() throws IllegalTransitionStateException {
-        if(this.getState() == Review.ATTENTE_MODIFICATION) {
-            this.state = Review.ABANDONNE;
+    public void abandonByUser() throws IllegalTransitionStateException {
+        if(this.getState() == Review.MUST_BE_MODIFIED) {
+            this.state = Review.ABANDONED;
         } else {
             throw new IllegalTransitionStateException("Transition non autorisée");
         }
     }
 
-    public void rejeter() throws IllegalTransitionStateException {
-        if(this.getState() == Review.ATTENTE_MODERATION) {
-            this.state = Review.REJETE;
+    public void rejectedByModerator() throws IllegalTransitionStateException {
+        if(this.getState() == Review.WAITING_MODERATION) {
+            this.state = Review.REJECTED;
         } else {
             throw new IllegalTransitionStateException("Transition non autorisée");
         }
     }
 
-    public void editer() throws IllegalTransitionStateException {
-        if(this.getState() == Review.ATTENTE_MODIFICATION || this.getState() == Review.PUBLIE ||
-                this.getState() == Review.ATTENTE_MODERATION) {
-            this.state = Review.ATTENTE_MODERATION;
+    public void editByUser() throws IllegalTransitionStateException {
+        if(this.getState() == Review.MUST_BE_MODIFIED || this.getState() == Review.PUBLISHED ||
+                this.getState() == Review.WAITING_MODERATION) {
+            this.state = Review.WAITING_MODERATION;
         } else {
             throw new IllegalTransitionStateException("Transition non autorisée");
         }
