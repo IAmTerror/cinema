@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 public class Review {
 
     // TODO : faire un PlantUML du cycle de vie des commentaires
+    // TODO : récupérer la structure en hashmap du prof et implémenter
 
     public static final int WAITING_MODERATION = 1;
     public static final int PUBLISHED = 2;
