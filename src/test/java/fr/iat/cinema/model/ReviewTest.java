@@ -6,11 +6,12 @@ import static org.junit.Assert.*;
 
 public class ReviewTest {
 
-    // TODO : renommer les methodes de test et les messages d'exception en anglais
+    // TODO : ajouter des tests en fonction de routes ou l'utilisateur tenterait de forcer la logique du cycle...
+    // de vie d'un commentaire : ex : un utilisateur tente de publier un commentaire MustBeModified
 
     @Test
     public void setArticle() {
-        // On teste si le getter et le setter de Review fonctionne
+        // We test if the getter and the setter of Review works
         Review comment = new Review();
         comment.setArticle("test commentaire");
         assertEquals("test commentaire", comment.getArticle());
@@ -18,12 +19,12 @@ public class ReviewTest {
 
     @Test
     public void etatInitial() {
-        // On teste l'état initial du commentaire (AttenteModération)
+        // We test the initial state of the comment (WAITING_MODERATION)
         Review comment = new Review();
         assertEquals(Review.WAITING_MODERATION, comment.getState());
     }
 
-    // On teste toutes les good transitions possibles et au moins un bad transition par état d'un commentaire
+    // We test all possible good transitions and at least one bad transition by state of a comment
     @Test
     public void goodTransitionToPublie() {
         Review comment = new Review();

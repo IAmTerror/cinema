@@ -9,12 +9,12 @@ public class Review {
 
     // TODO : faire un PlantUML du cycle de vie des commentaires
 
-    public static final long WAITING_MODERATION = 1;
-    public static final long PUBLISHED = 2;
-    public static final long MUST_BE_MODIFIED = 3 ;
-    public static final long DELETED = 4;
-    public static final long ABANDONED = 5;
-    public static final long REJECTED = 6 ;
+    public static final int WAITING_MODERATION = 1;
+    public static final int PUBLISHED = 2;
+    public static final int MUST_BE_MODIFIED = 3 ;
+    public static final int DELETED = 4;
+    public static final int ABANDONED = 5;
+    public static final int REJECTED = 6 ;
 
     private long state = Review.WAITING_MODERATION;
 
@@ -80,53 +80,65 @@ public class Review {
         return this.state;
     }
 
-    public void validByModerator() throws IllegalTransitionStateException {
-        if(this.getState() == Review.WAITING_MODERATION) {
-            this.state = Review.PUBLISHED;
+    private boolean canTransitTo(int targetState) {
+        boolean result;
+        switch (targetState) {
+            case Review.REJECTED :
+                result = this.getState() == Review.WAITING_MODERATION;
+                break;
+            case Review.DELETED :
+                result = this.getState() == Review.PUBLISHED;
+                break;
+            case Review.WAITING_MODERATION :
+                result = this.getState() == Review.PUBLISHED || this.getState() == Review.WAITING_MODERATION
+                        || this.getState() == Review.MUST_BE_MODIFIED;
+                break;
+            case Review.PUBLISHED :
+                result = this.getState() == Review.WAITING_MODERATION;
+                break;
+            case Review.MUST_BE_MODIFIED :
+                result = this.getState() == Review.WAITING_MODERATION;
+                break;
+            case Review.ABANDONED :
+                result = this.getState() == Review.MUST_BE_MODIFIED;
+                break;
+
+                default:
+                    result = false;
+        }
+        return result;
+    }
+
+    public void transitTo(int target) throws IllegalTransitionStateException {
+        if(canTransitTo(target)) {
+            this.state = target;
         } else {
             throw new IllegalTransitionStateException("Transition non autorisée");
         }
+    }
+
+    public void validByModerator() throws IllegalTransitionStateException {
+        transitTo(Review.PUBLISHED);
     }
 
     public void keepForEditByModerator() throws IllegalTransitionStateException {
-        if(this.getState() == Review.WAITING_MODERATION) {
-            this.state = Review.MUST_BE_MODIFIED;
-        } else {
-            throw new IllegalTransitionStateException("Transition non autorisée");
-        }
+        transitTo(Review.MUST_BE_MODIFIED);
     }
 
     public void deleteByUser() throws IllegalTransitionStateException {
-        if(this.getState() == Review.PUBLISHED) {
-            this.state = Review.DELETED;
-        } else {
-            throw new IllegalTransitionStateException("Transition non autorisée");
-        }
+        transitTo(Review.DELETED);
     }
 
     public void abandonByUser() throws IllegalTransitionStateException {
-        if(this.getState() == Review.MUST_BE_MODIFIED) {
-            this.state = Review.ABANDONED;
-        } else {
-            throw new IllegalTransitionStateException("Transition non autorisée");
-        }
+        transitTo(Review.ABANDONED);
     }
 
     public void rejectedByModerator() throws IllegalTransitionStateException {
-        if(this.getState() == Review.WAITING_MODERATION) {
-            this.state = Review.REJECTED;
-        } else {
-            throw new IllegalTransitionStateException("Transition non autorisée");
-        }
+        transitTo(Review.REJECTED);
     }
 
     public void editByUser() throws IllegalTransitionStateException {
-        if(this.getState() == Review.MUST_BE_MODIFIED || this.getState() == Review.PUBLISHED ||
-                this.getState() == Review.WAITING_MODERATION) {
-            this.state = Review.WAITING_MODERATION;
-        } else {
-            throw new IllegalTransitionStateException("Transition non autorisée");
-        }
+        transitTo(Review.WAITING_MODERATION);
     }
 
     @Override
