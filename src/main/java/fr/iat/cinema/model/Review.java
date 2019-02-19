@@ -7,9 +7,15 @@ import java.sql.Timestamp;
 @Table(name = "review")
 public class Review {
 
+    // TODO: renommer valider() en validByModerator(), delete() en deleteByUser(), etc...
+    // TODO : faire un PlantUML du cycle de vie des commentaires
+
     public static final long ATTENTE_MODERATION = 1;
     public static final long PUBLIE = 2;
     public static final long ATTENTE_MODIFICATION = 3 ;
+    public static final long SUPPRIME = 4;
+    public static final long ABANDONNE = 5;
+    public static final long REJETE = 6 ;
 
     private long state = Review.ATTENTE_MODERATION;
 
@@ -91,6 +97,39 @@ public class Review {
         }
     }
 
+    public void supprimer() throws IllegalTransitionStateException {
+        if(this.getState() == Review.PUBLIE) {
+            this.state = Review.SUPPRIME;
+        } else {
+            throw new IllegalTransitionStateException("Transition non autorisée");
+        }
+    }
+
+    public void annuler() throws IllegalTransitionStateException {
+        if(this.getState() == Review.ATTENTE_MODIFICATION) {
+            this.state = Review.ABANDONNE;
+        } else {
+            throw new IllegalTransitionStateException("Transition non autorisée");
+        }
+    }
+
+    public void rejeter() throws IllegalTransitionStateException {
+        if(this.getState() == Review.ATTENTE_MODERATION) {
+            this.state = Review.REJETE;
+        } else {
+            throw new IllegalTransitionStateException("Transition non autorisée");
+        }
+    }
+
+    public void editer() throws IllegalTransitionStateException {
+        if(this.getState() == Review.ATTENTE_MODIFICATION || this.getState() == Review.PUBLIE ||
+                this.getState() == Review.ATTENTE_MODERATION) {
+            this.state = Review.ATTENTE_MODERATION;
+        } else {
+            throw new IllegalTransitionStateException("Transition non autorisée");
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -112,7 +151,4 @@ public class Review {
         result = 31 * result + (date != null ? date.hashCode() : 0);
         return result;
     }
-
-
-
 }
