@@ -27,7 +27,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gestion des genres</title>
+    <title th:for="#{genre.title}" th:text="#{genre.title}"></title>
     <div th:replace="fragments/header :: header-css"/>
     </div>
 </head>

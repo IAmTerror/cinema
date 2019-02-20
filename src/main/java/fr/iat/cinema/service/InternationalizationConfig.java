@@ -1,0 +1,82 @@
+package fr.iat.cinema.service;
+
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+
+import java.util.Locale;
+
+@Configuration
+public class InternationalizationConfig extends WebMvcConfigurerAdapter {
+    /**
+     * Set encoding and prefix file name of messages resources
+     * @return
+     */
+
+    @Bean
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource =
+                new ReloadableResourceBundleMessageSource();
+        // classpath + préfixe des noms de fichiers de configuration des messages
+        messageSource.setBasename("classpath:/i18n/messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
+    }
+// Optionnel : pour créer plusieurs dossiers de messages en fonction d'un regroupement logique
+//    private MessageSource messageSourceValidator() {
+//        ReloadableResourceBundleMessageSource messageSource =
+//                new ReloadableResourceBundleMessageSource();
+//        messageSource.setBasename("classpath:/i18n/validationMessages");
+//        messageSource.setDefaultEncoding("UTF-8");
+//        return messageSource;
+//    }
+
+    @Bean
+    public LocalValidatorFactoryBean validator() {
+        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
+//        bean.setValidationMessageSource(messageSourceValidator());
+        return bean;
+    }
+
+    /**
+     * Instantiate the appropriate locale resolution strategy
+     *
+     * @return locale resolver
+     */
+    @Bean
+    public LocaleResolver localeResolver() {
+    // stores locale info in the session
+        SessionLocaleResolver resolver = new SessionLocaleResolver();
+    //default to fr locale
+        resolver.setDefaultLocale(Locale.FRENCH);
+        return resolver;
+    }
+
+    /**
+     * This interceptor allows visitors to change the locale
+     *
+     * @return a LocaleChangeInterceptor object
+     */
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+//the request param that we'll use to determine the locale
+        interceptor.setParamName("lang");
+        return interceptor;
+    }
+    /**
+     * This is where we'll add the interceptor object
+     * that handles internationalization
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
+}
