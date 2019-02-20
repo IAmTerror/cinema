@@ -22,7 +22,7 @@ public class FilmManager {
     }
 
     public List<Film> getAll(){
-        return filmDao.findAllByOrderByTitle();
+        return filmDao.findAllByOrderByIdAsc();
     }
 
     /**

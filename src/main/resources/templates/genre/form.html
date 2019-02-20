@@ -27,7 +27,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title th:for="#{genre.title}" th:text="#{genre.title}"></title>
+    <title th:for="#{genre.page.title}" th:text="#{genre.page.title}"></title>
     <div th:replace="fragments/header :: header-css"/>
     </div>
 </head>
@@ -39,7 +39,7 @@
     <div class="ui modal">
         <div class="ui container padded">
             <div class="Header">
-                <h3>Genre</h3>
+                <h3>Genres</h3>
             </div>
             <div class="ui padded form">
                 <input type="hidden" name="id" id="id-genre">
@@ -65,8 +65,7 @@
         </div>
     </div>
 
-    <div class="ui primary button" onclick="openDialogAdd()">
-        Ajouter un genre
+    <div th:for="#{genre.add.button}" th:text="#{genre.add.button}" class="ui primary button" onclick="openDialogAdd()">
     </div>
     <table class="ui selectable celled table">
         <thead>

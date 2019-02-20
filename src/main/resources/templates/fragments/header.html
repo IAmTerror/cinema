@@ -25,16 +25,16 @@
                 <i class="video camera icon"></i>
                 CINEMA
             </a>
-            <a class="item black" th:href="@{/film/list}">
+            <a class="item black" th:for="#{navbar.movies}" th:text="#{navbar.movies}" th:href="@{/film/list}">
                 Films
             </a>
-            <a class="item" th:href="@{/person/list}">
+            <a class="item" th:for="#{navbar.persons}" th:text="#{navbar.persons}" th:href="@{/person/list}">
                 Personnes
             </a>
-            <a class="item" th:href="@{/role/list}">
+            <a class="item" th:for="#{navbar.roles}" th:text="#{navbar.roles}" th:href="@{/role/list}">
                 Rôles
             </a>
-            <a class="item" th:href="@{/genre}">
+            <a class="item" th:for="#{navbar.genres}" th:text="#{navbar.genre}" th:href="@{/genre}">
                 Genres
             </a>
             <div class="ui simple dropdown item">

@@ -28,6 +28,12 @@ public class CinemaSpringBootApplication {
         // TODO : remplacer les @Autowired depréciés par des constructeurs
         // TODO : pagination
         // TODO : internationalisation
+        // TODO : night mode
+        // TODO : Abandonner la solution du formulaire de Film de Mr Varni (créer le rôle DANS le formulaire du film,
+        //  ce qui serait possible en créant un film vide via la controleur, solution un peu sale mais propre du point
+        //  de vue de l'utilisateur) et créer d'abord un film (reprendre mon vieux formulaire, et adapter en injectant
+        //  des modules du nouveau comme tinymce) PUIS ENSUITE, rediriger l'utilisateur vers un formulaire genre, qui
+        //  reprendra l'id du film nouvellement crée
 
         // ----------- TRAVAIL du 28/01/2019
         // TODO : creer des identifiants TMDB dans Persons et Movies, puis dans les DAO, ajouter une condition pour...
