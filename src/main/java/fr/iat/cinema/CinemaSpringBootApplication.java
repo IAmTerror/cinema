@@ -37,8 +37,13 @@ public class CinemaSpringBootApplication {
         // TODO : remove les dépendances inutiles
         // TODO : l'User "recup" n'existe que pour les tests, delete cet user à la fin
         // TODO : Créer un formulaire de création de mot de passe (voir thyme-security projet CDA)
-        // TODO : Créer un générateur de Login (voir projet PFMP CDI)
+        // TODO : Créer un générateur de Login (voir projet PFMP CDI) + un formulaire de recup de MDP
         // TODO : Créer les vues CRUD Users et Group (optionnel pour Groupe)
+        // TODO: Gerer Redirection après login (Success Forward url)
+        // TODO : Renommer LoginCOntroller en PasswordController + integrer le recovery.html
+        // TODO : utiliser le login plutôt que name pour l'authentification login.html
+        // TODO : integrer les balises csrf dans les vues afin d'éviter les erreurs 403 en post mapping...
+        //  ... puis retirer le disable csrf de la configuration de spring security
 
         // ----------- TRAVAIL du 28/01/2019
         // TODO : creer des identifiants TMDB dans Persons et Movies, puis dans les DAO, ajouter une condition pour...

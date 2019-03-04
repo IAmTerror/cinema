@@ -33,26 +33,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/webjars/**", "/css/**").permitAll()
-                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
-                .anyRequest().authenticated()
-                .and()
+                    .antMatchers("/", "/webjars/**", "/css/*", "/recovery").permitAll()
+                    .antMatchers("/film").hasAnyAuthority("ADMIN")
+                    .anyRequest().authenticated()
+                    .and()
                 .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
+                    .loginPage("/login")
+                    .permitAll()
+                    .and()
                 .logout()
-                .permitAll();
+                    .permitAll();
+        // avoid error 403 with @PostMapping
+//                .and()
+//                    .csrf().disable();
     }
 
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("recup")
-                .password("recup")
-                .roles("ADMIN","USER")
-                .authorities("WITHDRAW","DEPOSIT", "ADMIN");
+//        auth.inMemoryAuthentication()
+//                .withUser("recup")
+//                .password("recup")
+//                .roles("ADMIN","USER")
+//                .authorities("WITHDRAW","DEPOSIT", "ADMIN");
         auth.userDetailsService(jpaUserDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
