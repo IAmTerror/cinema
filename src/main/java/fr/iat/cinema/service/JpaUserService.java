@@ -40,7 +40,7 @@ public class JpaUserService {
     }
 
     public User findByUserName(String userName){
-        return userDao.findBySurname(userName);
+        return userDao.findByName(userName);
     }
 
     public List<User> findAllUsers(){

@@ -35,7 +35,7 @@ public class JpaUserDetailsService implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findBySurname(username);
+        User user = userDao.findByName(username);
         log.info("Recherche utilisateur: "+username);
         if(user == null){
             throw new UsernameNotFoundException("Utilisateur introuvable : |"+username+"|");
@@ -46,7 +46,7 @@ public class JpaUserDetailsService implements UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(grp.getRole()));
         }
         return new org.springframework.security.core.userdetails.User(
-                user.getSurname(),
+                user.getName(),
                 user.getPassword(),
                 authorities);
     }

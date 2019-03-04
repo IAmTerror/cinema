@@ -7,8 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface UserDao extends CrudRepository<User, Long> {
-    public List<User> findAllByOrderByIdAsc();
-    User findBySurname(String surname);
+    List<User> findAllByOrderByIdAsc();
+    User findByName(String name);
     List<User> findAll();
     User findById(long id);
 }

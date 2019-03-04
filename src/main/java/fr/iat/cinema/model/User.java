@@ -5,15 +5,15 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private long id;
     @Basic
-    @Column(name = "surname", nullable = true, length = 40)
-    private String surname;
+    @Column(name = "name", nullable = true, length = 40)
+    private String name;
     @Basic
     @Column(name = "givenname", nullable = true, length = 30)
     private String givenname;
@@ -27,8 +27,8 @@ public class User {
     private Set<Review> reviews;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="USER_GROUP",
-            joinColumns =@JoinColumn(name = "ID_USER", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "ID_GROUP", referencedColumnName = "ID"))
+            joinColumns =@JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "group_id", referencedColumnName = "ID"))
     private Set<Groups> groups;
 
     public long getId() {
@@ -39,12 +39,12 @@ public class User {
         this.id = id;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getName() {
+        return name;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setName(String surname) {
+        this.name = surname;
     }
 
     public String getGivenname() {
@@ -93,7 +93,7 @@ public class User {
         if (!(o instanceof User)) return false;
         User user = (User) o;
         return getId() == user.getId() &&
-                Objects.equals(getSurname(), user.getSurname()) &&
+                Objects.equals(getName(), user.getName()) &&
                 Objects.equals(getGivenname(), user.getGivenname()) &&
                 Objects.equals(getLogin(), user.getLogin()) &&
                 Objects.equals(getPassword(), user.getPassword());
@@ -101,6 +101,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getSurname(), getGivenname(), getLogin(), getPassword());
+        return Objects.hash(getId(), getName(), getGivenname(), getLogin(), getPassword());
     }
 }
