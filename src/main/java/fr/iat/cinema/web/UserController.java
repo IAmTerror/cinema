@@ -4,6 +4,7 @@ import fr.iat.cinema.dao.UserDao;
 import fr.iat.cinema.model.Film;
 import fr.iat.cinema.model.User;
 import fr.iat.cinema.service.ImageManager;
+import fr.iat.cinema.service.JpaUserService;
 import fr.iat.cinema.service.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,9 +32,19 @@ public class UserController {
     @Autowired
     Path path;
 
+    @Autowired
+    JpaUserService jpaUserService;
+
+//    @GetMapping("/list")
+//    public String list(Model model){
+//        Iterable<User> users = userDao.findAllByOrderByIdAsc();
+//        model.addAttribute("users", users);
+//        return "user/list";
+//    }
+
     @GetMapping("/list")
     public String list(Model model){
-        Iterable<User> users = userDao.findAllByOrderByIdAsc();
+        Iterable<User> users = jpaUserService.findAllUsers();
         model.addAttribute("users", users);
         return "user/list";
     }

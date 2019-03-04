@@ -36,6 +36,9 @@ public class CinemaSpringBootApplication {
         //  reprendra l'id du film nouvellement crée
         // TODO : remove les dépendances inutiles
         // TODO : l'User "recup" n'existe que pour les tests, delete cet user à la fin
+        // TODO : Créer un formulaire de création de mot de passe (voir thyme-security projet CDA)
+        // TODO : Créer un générateur de Login (voir projet PFMP CDI)
+        // TODO : Créer les vues CRUD Users et Group (optionnel pour Groupe)
 
         // ----------- TRAVAIL du 28/01/2019
         // TODO : creer des identifiants TMDB dans Persons et Movies, puis dans les DAO, ajouter une condition pour...
@@ -54,6 +57,7 @@ public class CinemaSpringBootApplication {
         // TODO : externaliser le fichier application.properties afin de ne pas exposer publiquement la clé API de TMDB
         // TODO: Faire un petit ETL pour ajouter les genres de TMDB en BDD locale
         // (importer tout, pas besoin de 2nd ETL discriminatoire comme pour Person et Film
+
 
 
         SpringApplication.run(CinemaSpringBootApplication.class, args);
