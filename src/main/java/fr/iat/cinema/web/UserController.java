@@ -40,13 +40,15 @@ public class UserController {
 
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id")long id, Model model){
-        model.addAttribute("user", userDao.findById(id).get());
+//        model.addAttribute("user", userDao.findById(id).get());
+        model.addAttribute("user", userDao.findById(id));
         return "user/detail";
     }
 
     @GetMapping("/mod/{id}")
     public String mod(@PathVariable("id")long id, Model model){
-        model.addAttribute("user", userDao.findById(id).get());
+//        model.addAttribute("user", userDao.findById(id).get());
+        model.addAttribute("user", userDao.findById(id));
         return "user/form";
     }
 

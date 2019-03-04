@@ -34,6 +34,8 @@ public class CinemaSpringBootApplication {
         //  de vue de l'utilisateur) et créer d'abord un film (reprendre mon vieux formulaire, et adapter en injectant
         //  des modules du nouveau comme tinymce) PUIS ENSUITE, rediriger l'utilisateur vers un formulaire genre, qui
         //  reprendra l'id du film nouvellement crée
+        // TODO : remove les dépendances inutiles
+        // TODO : l'User "recup" n'existe que pour les tests, delete cet user à la fin
 
         // ----------- TRAVAIL du 28/01/2019
         // TODO : creer des identifiants TMDB dans Persons et Movies, puis dans les DAO, ajouter une condition pour...

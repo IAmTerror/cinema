@@ -192,7 +192,7 @@ public class Review {
                 }));
         transitionsTo.put(Review.PUBLISHED, Arrays.asList(new Integer[]{Review.WAITING_MODERATION, Review.DELETED}));
         transitionsTo.put(Review.MUST_BE_MODIFIED, Arrays.asList(new Integer[]{Review.WAITING_MODERATION, Review.ABANDONED}));
-        // Trransitions impossibles
+        // Transitions impossibles
         transitionsTo.put(Review.ABANDONED, new ArrayList<>());
         transitionsTo.put(Review.DELETED, new ArrayList<>());
         transitionsTo.put(Review.REJECTED, new ArrayList<>());

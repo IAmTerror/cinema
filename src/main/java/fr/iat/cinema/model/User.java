@@ -1,10 +1,11 @@
 package fr.iat.cinema.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "USER")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +25,11 @@ public class User {
     private String password;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Review> reviews;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="USER_GROUP",
+            joinColumns =@JoinColumn(name = "ID_USER", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "ID_GROUP", referencedColumnName = "ID"))
+    private Set<Groups> groups;
 
     public long getId() {
         return id;
@@ -41,7 +47,6 @@ public class User {
         this.surname = surname;
     }
 
-
     public String getGivenname() {
         return givenname;
     }
@@ -57,7 +62,6 @@ public class User {
     public void setLogin(String login) {
         this.login = login;
     }
-
 
     public String getPassword() {
         return password;
@@ -75,29 +79,28 @@ public class User {
         this.reviews = reviews;
     }
 
+    public Set<Groups> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<Groups> groups) {
+        this.groups = groups;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof User)) return false;
         User user = (User) o;
-
-        if (id != user.id) return false;
-        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
-        if (givenname != null ? !givenname.equals(user.givenname) : user.givenname != null) return false;
-        if (login != null ? !login.equals(user.login) : user.login != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-
-        return true;
+        return getId() == user.getId() &&
+                Objects.equals(getSurname(), user.getSurname()) &&
+                Objects.equals(getGivenname(), user.getGivenname()) &&
+                Objects.equals(getLogin(), user.getLogin()) &&
+                Objects.equals(getPassword(), user.getPassword());
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (givenname != null ? givenname.hashCode() : 0);
-        result = 31 * result + (login != null ? login.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        return result;
+        return Objects.hash(getId(), getSurname(), getGivenname(), getLogin(), getPassword());
     }
 }

@@ -8,4 +8,7 @@ import java.util.List;
 
 public interface UserDao extends CrudRepository<User, Long> {
     public List<User> findAllByOrderByIdAsc();
+    User findBySurname(String surname);
+    List<User> findAll();
+    User findById(long id);
 }
