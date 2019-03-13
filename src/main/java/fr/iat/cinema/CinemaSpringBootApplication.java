@@ -29,6 +29,7 @@ public class CinemaSpringBootApplication {
         // TODO : pagination
         // TODO : internationalisation
         // TODO : night mode
+        // TODO : intégrer les Validator dans les formulaires
         // TODO : Abandonner la solution du formulaire de Film de Mr Varni (créer le rôle DANS le formulaire du film,
         //  ce qui serait possible en créant un film vide via la controleur, solution un peu sale mais propre du point
         //  de vue de l'utilisateur) et créer d'abord un film (reprendre mon vieux formulaire, et adapter en injectant
@@ -44,6 +45,14 @@ public class CinemaSpringBootApplication {
         // TODO : utiliser le login plutôt que name pour l'authentification login.html
         // TODO : integrer les balises csrf dans les vues afin d'éviter les erreurs 403 en post mapping...
         //  ... puis retirer le disable csrf de la configuration de spring security
+        // TODO : créer la javadoc
+        // TODO : securiser les controleurs et les services lorsque nécessaire avec
+        //  .. spring security @PreAuthorize("hasAnyAuthority('XXXXX')")
+        //  .. en particulier les controlleurs REST, qui sont très vulnérables
+        // TODO : creer une vraie page error 403
+        // TODO : pagination (coté client avec datatable ? coté serveur ?
+        //  ... Exemple Prof (qui ne marche qu'en ajoutant une version 1.16.16 de lombok
+        //  ... dans les dépendances plus un scope provided ? ---> http://www.bswen.com/2018/06/springboot-springboot-2-with-JPA-pagination-example.html)
 
         // ----------- TRAVAIL du 28/01/2019
         // TODO : creer des identifiants TMDB dans Persons et Movies, puis dans les DAO, ajouter une condition pour...

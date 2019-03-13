@@ -18,9 +18,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private JpaUserDetailsService jpaUserDetailsService;
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
+
     @Autowired
-    public void setUserDetailsService(JpaUserDetailsService jpaUserDetailsService){
-        this.jpaUserDetailsService = jpaUserDetailsService;
+    public WebSecurityConfig(JpaUserDetailsService cinemaUserDetailsService)
+    {   this.jpaUserDetailsService = cinemaUserDetailsService;
+
     }
 
     @Bean
@@ -32,9 +34,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                // TODO : configurer toutes les routes restreintes, notamment pour l'admin
+                // TODO : changer les commentaires en doc java
                 .authorizeRequests()
-                    .antMatchers("/", "/webjars/**", "/css/*", "/recovery").permitAll()
-                    .antMatchers("/film").hasAnyAuthority("ADMIN")
+                // pages acessibles à l'ensemble de l'application
+                    .antMatchers("/", "/webjars/**", "/css/*").permitAll()
+                // pages dont l'accès est restreint à certains utilisateurs
+                    .antMatchers("/film/**").hasAuthority("ADMIN")
+                    .antMatchers("/recovery/**").hasAnyAuthority("ADMIN", "USERS")
+                // .anyRequest().authenticated() = pages qui n'ont pas un accès restreint
+                // (hasAuthority ou hasAnyAuthority) et donc acessibles pour tous les utilisateurs authentifiés
+                // c'est à dire, toutes les pages autres que celles qui sont restreintes
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
